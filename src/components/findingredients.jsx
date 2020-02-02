@@ -15,30 +15,24 @@ export default class FindIngredients extends React.Component {
                 'Cauliflower',
                 'Chicken',
             ],
-            ingredientsToUse: [
-
-            ]
+            ingredientsToUse: []
         }
         this.addIngredient = this.addIngredient.bind(this);
         this.removeIngredient = this.removeIngredient.bind(this);
     }
     addIngredient(e){
         // e.preventDefault(); 
+        console.log(e);
+        let ingredients = this.state.ingredientsToUse;
+        // const newIngredient = document.getElementById("addIngredient");
+        // const form = document.getElementById("addIngredientForm");
 
-        let ingredients = this.state.ingredients;
-        const newIngredient = document.getElementById("addIngredient");
-        const form = document.getElementById("addIngredientForm");
-
-        if(newIngredient.value !== "") {
-            ingredients.push(newIngredient.value);
-            this.setState({
-                ingredients : ingredients
-            })
-            newIngredient.classList.remove("is-danger");
-            form.reset();
-        } else {
-            newIngredient.classList.add("is-danger");
-        }
+        if (this.state.ingredientsToUse.includes(e)) return;
+        ingredients.push(e);
+        this.setState({
+            ingredientsToUse: ingredients
+        })
+        console.log(this.state.ingredientsToUse);
     }
     removeIngredient(ingredient){
 
@@ -57,7 +51,15 @@ export default class FindIngredients extends React.Component {
 
     }
     render(){
+        let element;
 
+        if (this.state.ingredientsToUse) {
+            element = <div className="container-fluid m-auto text-center">
+                        {this.state.ingredientsToUse.map(ingredient => {
+                            console.log(ingredient);
+                        })}
+                    </div>
+        }
         return (
             <div className="find-ingredients-component-container py-5">
 
@@ -104,7 +106,7 @@ export default class FindIngredients extends React.Component {
                             {/* <Ingredients /> */}
                             <Ingredients 
                                 ingredients={this.state.ingredients}
-
+                                ingredientsToUse={this.state.ingredientsToUse}
                                 addIngredient={this.addIngredient}
                             />
 
@@ -130,6 +132,21 @@ export default class FindIngredients extends React.Component {
                     
 
                 </div>
+
+                
+                <div className="container-fluid m-auto">
+                        <div className="container-fluid mx-auto mb-5 text-center">
+                            <h1 className="display-4">
+                                Ingredients To Use
+                            </h1>
+                        </div>
+                        <div className="container-fluid m-auto text-center">
+                            {this.state.ingredientsToUse.map(ingredient => {
+                                return ingredient;
+                            })}
+                        </div>
+                    </div>
+
                 {/* <div className="w-100 my-5 container-fluid ">&nbsp;</div>
                 <div className="container-fluid w-75 mx-auto row my-5">
                     <div className="col-4">

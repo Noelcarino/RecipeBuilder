@@ -33,7 +33,7 @@ export default class Ingredients extends React.Component{
         })
     }
     render(){
-
+        console.log(this.props.ingredientsToUse);
         return (
             <div className="container-fluid mx-auto">
                 <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
