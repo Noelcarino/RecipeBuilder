@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from './homepage';
 
 
+
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
@@ -13,7 +14,6 @@ export default class RecipeBuilder extends React.Component {
 
     }
     render(){
-        // let element = this.state.view;
         const { name } = this.state.view;
         let element;
         switch(name){
@@ -26,7 +26,6 @@ export default class RecipeBuilder extends React.Component {
         }
         return (
             <div>
-                {/* <HomePage/> */}
                 {element}
             </div>
         )
