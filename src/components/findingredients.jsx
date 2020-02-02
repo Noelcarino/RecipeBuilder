@@ -14,13 +14,16 @@ export default class FindIngredients extends React.Component {
                 'Celery',
                 'Cauliflower',
                 'Chicken',
+            ],
+            ingredientsToUse: [
+
             ]
         }
         this.addIngredient = this.addIngredient.bind(this);
         this.removeIngredient = this.removeIngredient.bind(this);
     }
     addIngredient(e){
-        e.preventDefault();
+        // e.preventDefault(); 
 
         let ingredients = this.state.ingredients;
         const newIngredient = document.getElementById("addIngredient");
@@ -57,8 +60,12 @@ export default class FindIngredients extends React.Component {
 
         return (
             <div className="find-ingredients-component-container py-5">
-               
 
+               <div className="container-fluid mx-auto w-50 row px-0 mb-5">
+                    <button className="btn btn-dark text-muted mx-auto " onClick={() => this.props.setView('dashboard')}>
+                            PAGE UNDER CONSTRUCTION | BACK TO DASHBOARD
+                    </button>
+                </div>
 
                 <div className="search-ingredients-container mx-auto mb-5 row px-0">
 
@@ -92,30 +99,29 @@ export default class FindIngredients extends React.Component {
                     *****************************/}
 
                     <div className="container-fluid m-auto">
-                        <div className="search-ingredients-search-bar mx-auto text-center">
-                            <section className="section">
-                                {/* <Ingredients /> */}
-                                <Ingredients ingredients={this.state.ingredients} delete={this.removeIngredient}/>
-                            </section>
+                        <div className="mx-auto text-center">
+
+                            {/* <Ingredients /> */}
+                            <Ingredients 
+                                ingredients={this.state.ingredients}
+
+                                addIngredient={this.addIngredient}
+                            />
 
                             <hr/>
 
-                            <section className="section">
-                                <form id="addIngredientForm" className="form">
-                                    <input 
-                                        type="text"
-                                        id="addIngredient"
-                                        className="input text-muted"
-                                        placeholder="Add more ingredients to database..."
-                                    />
-                                </form>
+                            <form id="addIngredientForm" className="form">
+                                <input 
+                                    type="text"
+                                    id="addIngredient"
+                                    className="input text-muted"
+                                    placeholder="Add more ingredients to database..."
+                                />
+                            </form>
+                            <button className="btn is-info" onClick={this.addIngredient}>
+                                    Add Ingredient
+                            </button>
 
-                                <button className="btn is-info" onClick={this.addIngredient}>
-                                        Add Ingredient
-                                </button>
-
-                            </section>
-                            
                         </div>
                     </div>
 
@@ -124,7 +130,8 @@ export default class FindIngredients extends React.Component {
                     
 
                 </div>
-                <div className="container-fluid w-75 mx-auto row mb-5">
+                {/* <div className="w-100 my-5 container-fluid ">&nbsp;</div>
+                <div className="container-fluid w-75 mx-auto row my-5">
                     <div className="col-4">
                         <div className="list-group" id="list-tab" role="tablist">
                         <a className="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
@@ -135,8 +142,8 @@ export default class FindIngredients extends React.Component {
                     </div>
                     <div className="col-6">
                         <div className="tab-content" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">{this.state.ingredients.map(ingredient => (
-                            <button className="btn btn-dark text-muted" onClick={() => this.removeIngredient(ingredient)}>
+                        <div className="container-fluid row border tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">{this.state.ingredients.map((ingredient,index) => (
+                            <button key={index} className="btn btn-dark text-light mx-auto" onClick={() => this.removeIngredient(ingredient)}>
                                 X {ingredient}
                             </button>
                         ))}</div>
@@ -145,13 +152,10 @@ export default class FindIngredients extends React.Component {
                         <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">HELLOOOOO</div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <button className="btn btn-dark text-muted" onClick={() => this.props.setView('dashboard')}>
-                    <h1>
-                        PAGE UNDER CONSTRUCTION | BACK TO DASHBOARD
-                    </h1>
-                </button>
+                
+                
             </div>
         )
     }
