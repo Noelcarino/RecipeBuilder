@@ -8,15 +8,15 @@ export default class HomePage extends React.Component {
 
 
                     {/* WELCOME SECTION */}
-                    <div className="welcome-container row text-center p-0 mb-5 mx-auto border ">
+                    <div className="welcome-container row text-center p-0 mb-4 mx-auto border ">
                         <div className="h-100 col-8 col-md-12 text-center mx-auto px-0 py-4 border">
                             Build <em>YOUR</em> Recipe
                         </div>
                     </div>
 
                     {/* LOGIN SECTION */}
-                    <div className="login-container row text-center p-0 mx-auto border">
-                        <div className="h-100 col-8 col-md-12 border px-0 py-4 mx-auto">
+                    <div className="login-container row text-center p-0 mx-auto border mb-4">
+                        <div className="h-100 col-8 border px-0 py-4 mx-auto">
 
                             <button className="login-button" onClick={() => console.log()}>
                                 LOGIN AS GUEST
@@ -24,6 +24,18 @@ export default class HomePage extends React.Component {
                         </div>
                     </div>
 
+                    {/* CREDIT SECTION */}
+
+                    <div className="thankyou-container row text-center p-0 mx-auto border">
+                        <div className="h-100 col-8 p-0 border  mx-auto">
+                            <div className="container">
+                                @ Katherine Tor
+                            </div>
+                            <div className="container">
+                                © Noel Angelo Carino
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
