@@ -13,6 +13,7 @@ export default class FindIngredients extends React.Component {
             ]
         }
         this.addIngredient = this.addIngredient.bind(this);
+        this.removeIngredient = this.removeIngredient.bind(this);
     }
     addIngredient(e){
         e.preventDefault();
@@ -31,6 +32,20 @@ export default class FindIngredients extends React.Component {
         } else {
             newIngredient.classList.add("is-danger");
         }
+    }
+    removeIngredient(ingredient){
+        const ingredients = this.state.ingredients.slice();
+
+        ingredients.some((el, i) => {
+            if (el === ingredient){
+                ingredients.splice(i, 1);
+                return true;
+            }
+        });
+
+        this.setState({
+            ingredients: ingredients
+        })
     }
     render(){
         return (
@@ -74,7 +89,14 @@ export default class FindIngredients extends React.Component {
                             <section className="section">
                                 <ul>
                                     {this.state.ingredients.map(ingredient => (
-                                        <li key={ingredient}>{ingredient}</li>
+                                        <li key={ingredient}>
+                                            {ingredient} &nbsp;
+                                            <span 
+                                                className="delete"
+                                                onClick={()=>this.removeIngredient(ingredient)}
+                                            >x</span>
+                                        
+                                        </li>
                                     ))}
                                 </ul>
                             </section>
