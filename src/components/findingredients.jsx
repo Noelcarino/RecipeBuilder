@@ -1,4 +1,5 @@
 import React from 'react';
+import Ingredients from './ingredients';
 import '../css/findingredients.css'
 
 export default class FindIngredients extends React.Component {
@@ -87,18 +88,8 @@ export default class FindIngredients extends React.Component {
                     <div className="container-fluid m-auto">
                         <div className="search-ingredients-search-bar mx-auto text-center">
                             <section className="section">
-                                <ul>
-                                    {this.state.ingredients.map(ingredient => (
-                                        <li key={ingredient}>
-                                            {ingredient} &nbsp;
-                                            <span 
-                                                className="delete"
-                                                onClick={()=>this.removeIngredient(ingredient)}
-                                            >x</span>
-                                        
-                                        </li>
-                                    ))}
-                                </ul>
+                                {/* <Ingredients /> */}
+                                <Ingredients ingredients={this.state.ingredients} delete={this.removeIngredient}/>
                             </section>
 
                             <hr/>
