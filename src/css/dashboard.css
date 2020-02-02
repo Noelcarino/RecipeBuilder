@@ -1,0 +1,14 @@
+.dashboard-container{
+    height: 100vh;
+    border: 15px solid black;
+    background-position: fixed;
+    background-color: #E4D4BA;
+    overflow: scroll;
+}
+
+.test{
+    background-color: grey;
+    height: 3000px;
+    width: 75%;
+    margin: auto;
+}
