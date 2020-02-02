@@ -9,7 +9,6 @@ export default class Ingredients extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(e){
-        console.log(e.target.value);
         let currentIngredients = [];
         let newIngredients = [];
 
@@ -30,14 +29,8 @@ export default class Ingredients extends React.Component{
         })
     }
     componentDidMount(){
-        console.log(this.props.ingredients);
         this.setState({
             filtered: this.props.ingredients
-        })
-    }
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            filtered: nextProps.ingredients
         })
     }
     render(){
@@ -45,13 +38,10 @@ export default class Ingredients extends React.Component{
             <div>
                 <ul>
                     <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
-                    {this.state.filtered.map(ingredient => (
+                    {this.props.ingredients.map(ingredient => (
                         <li key={ingredient}>
                             {ingredient} &nbsp;
-                            <span 
-                                className="delete"
-                                onClick={()=>this.props.delete(ingredient)}
-                            >X</span> d
+                            <button className="btn btn-danger rounded-circle " onClick={() => this.props.delete(ingredient)}>X</button>
                         </li>
                     ))}
                 </ul>

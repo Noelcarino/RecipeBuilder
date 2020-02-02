@@ -11,9 +11,13 @@
 }
 
 .search-ingredients-container{
-    height: 100vh;
+    height: 75vh;
     width: 90%;
 
     background-color: white;
     border-radius: 25px;
+}
+
+.search-ingredients-search-bar{
+
 }
