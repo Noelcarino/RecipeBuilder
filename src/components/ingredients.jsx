@@ -23,7 +23,6 @@ export default class Ingredients extends React.Component{
             newIngredients = this.props.ingredients;
         }
 
-        console.log(newIngredients);
         this.setState({
             filtered: newIngredients
         })
@@ -34,17 +33,26 @@ export default class Ingredients extends React.Component{
         })
     }
     render(){
+
         return (
-            <div>
-                <ul>
+            <div className="container-fluid mx-auto">
+                {/* <ul> */}
                     <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                    <div className="container-fluid row mx-auto">
+
                     {this.props.ingredients.map(ingredient => (
-                        <li key={ingredient}>
-                            {ingredient} &nbsp;
+                        // <li key={ingredient}>
+                        <div className="container-fluid col-4 mr-0 text-muted">
                             <button className="btn btn-danger rounded-circle " onClick={() => this.props.delete(ingredient)}>X</button>
-                        </li>
+                            {ingredient} &nbsp;
+
+                            </div>
+
+                        // {/* </li> */}
                     ))}
-                </ul>
+                    </div>
+
+                {/* </ul> */}
             </div>
         )
     }

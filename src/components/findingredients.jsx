@@ -39,7 +39,7 @@ export default class FindIngredients extends React.Component {
     }
     removeIngredient(ingredient){
 
-        console.log(ingredient);
+
         const ingredients = this.state.ingredients.slice();
 
         ingredients.some((el, i) => {
@@ -48,12 +48,13 @@ export default class FindIngredients extends React.Component {
                 return true;
             }
         });
-
         this.setState({
             ingredients: ingredients
         })
+
     }
     render(){
+
         return (
             <div className="find-ingredients-component-container py-5">
                
@@ -134,8 +135,12 @@ export default class FindIngredients extends React.Component {
                     </div>
                     <div className="col-6">
                         <div className="tab-content" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">HELLOOOOO</div>
-                        <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">{this.state.ingredients.map(ingredient => ingredient)}</div>
+                        <div className="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">{this.state.ingredients.map(ingredient => (
+                            <button className="btn btn-dark text-muted" onClick={() => this.removeIngredient(ingredient)}>
+                                X {ingredient}
+                            </button>
+                        ))}</div>
+                        <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"></div>
                         <div className="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">HELLOOOOO</div>
                         <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">HELLOOOOO</div>
                         </div>
