@@ -10,7 +10,20 @@
             rgba(255, 226, 226, 0.4)
         ),
         url('../images/recipebuilder-login.jpeg');
-    background-position: 60% -30%;
+    background-position: 60% 70%;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.welcome-container{
+
+    height: 55%;
+    width: 75%;
+    margin: 5% auto;
+
+    font-family: DM serif display;
+    /* font-weight: bold; */
+    font-size: 10vh;
+    /* line-height: 150%; */
+    text-align: center;
 }
