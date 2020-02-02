@@ -1,0 +1,7 @@
+.find-ingredients-component-container{
+    height: 100vh;
+    border: 15px solid black;
+    background-position: fixed;
+    background-color: #E4D4BA;
+    overflow: scroll;
+}
