@@ -66,15 +66,16 @@ export default class DashBoard extends React.Component {
                             </h2>
                         </div>
 
+                        <div className="container-fluid m-auto">
+                            <button className="view-favorites-button" onClick={() => this.props.setView('viewfavorites')}>
+                                VIEW FAVORITES
+                            </button>
+                        </div>
+
                     </div>
 
-
-                    <h1>
-                        DASHBOARD
-                    </h1>
-                    <button className="btn btn-success" onClick={() => this.props.setView('homepage')}>
-                        LogOut
-                    </button>
+                   
+                    
                 </div>
             </div>
         )
