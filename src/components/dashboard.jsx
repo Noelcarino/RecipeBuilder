@@ -24,8 +24,6 @@ export default class DashBoard extends React.Component {
 
                     </div>
 
-
-
                     {/* FIND INGREDIENTS SECTION */}
                     <div className="find-ingredients-container mx-auto row px-0 mb-5">
 
