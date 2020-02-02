@@ -27,8 +27,7 @@ export default class DashBoard extends React.Component {
 
 
                     {/* FIND INGREDIENTS SECTION */}
-
-                    <div className="find-ingredients-container container-fluid mx-auto row px-0 mb-5">
+                    <div className="find-ingredients-container mx-auto row px-0 mb-5">
 
                         <div className="container-fluid m-auto">
                             <h1 className="display-4">
@@ -49,6 +48,26 @@ export default class DashBoard extends React.Component {
                         </div>
 
                     </div>
+
+                    {/* FAVORITE RECIPES */}
+
+                    <div className="favorite-recipes-container mx-auto row px-0 mb-5">
+
+                        <div className="container-fluid m-auto">
+                            <h1 className="display-4">
+                                Favorite Recipes
+                            </h1>
+                        </div>
+
+                        {/* MAKE A CAROUSEL COMPONENT HERE */}
+                        <div className="container-fluid m-auto">
+                            <h2>
+                                !!!ADD CAROUSEL COMPONENT HERE!!!
+                            </h2>
+                        </div>
+
+                    </div>
+
 
                     <h1>
                         DASHBOARD
