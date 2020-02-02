@@ -17,7 +17,10 @@ export default class HomePage extends React.Component {
                     {/* LOGIN SECTION */}
                     <div className="login-container row text-center p-0 mx-auto mb-4">
                         <div className="h-100 col-8 px-0 py-4 mx-auto">
-                            <button className="login-button" onClick={() => console.log()}>
+                            {/* <button className="login-button" onClick={() => this.props.setView('dashboard')}>
+                                LOGIN AS GUEST
+                            </button> */}
+                            <button className="login-button" onClick={() => this.props.setView('dashboard')}>
                                 LOGIN AS GUEST
                             </button>
                         </div>
