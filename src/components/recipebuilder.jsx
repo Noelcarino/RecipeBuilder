@@ -1,7 +1,8 @@
 import React from 'react';
 import HomePage from './homepage';
-import DashBoard from './dashboard';
 
+import DashBoard from './dashboard';
+import FindIngredients from './findingredients';
 
 
 export default class RecipeBuilder extends React.Component {
@@ -31,6 +32,9 @@ export default class RecipeBuilder extends React.Component {
                 break;
             case 'dashboard':
                 element = <DashBoard setView={this.setView} />
+                break;
+            case 'findingredients':
+                element = <FindIngredients setView={this.setView} />
                 break;
             default:
                 element = <HomePage setView={this.setView}/>
