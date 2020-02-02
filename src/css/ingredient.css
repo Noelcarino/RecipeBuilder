@@ -1,0 +1,5 @@
+.ingredient-list-container {
+    height: 50%; 
+    border: 5px solid black;
+    overflow: scroll;
+}

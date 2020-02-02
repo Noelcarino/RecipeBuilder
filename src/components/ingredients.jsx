@@ -36,23 +36,16 @@ export default class Ingredients extends React.Component{
 
         return (
             <div className="container-fluid mx-auto">
-                {/* <ul> */}
-                    <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
-                    <div className="container-fluid row mx-auto">
-
-                    {this.props.ingredients.map(ingredient => (
-                        // <li key={ingredient}>
-                        <div className="container-fluid col-4 mr-0 text-muted">
-                            <button className="btn btn-danger rounded-circle " onClick={() => this.props.delete(ingredient)}>X</button>
+                <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                <ul className="list-group">
+                    {this.state.filtered.map((ingredient)  => (
+                        <li key={ingredient} className="list-group-item">
+                            <button className="btn btn-danger rounded-circle" onClick={() => this.props.addIngredient(ingredient)}>+</button>
                             {ingredient} &nbsp;
-
-                            </div>
-
-                        // {/* </li> */}
+                        </li>
                     ))}
-                    </div>
 
-                {/* </ul> */}
+                </ul>
             </div>
         )
     }
