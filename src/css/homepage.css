@@ -1,6 +1,7 @@
 .homepage-container{
     height: 100vh;
-    /* background-color: lightblue; */
+    border: 15px solid black;
+    background-position: fixed;
 }
 .homepage-bg {
     height: 100%;
@@ -10,20 +11,39 @@
             rgba(255, 226, 226, 0.4)
         ),
         url('../images/recipebuilder-login.jpeg');
-    background-position: 60% 70%;
+    background-position: 60% 0%;
+    /* background-position: fixed; */
+    /* background-attachment: fixed; */
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 .welcome-container{
-
     height: 55%;
     width: 75%;
-    margin: 5% auto;
 
     font-family: DM serif display;
-    /* font-weight: bold; */
-    font-size: 10vh;
-    /* line-height: 150%; */
+    font-size: 9vh;
     text-align: center;
+}
+.login-container{
+    height: 30%;
+    width: 75%;
+
+
+}
+.login-button{
+    background-color: black;
+    color: whitesmoke;
+    font-size: 1.5vh;
+    border-radius: 100px;
+    padding: 2% 10%;
+    transition: 0.2s;
+}
+.login-button:hover{
+    background-color: darkslategray;
+    color: whitesmoke;
+    transition: 0.2s;
+}
+.login-button:active {
+    color: whitesmoke;
 }
