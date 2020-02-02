@@ -52,3 +52,14 @@
     color: whitesmoke;
     transition: 0.15s;
 }
+
+.favorite-recipes-container {
+    height: 40%;
+    width: 90%;
+
+    background-color: white;
+    border-radius: 25px;
+
+    font-family: DM Serif Display;
+    font-weight: bold;
+}
