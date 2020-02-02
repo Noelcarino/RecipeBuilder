@@ -5,10 +5,24 @@
     background-color: #E4D4BA;
     overflow: scroll;
 }
-
-.test{
-    background-color: grey;
-    height: 3000px;
-    width: 75%;
+.dashboard-content{
+    height: 100vh;
+    min-height: 1000px;
+    /* width: 90vw; */
+    margin: auto;
+}
+.welcome-back-container{
+    height: 23%;
+    width: 95%;
+}
+.welcome-back-container-image{
+    height: 70%;
+}
+.welcome-back-container-description {
+    font-family: DM Serif Display;
+    font-weight: strong;
+    font-weight: bold;
+    font-size: 3vmax;
+    height: 75%;
     margin: auto;
 }
