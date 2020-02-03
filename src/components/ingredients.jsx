@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/ingredient.css';
 
 export default class Ingredients extends React.Component{
     constructor(props){
@@ -33,19 +34,20 @@ export default class Ingredients extends React.Component{
         })
     }
     render(){
-        console.log(this.props.ingredientsToUse);
         return (
-            <div className="container-fluid mx-auto">
-                <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
-                <ul className="list-group">
-                    {this.state.filtered.map((ingredient)  => (
-                        <li key={ingredient} className="list-group-item">
-                            <button className="btn btn-danger rounded-circle" onClick={() => this.props.addIngredient(ingredient)}>+</button>
-                            {ingredient} &nbsp;
-                        </li>
-                    ))}
+            <div className="ingredient-list-container mx-auto">
+                <input type="text" className="ingredients-search-bar input mb-5" onChange={this.handleChange} placeholder="Search..." />
+                <div className="overflow-scroll mx-auto border px-0">
+                    <ul className="list-group row border px-3 w-100 mx-auto">
+                        {this.state.filtered.map((ingredient)  => (
+                            <li key={ingredient} className="list-group-item w-100 mx-auto px-2 text-left">
+                                <button className="btn btn-danger" onClick={() => this.props.addIngredient(ingredient)}>+ </button>
+                                &nbsp; {ingredient} &nbsp;
+                            </li>
+                        ))}
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         )
     }

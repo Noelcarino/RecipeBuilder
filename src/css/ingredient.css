@@ -1,5 +1,13 @@
 .ingredient-list-container {
-    height: 50%; 
-    border: 5px solid black;
+    height: 35vw; 
+    overflow: hidden;
+}
+.ingredients-search-bar {
+    border: 2px solid grey;
+    padding: 1% 5%;
+}
+.overflow-scroll {
+    max-height: 70%;
+    width: 30%;
     overflow: scroll;
 }
