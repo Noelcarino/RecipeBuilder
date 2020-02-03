@@ -26,17 +26,20 @@ export default class FindIngredients extends React.Component {
     }
     addIngredient(e){
         // e.preventDefault(); 
-        console.log(e);
         let ingredients = this.state.ingredientsToUse;
         // const newIngredient = document.getElementById("addIngredient");
         // const form = document.getElementById("addIngredientForm");
 
-        if (this.state.ingredientsToUse.includes(e)) return;
+        if (this.state.ingredientsToUse.includes(e)){
+            alert(e + " is already in your ingredients list!");
+            return ;
+        } else{
+            alert(e + " has been added to your ingredients list");
+        }
         ingredients.push(e);
         this.setState({
             ingredientsToUse: ingredients
         })
-        console.log(this.state.ingredientsToUse);
     }
     removeIngredient(ingredient){
         const ingredients = this.state.ingredientsToUse.slice();
@@ -99,7 +102,7 @@ export default class FindIngredients extends React.Component {
                             Ingredients To Use ({this.state.ingredientsToUse.length})
                         </h1>
                     </div>
-                    <div className="ingredients-to-use-map-section container-fluid border m-auto text-center row justify-content-start">
+                    <div className="ingredients-to-use-map-section container-fluid mx-auto text-center row justify-content-start mb-5">
                         {element}
                         {this.state.ingredientsToUse.map(ingredient => {
                             return (
@@ -116,7 +119,7 @@ export default class FindIngredients extends React.Component {
                         })}
                     </div>
 
-                    <div className="container-fluid mx-auto row border px-0">
+                    <div className="container-fluid mx-auto row px-0 ">
                         <button className="btn btn-dark mx-auto" onClick={() => console.log(this.state.ingredientsToUse)}>
                             CONFIRM
                         </button>
