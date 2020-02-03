@@ -61,31 +61,25 @@ export default class FindIngredients extends React.Component {
             element = <React.Fragment></React.Fragment>
         }
         return (
-            <div className="find-ingredients-component-container py-5">
+            <div className="find-ingredients-component-container py-5 py-sm-45 py-md-5 py-lg-5 px-1 || row mx-auto">
 
-               <div className="container-fluid mx-auto w-50 row px-0 mb-5">
-                    <button className="btn btn-dark text-muted mx-auto " onClick={() => this.props.setView('dashboard')}>
-                            PAGE UNDER CONSTRUCTION | BACK TO DASHBOARD
-                    </button>
-                </div>
-
-                <div className="search-ingredients-container mx-auto mb-5 row px-0">
+                <div className="search-ingredients-container mx-auto mb-5 row px-0 py-2 || col-sm-11 col-lg-5">
 
                     {/* FIND INGREDIENTS HEADER SECTION */}
                     <div className="container-fluid m-auto">
-                        <div className="container-fluid mx-auto mb-5 text-center">
+                        <div className="container-fluid mx-auto mb-3 text-center">
                             <h1 className="display-4">
                                 Find Ingredients
                             </h1>
                         </div>
-                        <div className="container-fluid m-auto text-center">
+                        <div className="container-fluid mx-auto mb-5 text-center">
                             <h2>
                                 Find your ingredients and build your recipe
                             </h2>
                         </div>
                     </div>
 
-                    <div className="container-fluid m-auto ">
+                    <div className="container-fluid mx-auto ">
                         <div className="mx-auto text-center ">
 
                             {/* <Ingredients /> */}
@@ -99,27 +93,42 @@ export default class FindIngredients extends React.Component {
                 </div>
 
                 {/* INGREDIENTS TO USE SECTION */}
-                <div className="ingredients-to-use-container mx-auto px-5 py-3">
-                        <div className="container-fluid mx-auto mb-5 text-center">
-                            <h1 className="display-4">
-                                Ingredients To Use ({this.state.ingredientsToUse.length})
-                            </h1>
-                        </div>
-                            <div className="container-fluid w-50 m-auto text-center row justify-content-start">
-                            {element}
-                            {this.state.ingredientsToUse.map(ingredient => {
-                                return (
-                                    <div key={ingredient} className="col-2 mb-5 mx-3">
-                                        <button 
-                                            className="btn btn-dark"
-                                            onClick={() => this.removeIngredient(ingredient)}>
-                                            {ingredient}
-                                        </button>
-                                    </div>
-                                )
-                            })}
-                        </div>
+                <div className="ingredients-to-use-container mx-auto mb-5 p-2 || col-sm-11 col-lg-5">
+                    <div className="container-fluid mx-auto mb-5 text-center">
+                        <h1 className="display-4">
+                            Ingredients To Use ({this.state.ingredientsToUse.length})
+                        </h1>
                     </div>
+                    <div className="ingredients-to-use-map-section container-fluid border m-auto text-center row justify-content-start">
+                        {element}
+                        {this.state.ingredientsToUse.map(ingredient => {
+                            return (
+                                <div key={ingredient} className="col-3 m-3">
+                                    <button 
+                                        className="btn btn-dark mx-3 p-0 px-2"
+                                        onClick={() => this.removeIngredient(ingredient)}>
+                                        <h4>
+                                            {ingredient}
+                                        </h4>
+                                    </button>
+                                </div>
+                            )
+                        })}
+                    </div>
+
+                    <div className="container-fluid mx-auto row border px-0">
+                        <button className="btn btn-dark mx-auto" onClick={() => console.log(this.state.ingredientsToUse)}>
+                            CONFIRM
+                        </button>
+                    </div>
+                    
+                </div>
+
+                <div className="container-fluid mx-auto row px-0 mb-5">
+                    <button className="btn btn-dark text-muted mx-auto" onClick={() => this.props.setView('dashboard')}>
+                            PAGE UNDER CONSTRUCTION | BACK TO DASHBOARD
+                    </button>
+                </div>
             </div>
         )
     }

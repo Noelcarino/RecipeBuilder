@@ -1,5 +1,5 @@
 .ingredient-list-container {
-    height: 35vw; 
+    height: 45vh; 
     overflow: hidden;
 }
 .ingredients-search-bar {
@@ -7,7 +7,8 @@
     padding: 1% 5%;
 }
 .overflow-scroll {
-    max-height: 70%;
-    width: 30%;
+    max-height: 100%;
+    padding-bottom: 18%;
+    width: 100%;
     overflow: scroll;
 }
