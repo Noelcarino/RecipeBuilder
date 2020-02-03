@@ -34,21 +34,33 @@ export default class Ingredients extends React.Component{
         })
     }
     render(){
+        let ingredientAdded = "bg-info";
         return (
             <div className="ingredient-list-container mx-auto">
                 <input type="text" className="ingredients-search-bar input mb-5" onChange={this.handleChange} placeholder="Search..." />
                 <div className="overflow-scroll mx-auto px-0">
                     <ul className="list-group row px-3 w-100 mx-auto">
-                        {this.state.filtered.map((ingredient)  => (
-                            <li key={ingredient} className="list-group-item w-100 mx-auto px-0 text-left row">
+                        {this.state.filtered.map((ingredient)  => { 
+                            console.log(this.props);
+                            if (this.props.ingredientsToUse.includes(ingredient)){
+                                return (<li key={ingredient} className={ingredientAdded + " list-group-item w-100 mx-auto px-0 text-left row border-0"}>
                                 <div className="container-fluid d-flex align-content-middle">
                                     <button className="btn btn-danger" onClick={() => this.props.addIngredient(ingredient)}>+ </button>
                                     <div className="container-fluid alingn-middle row">
                                         <h6 className="align-self-center align-middle"> &nbsp; {ingredient}</h6>
                                     </div>
                                 </div>
-                            </li>
-                        ))}
+                            </li>)} else {
+                                return (<li key={ingredient} className="list-group-item w-100 mx-auto px-0 text-left row border-0">
+                                <div className="container-fluid d-flex align-content-middle">
+                                    <button className="btn btn-danger" onClick={() => this.props.addIngredient(ingredient)}>+ </button>
+                                    <div className="container-fluid alingn-middle row">
+                                        <h6 className="align-self-center align-middle"> &nbsp; {ingredient}</h6>
+                                    </div>
+                                </div>
+                            </li>)
+                            }
+                        })}
 
                     </ul>
                 </div>
