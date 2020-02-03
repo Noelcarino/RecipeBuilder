@@ -11,9 +11,18 @@
 }
 
 .search-ingredients-container{
-    height: 100vh;
+    height: 65vw;
+    min-height: 500px;
+    max-height: 650px;
     width: 90%;
 
+    background-color: white;
+    border-radius: 25px;
+}
+
+.ingredients-to-use-container {
+    min-height: 35vw;
+    width: 90%;
     background-color: white;
     border-radius: 25px;
 }
