@@ -5,7 +5,8 @@ export default class ConfirmIngredients extends React.Component {
         return (
             <div className="confirm-ingredients-container row px-0 py-5 mx-auto">
 
-                <div className="confirm-ingredients-description mx-auto mb-5 text-center p-3">
+                {/* INGREDIENTS LIST DESCRIPTION */}
+                <div className="confirm-ingredients-description mx-auto mb-3 text-center p-3">
                     <h1>Ingredients List</h1>
 
                     <h3>
@@ -13,12 +14,27 @@ export default class ConfirmIngredients extends React.Component {
                     </h3>
                 </div>
 
-                <div className="confirm-ingredients-content container-fluid mx-auto">
-                    <button onClick={() => this.props.setView('findingredients')}>
-                        RETURN TO SEARCH
-                    </button>
+                {/* REVIEW INGREDIENTS TO SEARCH */}
+                <div className="confirm-ingredients-content container-fluid mx-auto mb-3">
+                    
                 </div>
 
+                {/* CONFIRM INGREDIENTS TO BUILD RECIPE */}
+                <div className="build-ingredients-return-search mx-auto row">
+
+                    <div className="container-fluid m-auto row">
+                        <button className="btn btn-dark mx-auto">
+                            BUILD RECIPE
+                        </button>
+                    </div>
+                    
+
+                    <div className="container-fluid m-auto row">
+                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('findingredients')}>
+                            RETURN TO SEARCH
+                        </button>
+                    </div>
+                </div>
             </div>
         )
     }
