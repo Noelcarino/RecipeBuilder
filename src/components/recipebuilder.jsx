@@ -3,6 +3,7 @@ import HomePage from './homepage';
 
 import DashBoard from './dashboard';
 import FindIngredients from './findingredients';
+import ConfirmIngredients from './confirmingredients';
 
 
 export default class RecipeBuilder extends React.Component {
@@ -11,15 +12,21 @@ export default class RecipeBuilder extends React.Component {
         this.state = {
             view : {
                 name: 'findingredients',
-                params: {}
+                params: {
+                    ingredientsToUse: []
+                }
             }
         }
         this.setView = this.setView.bind(this);
     }
-    setView(name){
+    setView(name, param){
+        console.log(param);
         this.setState({
             view: {
-                name:name
+                name:name,
+                params: {
+                    ingredientsToUse: param
+                }
             }
         });
     }
@@ -35,6 +42,9 @@ export default class RecipeBuilder extends React.Component {
                 break;
             case 'findingredients':
                 element = <FindIngredients setView={this.setView} />
+                break;
+            case 'confirmingredients':
+                element = <ConfirmIngredients setView={this.setView} ingredientsToUse={this.state.view.params.ingredientsToUse}/>
                 break;
             default:
                 element = <HomePage setView={this.setView}/>
