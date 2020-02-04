@@ -20,7 +20,6 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
     }
     setView(name, param){
-        console.log(param);
         this.setState({
             view: {
                 name:name,
