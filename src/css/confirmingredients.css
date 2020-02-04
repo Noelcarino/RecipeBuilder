@@ -6,3 +6,21 @@
 
     overflow: scroll;
 }
+.confirm-ingredients-description {
+    border: 1px solid black;
+    height: 20vh;
+    width: 90%;
+
+    font-family: DM Sans Display;
+
+}
+.confirm-ingredients-content {
+    height: 40vh;
+
+    width: 90%;
+
+    background-color: white;
+
+    box-shadow: 0 0 25px grey;
+    border-radius: 25px;
+}
