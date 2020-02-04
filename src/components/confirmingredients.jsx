@@ -21,7 +21,7 @@ export default class ConfirmIngredients extends React.Component {
             ingredientsToConfirm: ingredients
         })
     }
-    componentDidMount(){
+    componentDidMount(){   
         this.setState({
             ingredientsToConfirm: this.props.ingredientsToUse
         })
@@ -46,7 +46,7 @@ export default class ConfirmIngredients extends React.Component {
                     <div className="container-fluid row mx-auto align-items-start">
                         {this.state.ingredientsToConfirm.map( ingredient => {
                             return (
-                                <div key={ingredient} className="container-fluid col-6 px-3 row border m-auto align-items-start align-self-start">
+                                <div key={ingredient} className="container-fluid col-6 px-3 row m-auto align-items-start align-self-start">
                                     <button className="btn btn-dark m-auto" onClick={() => this.removeIngredient(ingredient)}>
                                         {ingredient} &nbsp; <i className="fa fa-times" aria-hidden="true"></i>
                                     </button>
@@ -60,7 +60,7 @@ export default class ConfirmIngredients extends React.Component {
                 <div className="build-ingredients-return-search mx-auto row">
 
                     <div className="container-fluid m-auto row">
-                        <button className="btn btn-dark mx-auto">
+                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('findingredients', this.state.ingredientsToConfirm)}>
                             BUILD RECIPE
                         </button>
                     </div>
