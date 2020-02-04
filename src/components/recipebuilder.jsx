@@ -3,6 +3,7 @@ import HomePage from './homepage';
 
 import DashBoard from './dashboard';
 import FindIngredients from './findingredients';
+import ConfirmIngredients from './confirmingredients';
 
 
 export default class RecipeBuilder extends React.Component {
@@ -10,16 +11,24 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'findingredients',
-                params: {}
+                name: 'homepage',
+                params: {
+                    ingredientsToUse: [],
+                }
             }
         }
         this.setView = this.setView.bind(this);
     }
-    setView(name){
+    setView(name, param){
+        // console.log('param - ',param)
+
+        if (param === undefined) param = [];
         this.setState({
             view: {
-                name:name
+                name:name,
+                params: {
+                    ingredientsToUse: param
+                }
             }
         });
     }
@@ -31,10 +40,22 @@ export default class RecipeBuilder extends React.Component {
                 element = <HomePage setView={this.setView} />
                 break;
             case 'dashboard':
-                element = <DashBoard setView={this.setView} />
+                element = <DashBoard 
+                                setView={this.setView} 
+                                ingredientsToUse={this.state.view.params.ingredientsToUse}/>
                 break;
             case 'findingredients':
-                element = <FindIngredients setView={this.setView} />
+                element = <FindIngredients 
+                                setView={this.setView}
+                                ingredientsToUse={this.state.view.params.ingredientsToUse} 
+                            />
+                break;
+            case 'confirmingredients':
+                element = <ConfirmIngredients 
+                                setView={this.setView}
+                                removeIngredient={this.removeIngredient}
+                                ingredientsToUse={this.state.view.params.ingredientsToUse}
+                            />
                 break;
             default:
                 element = <HomePage setView={this.setView}/>

@@ -41,7 +41,6 @@ export default class Ingredients extends React.Component{
                 <div className="overflow-scroll mx-auto px-0">
                     <ul className="list-group row px-3 w-100 mx-auto">
                         {this.state.filtered.map((ingredient)  => { 
-                            console.log(this.props);
                             if (this.props.ingredientsToUse.includes(ingredient)){
                                 return (
                                 <li 
