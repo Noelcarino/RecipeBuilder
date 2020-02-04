@@ -54,6 +54,11 @@ export default class FindIngredients extends React.Component {
         })
 
     }
+    componentDidMount(){
+        this.setState({
+            ingredientsToUse: this.props.ingredientsToUse
+        })
+    }
     render(){
         let element;
         if (this.state.ingredientsToUse.length === 0){
@@ -106,12 +111,12 @@ export default class FindIngredients extends React.Component {
                         {element}
                         {this.state.ingredientsToUse.map(ingredient => {
                             return (
-                                <div key={ingredient} className="col-3 m-3">
+                                <div key={ingredient} className="col-6 px-3 row border m-auto">
                                     <button 
-                                        className="btn btn-dark mx-3 p-0 px-2"
+                                        className="btn btn-dark mx-auto"
                                         onClick={() => this.removeIngredient(ingredient)}>
                                         <h4>
-                                            {ingredient}
+                                            {ingredient} &nbsp; <i className="fa fa-times" aria-hidden="true"></i>
                                         </h4>
                                     </button>
                                 </div>
