@@ -21,8 +21,35 @@ export default class RecommendedRecipes extends React.Component {
         this.getRecipes = this.getRecipes.bind(this);
     }
     getRecipes(){
-        // console.log('r')
-        alert('recipes recieved!');
+        // THIS IS OUR 'DATABASE' OF INGREDIENTS
+        const dummyRecipes = [];
+        const recipe1 = {
+            recipeTitle: 'Braised Chicken with Steamed Veggies',
+            recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
+            recipeTimeToCook: '00:50'
+        }
+        const recipe2 = {
+            recipeTitle: 'Herbed Chicken with Roased Veggies',
+            recipeIngredients: ['Chicken', 'Carrots', 'Zuccini'],
+            recipeTimeToCook: '00:50'
+        }
+        const recipe3 = {
+            recipeTitle: 'CrockPot Chicken with Veggies',
+            recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
+            recipeTimeToCook: '04:00'
+        }
+        const recipe4 = {
+            recipeTitle: 'Beef w/Rice',
+            recipeIngredients: ['Beef', 'Rice'],
+            recipeTimeToCook: '00:40'
+        }
+        console.log(recipe1.recipeTitle + " " + recipe2.recipeTitle);
+
+        // MAKE A FUNCTION THAT COMPARES CONFIRMED INGREDIENTS TO DATABASE
+        // FUNCTION MUST RETURN RECIPES THAT PASS CONFIRMED INGREDIENTS TEST
+
+
+        // AFTER THE TEST SET STATE THE RECOMMENDED RECIPES
     }
     componentDidMount(){
         this.getRecipes();
