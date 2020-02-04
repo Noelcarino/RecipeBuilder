@@ -19,7 +19,7 @@ export default class FindIngredients extends React.Component {
                 'Potatoes',
                 'Zuccini'
             ],
-            ingredientsToUse: []
+            ingredientsToUse: [],
         }
         this.addIngredient = this.addIngredient.bind(this);
         this.removeIngredient = this.removeIngredient.bind(this);
@@ -61,7 +61,7 @@ export default class FindIngredients extends React.Component {
     }
     render(){
         let element;
-        if (this.state.ingredientsToUse.length === 0){
+        if (!this.props.ingredientsToUse){
             element = <div className="container-fluid mx-auto text-center">
                 <h3>You have not selected any ingredients</h3>
             </div>
@@ -133,7 +133,7 @@ export default class FindIngredients extends React.Component {
                 </div>
 
                 <div className="container-fluid mx-auto row px-0 mb-5">
-                    <button className="btn btn-dark text-muted mx-auto" onClick={() => this.props.setView('dashboard')}>
+                    <button className="btn btn-dark text-muted mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToUse)}>
                             PAGE UNDER CONSTRUCTION | BACK TO DASHBOARD
                     </button>
                 </div>

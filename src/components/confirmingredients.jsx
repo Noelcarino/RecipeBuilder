@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/confirmingredients.css';
+
 export default class ConfirmIngredients extends React.Component {
     constructor(props){
         super(props);
@@ -19,7 +20,6 @@ export default class ConfirmIngredients extends React.Component {
         this.setState({
             ingredientsToConfirm: ingredients
         })
-
     }
     componentDidMount(){
         this.setState({
@@ -53,9 +53,7 @@ export default class ConfirmIngredients extends React.Component {
                                 </div>
                             )
                         })}
-
                     </div>
-                    
                 </div>
 
                 {/* CONFIRM INGREDIENTS TO BUILD RECIPE */}
@@ -73,6 +71,7 @@ export default class ConfirmIngredients extends React.Component {
                             RETURN TO SEARCH
                         </button>
                     </div>
+
                 </div>
             </div>
         )
