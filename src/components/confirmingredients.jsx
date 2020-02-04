@@ -60,7 +60,7 @@ export default class ConfirmIngredients extends React.Component {
                 <div className="build-ingredients-return-search mx-auto row">
 
                     <div className="container-fluid m-auto row">
-                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('findingredients', this.state.ingredientsToConfirm)}>
+                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('recommendedrecipes', this.state.ingredientsToConfirm)}>
                             BUILD RECIPE
                         </button>
                     </div>
