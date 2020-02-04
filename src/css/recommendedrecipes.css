@@ -3,7 +3,13 @@
 
     border: 15px solid black;
 
-    background-color: #E4DBDA;
+    background-color: #E4D4BA;
 
     font-family: DM Sans Display;
+}
+
+.recommended-recipes-content-container {
+    height: 20vh;
+    width: 90%;
+    font-family: DM Display;
 }
