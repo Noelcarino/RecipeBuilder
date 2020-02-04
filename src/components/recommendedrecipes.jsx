@@ -4,7 +4,6 @@ import '../css/recommendedrecipes.css';
 export default class RecommendedRecipes extends React.Component {
 
     render(){
-        console.log(this.props);
         return (
             <div className="recommended-recipes-container row px-0 py-5 mx-auto">
 
@@ -18,8 +17,8 @@ export default class RecommendedRecipes extends React.Component {
                 </div>
 
 
-                <button onClick={() => this.props.setView('dashboard')}>
-                    GO BACK TO DASHBOARD
+                <button onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
+                    Return to Ingredients List
                 </button>
             </div>
         )
