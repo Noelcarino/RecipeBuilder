@@ -40,10 +40,17 @@ export default class RecipeBuilder extends React.Component {
                 element = <DashBoard setView={this.setView} />
                 break;
             case 'findingredients':
-                element = <FindIngredients setView={this.setView} />
+                element = <FindIngredients 
+                                setView={this.setView}
+                                ingredientsToUse={this.state.view.params.ingredientsToUse} 
+                            />
                 break;
             case 'confirmingredients':
-                element = <ConfirmIngredients setView={this.setView} ingredientsToUse={this.state.view.params.ingredientsToUse}/>
+                element = <ConfirmIngredients 
+                                setView={this.setView}
+                                removeIngredient={this.removeIngredient}
+                                ingredientsToUse={this.state.view.params.ingredientsToUse}
+                            />
                 break;
             default:
                 element = <HomePage setView={this.setView}/>
