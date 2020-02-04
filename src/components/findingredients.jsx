@@ -52,7 +52,6 @@ export default class FindIngredients extends React.Component {
         this.setState({
             ingredientsToUse: ingredients
         })
-
     }
     componentDidMount(){
         this.setState({
@@ -61,12 +60,22 @@ export default class FindIngredients extends React.Component {
     }
     render(){
         let element;
-        if (!this.props.ingredientsToUse){
+        let confirmButton;
+        console.log('props - ', this.props.ingredientsToUse.length);
+        console.log('state - ', this.state.ingredientsToUse.length);
+        if (    this.state.ingredientsToUse.length === 0 ){
             element = <div className="container-fluid mx-auto text-center">
                 <h3>You have not selected any ingredients</h3>
             </div>
+            confirmButton = <React.Fragment></React.Fragment>
+            
         } else {
-            element = <React.Fragment></React.Fragment>
+            element = <React.Fragment></React.Fragment>;
+            confirmButton = <div className="container-fluid mx-auto row px-0 ">
+            <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('confirmingredients', this.state.ingredientsToUse)}>
+                CONFIRM
+            </button>
+            </div>
         }
         return (
             <div className="find-ingredients-component-container py-5 py-sm-45 py-md-5 py-lg-5 px-1 || row mx-auto">
@@ -111,9 +120,9 @@ export default class FindIngredients extends React.Component {
                         {element}
                         {this.state.ingredientsToUse.map(ingredient => {
                             return (
-                                <div key={ingredient} className="col-6 px-3 row border m-auto">
+                                <div key={ingredient} className="col-6 px-3 row mx-auto mb-4">
                                     <button 
-                                        className="btn btn-dark mx-auto"
+                                        className="btn btn-dark m-auto"
                                         onClick={() => this.removeIngredient(ingredient)}>
                                         <h4>
                                             {ingredient} &nbsp; <i className="fa fa-times" aria-hidden="true"></i>
@@ -124,16 +133,12 @@ export default class FindIngredients extends React.Component {
                         })}
                     </div>
 
-                    <div className="container-fluid mx-auto row px-0 ">
-                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('confirmingredients', this.state.ingredientsToUse)}>
-                            CONFIRM
-                        </button>
-                    </div>
+                    {confirmButton}
                     
                 </div>
 
                 <div className="container-fluid mx-auto row px-0 mb-5">
-                    <button className="btn btn-dark text-muted mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToUse)}>
+                    <button className="btn btn-dark text-muted mx-auto" onClick={() => this.props.setView('dashboard', [])}>
                             PAGE UNDER CONSTRUCTION | BACK TO DASHBOARD
                     </button>
                 </div>
