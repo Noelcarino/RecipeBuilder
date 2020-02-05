@@ -4,6 +4,7 @@ import ConfirmedRecipe from './confirmedrecipe';
 import '../css/recommendedrecipes.css';
 import '../css/confirmedrecipe.css';
 
+
 export default class RecommendedRecipes extends React.Component {
     constructor(props){
         super(props);
@@ -30,13 +31,16 @@ export default class RecommendedRecipes extends React.Component {
             recipeTitle: 'Braised Chicken with Steamed Veggies',
             recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
             recipeConfirmedIngredientCount: 0,
+            recipeImage: 'braisedchickenwithsteamedveggies.png',
             recipeTimeToCook: '00:50'
         }
+        
         const recipe2 = {
             recipeId: 2,
             recipeTitle: 'Herbed Chicken with Roased Veggies',
             recipeIngredients: ['Chicken', 'Carrots', 'Zuccini'],
             recipeConfirmedIngredientCount: 0,
+            recipeImage: 'herbedchickenwithroastedveggies.png',
             recipeTimeToCook: '00:50'
         }
         const recipe3 = {
@@ -44,6 +48,7 @@ export default class RecommendedRecipes extends React.Component {
             recipeTitle: 'CrockPot Chicken with Veggies',
             recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
             recipeConfirmedIngredientCount: 0,
+            recipeImage: 'crockpotchickenwithveggies.png',
             recipeTimeToCook: '04:00'
         }
         const recipe4 = {
@@ -51,6 +56,7 @@ export default class RecommendedRecipes extends React.Component {
             recipeTitle: 'Beef w/Rice',
             recipeIngredients: ['Beef', 'Rice'],
             recipeConfirmedIngredientCount: 0,
+            recipeImage: 'beefwithrice.jpg',
             recipeTimeToCook: '00:40'
         }
         const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
@@ -123,7 +129,7 @@ export default class RecommendedRecipes extends React.Component {
 
                 <div className="container-fluid">
                     {this.state.recommendedRecipes.map((recipe,index) => {
-                        return <ConfirmedRecipe key={index} recipeTitle={recipe.recipeTitle}/>
+                        return <ConfirmedRecipe key={index} recipe={recipe}/>
                     })}
                 </div>
 
