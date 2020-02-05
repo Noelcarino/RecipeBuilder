@@ -20,7 +20,7 @@ export default class ConfirmedRecipe extends React.Component{
                     </div>
 
                     <div className="container-fluid mx-auto  my-0 py-0 row">
-                        <button className="btn btn-dark mx-auto" onClick={() => console.log(this.props)}>
+                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('letscook', this.props.recipe)}>
                             LET'S COOK!
                         </button>
                     </div>

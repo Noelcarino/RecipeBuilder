@@ -97,23 +97,23 @@ export default class RecommendedRecipes extends React.Component {
         })
     }
     componentDidMount(){
-        // let dummyArray = [
-        //     'Asparagus',
-        //     'Beets',
-        //     'Beef',
-        //     'Brocolli',
-        //     'Cabbage',
-        //     'Carrots',
-        //     'Celery',
-        //     'Cauliflower',
-        //     'Chicken',
-        //     'Cucumber',
-        //     'Potatoes',
-        //     'Rice',
-        //     'Zuccini'
-        // ];
-        // this.getRecipes(dummyArray);
-        this.getRecipes(this.props.confirmedIngredients);
+        let dummyArray = [
+            'Asparagus',
+            'Beets',
+            'Beef',
+            'Brocolli',
+            'Cabbage',
+            'Carrots',
+            'Celery',
+            'Cauliflower',
+            'Chicken',
+            'Cucumber',
+            'Potatoes',
+            'Rice',
+            'Zuccini'
+        ];
+        this.getRecipes(dummyArray);
+        // this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (
@@ -129,7 +129,7 @@ export default class RecommendedRecipes extends React.Component {
 
                 <div className="container-fluid">
                     {this.state.recommendedRecipes.map((recipe,index) => {
-                        return <ConfirmedRecipe key={index} recipe={recipe}/>
+                        return <ConfirmedRecipe key={index} recipe={recipe} setView={this.props.setView}/>
                     })}
                 </div>
 
