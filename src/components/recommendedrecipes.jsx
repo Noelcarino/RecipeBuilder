@@ -9,6 +9,7 @@ export default class RecommendedRecipes extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            confirmedIngredients: [],
             recommendedRecipes : [] 
         }
 
@@ -93,6 +94,7 @@ export default class RecommendedRecipes extends React.Component {
         console.log(confirmedRecipes);
         // Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
         this.setState({
+            confirmedIngredients: confirmedIngredients,
             recommendedRecipes: confirmedRecipes
         })
     }
@@ -113,6 +115,7 @@ export default class RecommendedRecipes extends React.Component {
             'Zuccini'
         ];
         this.getRecipes(dummyArray);
+        console.log(this.props.confirmedIngredients);
         // this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
@@ -129,7 +132,7 @@ export default class RecommendedRecipes extends React.Component {
 
                 <div className="container-fluid">
                     {this.state.recommendedRecipes.map((recipe,index) => {
-                        return <ConfirmedRecipe key={index} recipe={recipe} setView={this.props.setView}/>
+                        return <ConfirmedRecipe key={index} recipe={recipe} setView={this.props.setView} confirmedIngredients={this.props.confirmedIngredients}/>
                     })}
                 </div>
 
