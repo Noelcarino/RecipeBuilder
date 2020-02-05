@@ -97,23 +97,23 @@ export default class RecommendedRecipes extends React.Component {
         })
     }
     componentDidMount(){
-        let dummyArray = [
-            'Asparagus',
-            'Beets',
-            'Beef',
-            'Brocolli',
-            'Cabbage',
-            'Carrots',
-            'Celery',
-            'Cauliflower',
-            'Chicken',
-            'Cucumber',
-            'Potatoes',
-            'Rice',
-            'Zuccini'
-        ];
-        this.getRecipes(dummyArray);
-        // this.getRecipes(this.props.confirmedIngredients);
+        // let dummyArray = [
+        //     'Asparagus',
+        //     'Beets',
+        //     'Beef',
+        //     'Brocolli',
+        //     'Cabbage',
+        //     'Carrots',
+        //     'Celery',
+        //     'Cauliflower',
+        //     'Chicken',
+        //     'Cucumber',
+        //     'Potatoes',
+        //     'Rice',
+        //     'Zuccini'
+        // ];
+        // this.getRecipes(dummyArray);
+        this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (
