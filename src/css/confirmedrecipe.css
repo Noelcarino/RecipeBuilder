@@ -1,0 +1,14 @@
+.confirmed-recipe{
+    height: 35vh;
+    width: 90%;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+    overflow: hidden;
+}
+.recipe-bottom-container {
+    height: 30%;
+    width: 100%;
+}

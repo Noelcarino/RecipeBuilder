@@ -2,6 +2,7 @@ import React from 'react';
 import ConfirmedRecipe from './confirmedrecipe';
 
 import '../css/recommendedrecipes.css';
+import '../css/confirmedrecipe.css';
 
 export default class RecommendedRecipes extends React.Component {
     constructor(props){
@@ -9,6 +10,11 @@ export default class RecommendedRecipes extends React.Component {
         this.state = {
             recommendedRecipes : [] 
         }
+
+
+        this.getRecipes = this.getRecipes.bind(this);
+    }
+    getRecipes(confirmedIngredients){
         /*
             1) this.state.recommendedRecipes -> array of objects
             2) When writing this function... 
@@ -19,10 +25,6 @@ export default class RecommendedRecipes extends React.Component {
 
             3) after fetching data, store it in state, then render recipes component
         */
-
-        this.getRecipes = this.getRecipes.bind(this);
-    }
-    getRecipes(confirmedIngredients){
         const recipe1 = {
             recipdId: 1,
             recipeTitle: 'Braised Chicken with Steamed Veggies',
@@ -104,24 +106,14 @@ export default class RecommendedRecipes extends React.Component {
             'Rice',
             'Zuccini'
         ];
-        // this.getRecipes(this.props.confirmedIngredients);
         this.getRecipes(dummyArray);
+        // this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
-        // let recipeElements;
-        // if (this.state.recommendedRecipes){
-        //     recipeElements = <div>
-        //         {this.state.recommendedRecipes.map(recipe => {
-        //             return <ConfirmedRecipe confirmedRecipe={recipe.recipeTitle} />
-        //         })}
-        //     </div>
-        // } else {
-        //     recipeElements = <React.Fragment></React.Fragment>
-        // }
         return (
             <div className="recommended-recipes-container row px-0 py-5 mx-auto">
 
-                <div className="recommended-recipes-content-container mx-auto mb-3 text-center p-3">
+                <div className="recommended-recipes-content-container mx-auto mb-5 text-center p-3">
                     <h1>Recommended Recipes</h1>
 
                     <h3>
@@ -130,11 +122,9 @@ export default class RecommendedRecipes extends React.Component {
                 </div>
 
                 <div className="container-fluid">
-                    <div>
-                        {this.state.recommendedRecipes.map((recipe,index) => {
-                            return <ConfirmedRecipe key={index} recipeTitle={recipe.recipeTitle}/>
-                        })}
-                    </div>
+                    {this.state.recommendedRecipes.map((recipe,index) => {
+                        return <ConfirmedRecipe key={index} recipeTitle={recipe.recipeTitle}/>
+                    })}
                 </div>
 
                 <button onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
