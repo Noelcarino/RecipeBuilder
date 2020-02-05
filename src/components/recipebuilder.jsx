@@ -22,13 +22,24 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
     }
     setView(name, param){
-        console.log(param);
         let currentRecipeToCook;
         if (this.state.view.name === 'letscook' && name === 'recommendedrecipes'){
+            /*  condition 3 - 'letscook' -> 'recommendedrecipes'
+                The idea behind thiis condition is bc when letscook turns into 
+                recommended recipes. param is undefined, param is suppose to be
+                the ingredients you chose when looking for recipes, but it is undefined
+                however, we can redefine param by passing props to 'letscook' and passing 
+                redefining param as the current property
+            */
             param = this.state.view.params.ingredientsToUse;
         }
         if (name === 'letscook'){
-            console.log("when am i passed?");
+                /*  condition 2 - name === letscook
+                    The reason I set these condiitons is because the param being passed
+                    is an object. I broke down the object and assigned what I needed
+                    into the definitions here just to make reading the property 
+                    easier to understand.
+                */
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }
