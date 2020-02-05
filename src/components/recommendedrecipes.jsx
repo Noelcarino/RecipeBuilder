@@ -67,7 +67,7 @@ export default class RecommendedRecipes extends React.Component {
             }
         }
 
-        // Step 4) Sort confirmed recipes
+        // Step 3.5) Assign ingredient count to confirmedRecipe.recipeConfirmedIngredientCount
         for (let i = 0; i < confirmedRecipes.length; i++){
             let ingredientCount = 0;
             for (let j = 0; j < confirmedIngredients.length; j++){
@@ -75,10 +75,16 @@ export default class RecommendedRecipes extends React.Component {
             }
             confirmedRecipes[i].recipeConfirmedIngredientCount = ingredientCount;
         }
+
+        // Step 4) SORT THE ARRAY!!
+        confirmedRecipes.sort(function(a,b) {
+            return b.recipeConfirmedIngredientCount - a.recipeConfirmedIngredientCount;
+        })
         console.log(confirmedRecipes);
-        return;
-
-
+        // Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
+        this.setState({
+            recommendedRecipes: confirmedRecipes
+        })
     }
     componentDidMount(){
         this.getRecipes(this.props.confirmedIngredients);
