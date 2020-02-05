@@ -1,0 +1,24 @@
+.confirmed-recipe{
+    height: 35vh;
+    width: 90%;
+    min-width: 400px;
+    max-width: 500px;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+    overflow: hidden;
+}
+.recipe-top-container {
+    height: 70%;
+    width: 100%;
+    overflow:hidden;
+}
+.recipe-bottom-container {
+    height: 30%;
+    width: 100%;
+}
+.recipe-image {
+    background-size: 100% 100%;
+    background-position: 50% 100%;
+}

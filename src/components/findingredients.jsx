@@ -9,6 +9,7 @@ export default class FindIngredients extends React.Component {
             ingredients: [
                 'Asparagus',
                 'Beets',
+                'Beef',
                 'Brocolli',
                 'Cabbage',
                 'Carrots',
@@ -17,6 +18,7 @@ export default class FindIngredients extends React.Component {
                 'Chicken',
                 'Cucumber',
                 'Potatoes',
+                'Rice',
                 'Zuccini'
             ],
             ingredientsToUse: [],
@@ -61,8 +63,6 @@ export default class FindIngredients extends React.Component {
     render(){
         let element;
         let confirmButton;
-        console.log('props - ', this.props.ingredientsToUse.length);
-        console.log('state - ', this.state.ingredientsToUse.length);
         if (    this.state.ingredientsToUse.length === 0 ){
             element = <div className="container-fluid mx-auto text-center">
                 <h3>You have not selected any ingredients</h3>
