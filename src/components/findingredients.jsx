@@ -9,6 +9,7 @@ export default class FindIngredients extends React.Component {
             ingredients: [
                 'Asparagus',
                 'Beets',
+                'Beef',
                 'Brocolli',
                 'Cabbage',
                 'Carrots',
@@ -17,6 +18,7 @@ export default class FindIngredients extends React.Component {
                 'Chicken',
                 'Cucumber',
                 'Potatoes',
+                'Rice',
                 'Zuccini'
             ],
             ingredientsToUse: [],

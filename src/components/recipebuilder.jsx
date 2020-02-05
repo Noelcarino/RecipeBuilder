@@ -5,6 +5,7 @@ import DashBoard from './dashboard';
 import FindIngredients from './findingredients';
 import ConfirmIngredients from './confirmingredients';
 import RecommendedRecipes from './recommendedrecipes';
+
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
@@ -19,8 +20,6 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
     }
     setView(name, param){
-        // console.log('param - ',param)
-
         if (param === undefined) param = [];
         this.setState({
             view: {
@@ -53,7 +52,6 @@ export default class RecipeBuilder extends React.Component {
             case 'confirmingredients':
                 element = <ConfirmIngredients 
                                 setView={this.setView}
-                                removeIngredient={this.removeIngredient}
                                 ingredientsToUse={this.state.view.params.ingredientsToUse}
                             />
                 break;
