@@ -1,4 +1,6 @@
 import React from 'react';
+import ConfirmedRecipe from './confirmedrecipe';
+
 import '../css/recommendedrecipes.css';
 
 export default class RecommendedRecipes extends React.Component {
@@ -87,9 +89,35 @@ export default class RecommendedRecipes extends React.Component {
         })
     }
     componentDidMount(){
-        this.getRecipes(this.props.confirmedIngredients);
+        let dummyArray = [
+            'Asparagus',
+            'Beets',
+            'Beef',
+            'Brocolli',
+            'Cabbage',
+            'Carrots',
+            'Celery',
+            'Cauliflower',
+            'Chicken',
+            'Cucumber',
+            'Potatoes',
+            'Rice',
+            'Zuccini'
+        ];
+        // this.getRecipes(this.props.confirmedIngredients);
+        this.getRecipes(dummyArray);
     }
     render(){
+        // let recipeElements;
+        // if (this.state.recommendedRecipes){
+        //     recipeElements = <div>
+        //         {this.state.recommendedRecipes.map(recipe => {
+        //             return <ConfirmedRecipe confirmedRecipe={recipe.recipeTitle} />
+        //         })}
+        //     </div>
+        // } else {
+        //     recipeElements = <React.Fragment></React.Fragment>
+        // }
         return (
             <div className="recommended-recipes-container row px-0 py-5 mx-auto">
 
@@ -99,6 +127,14 @@ export default class RecommendedRecipes extends React.Component {
                     <h3>
                         With the recipes you've picked, here are some ingredients for you to try and cook!
                     </h3>
+                </div>
+
+                <div className="container-fluid">
+                    <div>
+                        {this.state.recommendedRecipes.map((recipe,index) => {
+                            return <ConfirmedRecipe key={index} recipeTitle={recipe.recipeTitle}/>
+                        })}
+                    </div>
                 </div>
 
                 <button onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
