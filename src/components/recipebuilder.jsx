@@ -24,12 +24,15 @@ export default class RecipeBuilder extends React.Component {
     setView(name, param){
         console.log(param);
         let currentRecipeToCook;
-        if (param === undefined) param = [];
-        else if (param === [] && param.recipe.recipeId) {
+        if (this.state.view.name === 'letscook' && name === 'recommendedrecipes'){
+            param = this.state.view.params.ingredientsToUse;
+        }
+        if (name === 'letscook'){
             console.log("when am i passed?");
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }
+        if (param === undefined) param = [];
         this.setState({
             view: {
                 name:name,
