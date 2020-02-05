@@ -115,8 +115,8 @@ export default class RecommendedRecipes extends React.Component {
             'Zuccini'
         ];
         this.getRecipes(dummyArray);
-        console.log(this.props.confirmedIngredients);
-        this.getRecipes(this.props.confirmedIngredients);
+        // console.log(this.props.confirmedIngredients);
+        // this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (
