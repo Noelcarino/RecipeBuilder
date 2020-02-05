@@ -12,7 +12,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'recommendedrecipes',
+                name: 'dashboard',
                 params: {
                     ingredientsToUse: [],
                     currentRecipeToCook: {}
@@ -22,9 +22,11 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
     }
     setView(name, param){
+        console.log(param);
         let currentRecipeToCook;
         if (param === undefined) param = [];
-        else if (param.recipe.recipeId) {
+        else if (param === [] && param.recipe.recipeId) {
+            console.log("when am i passed?");
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }

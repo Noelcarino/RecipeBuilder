@@ -116,7 +116,7 @@ export default class RecommendedRecipes extends React.Component {
         ];
         this.getRecipes(dummyArray);
         console.log(this.props.confirmedIngredients);
-        // this.getRecipes(this.props.confirmedIngredients);
+        this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (
