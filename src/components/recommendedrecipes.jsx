@@ -20,39 +20,68 @@ export default class RecommendedRecipes extends React.Component {
 
         this.getRecipes = this.getRecipes.bind(this);
     }
-    getRecipes(){
-        // THIS IS OUR 'DATABASE' OF INGREDIENTS
-        const dummyRecipes = [];
+    getRecipes(confirmedIngredients){
         const recipe1 = {
+            recipdId: 1,
             recipeTitle: 'Braised Chicken with Steamed Veggies',
             recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
+            recipeConfirmedIngredientCount: 0,
             recipeTimeToCook: '00:50'
         }
         const recipe2 = {
+            recipeId: 2,
             recipeTitle: 'Herbed Chicken with Roased Veggies',
             recipeIngredients: ['Chicken', 'Carrots', 'Zuccini'],
+            recipeConfirmedIngredientCount: 0,
             recipeTimeToCook: '00:50'
         }
         const recipe3 = {
+            recipeId: 3,
             recipeTitle: 'CrockPot Chicken with Veggies',
             recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
+            recipeConfirmedIngredientCount: 0,
             recipeTimeToCook: '04:00'
         }
         const recipe4 = {
+            recipeId: 4,
             recipeTitle: 'Beef w/Rice',
             recipeIngredients: ['Beef', 'Rice'],
+            recipeConfirmedIngredientCount: 0,
             recipeTimeToCook: '00:40'
         }
-        console.log(recipe1.recipeTitle + " " + recipe2.recipeTitle);
+        const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
 
-        // MAKE A FUNCTION THAT COMPARES CONFIRMED INGREDIENTS TO DATABASE
-        // FUNCTION MUST RETURN RECIPES THAT PASS CONFIRMED INGREDIENTS TEST
+        // Step 1) Enter input Array
+        console.log(confirmedIngredients);
+
+        // Step 2) Find all recipes that include confirmed ingredients
+        let confirmedRecipes = [];
+        for (let i = 0; i < recipeDatabase.length; i++){
+            for (var j = 0; j < confirmedIngredients.length; j++){
+
+                // Step 3) Store all those recipes in an array, confirmed recipes
+                if (recipeDatabase[i].recipeIngredients.includes(confirmedIngredients[j])) {
+                    confirmedRecipes.push(recipeDatabase[i]) 
+                    break;
+                }
+            }
+        }
+
+        // Step 4) Sort confirmed recipes
+        for (let i = 0; i < confirmedRecipes.length; i++){
+            let ingredientCount = 0;
+            for (let j = 0; j < confirmedIngredients.length; j++){
+                if (confirmedRecipes[i].recipeIngredients.includes(confirmedIngredients[j])) ingredientCount++;
+            }
+            confirmedRecipes[i].recipeConfirmedIngredientCount = ingredientCount;
+        }
+        console.log(confirmedRecipes);
+        return;
 
 
-        // AFTER THE TEST SET STATE THE RECOMMENDED RECIPES
     }
     componentDidMount(){
-        this.getRecipes();
+        this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (

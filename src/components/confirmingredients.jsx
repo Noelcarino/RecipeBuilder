@@ -22,7 +22,6 @@ export default class ConfirmIngredients extends React.Component {
         })
     }
     componentDidMount(){ 
-        console.log(this.props);  
         this.setState({
             ingredientsToConfirm: this.props.ingredientsToUse
         })
