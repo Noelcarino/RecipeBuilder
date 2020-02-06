@@ -31,7 +31,7 @@ export default class LetsCook extends React.Component {
             recipeTitle: 'Braised Chicken with Steamed Veggies',
             recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
             recipeConfirmedIngredientCount: 0,
-            recipeImage: 'braisedchickenwithsteamedveggies.png',
+            recipeImage: 'beefwithrice.jpg',
             recipeTimeToCook: '00:50'
         }
         // this.setState({
@@ -54,7 +54,7 @@ export default class LetsCook extends React.Component {
 
                     {/* RECIPE TITLE CONTAINER */}
 
-                    <div className="recipe-title-container mx-auto border p-3 row">
+                    <div className="recipe-title-container mx-auto border p-3 row mb-3">
                         <div className="container-fluid mx-auto col-8">
                             <h3>
                                 {this.state.currentRecipeToCook.recipeTitle}
@@ -66,7 +66,15 @@ export default class LetsCook extends React.Component {
                             <i className="fa fa-heart-o" aria-hidden="true"></i>
                             <i className="fa fa-heart" aria-hidden="true"></i>
                         </div>
-                       
+                    </div>
+                    
+                    {/* RECIPE IMAGE */}
+
+                    <div className="lets-cook-img-container mx-auto border p-0 row mb-3 ">
+                        <img 
+                            className="img-container img-fluid"
+                            src={require("../images/"+ this.state.currentRecipeToCook.recipeImage +"")} alt=""
+                        />
                     </div>
 
 
