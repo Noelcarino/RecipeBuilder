@@ -5,30 +5,24 @@
     font-family: DM Sans Display;
     overflow: scroll;
 }
-
 .recipe-title-container{
     min-height: 15%;
     font-family: DM Sans Display;
 }
-
 .lets-cook-img-container{
-    height: 35%; 
+    height: 50%; 
     overflow: hidden;
     box-shadow: 0 0 25px grey;
     width: 90%;
     border-radius: 15px;
 }
 .img-container {
-    /* background-position: 50% 50%; */
     overflow: hidden;
     position: relative;
-    bottom: 80%;
 }
-
 .recipe-instructions-container{
     height: 45%;
     font-family: DM Sans Display;
-    
 }
 .recipe-instructions-list {
     height: 90%;

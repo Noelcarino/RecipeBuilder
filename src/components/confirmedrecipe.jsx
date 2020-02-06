@@ -2,6 +2,7 @@ import React from 'react';
 
 export default class ConfirmedRecipe extends React.Component{
     render(){
+        console.log(this.props);
         return (
             <div className="confirmed-recipe mx-auto mb-5 row align-items-end p-0">
 
@@ -11,7 +12,6 @@ export default class ConfirmedRecipe extends React.Component{
                         src={require("../images/"+this.props.recipe.recipeImage+"")}
                         alt={this.props.recipe.recipeTitle}/>
                 </div>
-                
 
                 <div className="recipe-bottom-container mx-auto row align-items-start border py-0">
 

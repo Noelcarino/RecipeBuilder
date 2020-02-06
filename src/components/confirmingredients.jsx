@@ -27,7 +27,6 @@ export default class ConfirmIngredients extends React.Component {
         })
     }
     render(){
-        console.log(this.state.ingredientsToConfirm);
         return (
             <div className="confirm-ingredients-container row px-0 py-5 mx-auto">
 

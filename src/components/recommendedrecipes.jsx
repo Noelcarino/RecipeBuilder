@@ -27,22 +27,38 @@ export default class RecommendedRecipes extends React.Component {
 
             3) after fetching data, store it in state, then render recipes component
         */
+        let recipe1Insructions = [
+            'First you gotta start the fire',
+            'season the beef',
+            'cook the rice',
+            'finish cooking the beef',
+            'finishing cooking the rice',
+            'add the beef on top of the rice',
+            'make sure you set it inside of a beautiful bowl',
+            'set that bowl on top of a nice ass table',
+            'turn the lights down low',
+            'once the lights are low to your liking, turn on the music',
+            'invite the LOYL',
+            'make love',
+            'then enjoy that beetf with rice'
+        ]
         const recipe1 = {
             recipdId: 1,
             recipeTitle: 'Braised Chicken with Steamed Veggies',
             recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
             recipeConfirmedIngredientCount: 0,
             recipeImage: 'braisedchickenwithsteamedveggies.png',
-            recipeTimeToCook: '00:50'
+            recipeTimeToCook: '00:50',
+            recipeInstructions: recipe1Insructions
         }
-        
         const recipe2 = {
             recipeId: 2,
             recipeTitle: 'Herbed Chicken with Roased Veggies',
             recipeIngredients: ['Chicken', 'Carrots', 'Zuccini'],
             recipeConfirmedIngredientCount: 0,
             recipeImage: 'herbedchickenwithroastedveggies.png',
-            recipeTimeToCook: '00:50'
+            recipeTimeToCook: '00:50',
+            recipeInstructions: recipe1Insructions
         }
         const recipe3 = {
             recipeId: 3,
@@ -50,7 +66,8 @@ export default class RecommendedRecipes extends React.Component {
             recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
             recipeConfirmedIngredientCount: 0,
             recipeImage: 'crockpotchickenwithveggies.png',
-            recipeTimeToCook: '04:00'
+            recipeTimeToCook: '04:00',
+            recipeInstructions: recipe1Insructions
         }
         const recipe4 = {
             recipeId: 4,
@@ -58,7 +75,8 @@ export default class RecommendedRecipes extends React.Component {
             recipeIngredients: ['Beef', 'Rice'],
             recipeConfirmedIngredientCount: 0,
             recipeImage: 'beefwithrice.jpg',
-            recipeTimeToCook: '00:40'
+            recipeTimeToCook: '00:40',
+            recipeInstructions: recipe1Insructions
         }
         const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
 
@@ -99,24 +117,24 @@ export default class RecommendedRecipes extends React.Component {
         })
     }
     componentDidMount(){
-        let dummyArray = [
-            'Asparagus',
-            'Beets',
-            'Beef',
-            'Brocolli',
-            'Cabbage',
-            'Carrots',
-            'Celery',
-            'Cauliflower',
-            'Chicken',
-            'Cucumber',
-            'Potatoes',
-            'Rice',
-            'Zuccini'
-        ];
-        this.getRecipes(dummyArray);
+        // let dummyArray = [
+        //     'Asparagus',
+        //     'Beets',
+        //     'Beef',
+        //     'Brocolli',
+        //     'Cabbage',
+        //     'Carrots',
+        //     'Celery',
+        //     'Cauliflower',
+        //     'Chicken',
+        //     'Cucumber',
+        //     'Potatoes',
+        //     'Rice',
+        //     'Zuccini'
+        // ];
+        // this.getRecipes(dummyArray);
         // console.log(this.props.confirmedIngredients);
-        // this.getRecipes(this.props.confirmedIngredients);
+        this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (

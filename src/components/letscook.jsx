@@ -12,55 +12,41 @@ export default class LetsCook extends React.Component {
         this.getRecipeInformation = this.getRecipeInformation.bind(this);
     }
     getRecipeInformation(){
-        let dummyArray = [
-            'Asparagus',
-            'Beets',
-            'Beef',
-            'Brocolli',
-            'Cabbage',
-            'Carrots',
-            'Celery',
-            'Cauliflower',
-            'Chicken',
-            'Cucumber',
-            'Potatoes',
-            'Rice',
-            'Zuccini'
-        ];
-        let recipe1Insructions = [
-            'First you gotta start the fire',
-            'season the beef',
-            'cook the rice',
-            'finish cooking the beef',
-            'finishing cooking the rice',
-            'add the beef on top of the rice',
-            'make sure you set it inside of a beautiful bowl',
-            'set that bowl on top of a nice ass table',
-            'turn the lights down low',
-            'once the lights are low to your liking, turn on the music',
-            'invite the LOYL',
-            'make love',
-            'then enjoy that beetf with rice'
-        ]
-        const recipe1 = {
-            recipdId: 1,
-            recipeTitle: 'Braised Chicken with Steamed Veggies',
-            recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
-            recipeConfirmedIngredientCount: 0,
-            recipeImage: 'beefwithrice.jpg',
-            recipeTimeToCook: '00:50',
-            recipeInstructions: recipe1Insructions
-        }
-        // this.setState({
-        //     componentDidMount: true,
-        //     ingredientsToUse: this.props.state.view.params.ingredientsToUse,
-        //     currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
-        // })
+        // let dummyArray = [
+        //     'Asparagus',
+        //     'Beets',
+        //     'Beef',
+        //     'Brocolli',
+        //     'Cabbage',
+        //     'Carrots',
+        //     'Celery',
+        //     'Cauliflower',
+        //     'Chicken',
+        //     'Cucumber',
+        //     'Potatoes',
+        //     'Rice',
+        //     'Zuccini'
+        // ];
+        
+        // const recipe1 = {
+        //     recipdId: 1,
+        //     recipeTitle: 'Braised Chicken with Steamed Veggies',
+        //     recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
+        //     recipeConfirmedIngredientCount: 0,
+        //     recipeImage: 'beefwithrice.jpg',
+        //     recipeTimeToCook: '00:50',
+        //     recipeInstructions: recipe1Insructions
+        // }
         this.setState({
             componentDidMount: true,
-            ingredientsToUse: dummyArray,
-            currentRecipeToCook: recipe1
+            ingredientsToUse: this.props.state.view.params.ingredientsToUse,
+            currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
         })
+        // this.setState({
+        //     componentDidMount: true,
+        //     ingredientsToUse: dummyArray,
+        //     currentRecipeToCook: recipe1
+        // })
     }
     componentDidMount(){
         this.getRecipeInformation();
@@ -89,7 +75,7 @@ export default class LetsCook extends React.Component {
                     
                     {/* RECIPE IMAGE */}
 
-                    <div className="lets-cook-img-container mx-auto py-3 row mb-3 px-0">
+                    <div className="lets-cook-img-container mx-auto  row mb-3 p-0">
                         <img 
                             className="img-container w-100 p-0"
                             src={require("../images/"+ this.state.currentRecipeToCook.recipeImage +"")} alt=""

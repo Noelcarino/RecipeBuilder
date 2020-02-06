@@ -8,7 +8,6 @@
 .dashboard-content{
     height: 100vh;
     min-height: 1000px;
-    /* width: 90vw; */
     max-width: 1000px;
     margin: auto;
 }
@@ -25,20 +24,15 @@
     height: 75%;
     margin: auto;
 }
-
 .find-ingredients-container{
     height: 30%;
     width: 90%;
-
     background-color: white;
     border-radius: 25px;
     box-shadow: 0 0 25px grey;
-
-
     font-family: DM Serif Display;
     font-weight: bold;
 }
-
 .begin-search-button {
     background-color: black;
     color: whitesmoke;
@@ -54,20 +48,15 @@
     color: whitesmoke;
     transition: 0.15s;
 }
-
 .favorite-recipes-container {
     height: 40%;
     width: 90%;
-
     background-color: white;
     border-radius: 25px;
     box-shadow: 0 0 25px grey;
-
-
     font-family: DM Serif Display;
     font-weight: bold;
 }
-
 .view-favorites-button{
     background-color: black;
     color: whitesmoke;
