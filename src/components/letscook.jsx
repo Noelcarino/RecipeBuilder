@@ -69,15 +69,15 @@ export default class LetsCook extends React.Component {
         console.log(this.state);
         if (this.state.componentDidMount){
             return (
-                <div className="lets-cook-container p-3">
+                <div className="lets-cook-container row p-5 mx-auto">
 
                     {/* RECIPE TITLE CONTAINER */}
 
                     <div className="recipe-title-container mx-auto p-2 row mb-3">
                         <div className="container-fluid mx-auto col-8">
-                            <h3>
+                            <h1>
                                 {this.state.currentRecipeToCook.recipeTitle}
-                            </h3>
+                            </h1>
                         </div>
                         <div className="container-fluid mx-auto col-4">
                             {/* <i class="far fa-heart"></i> */}
@@ -89,9 +89,9 @@ export default class LetsCook extends React.Component {
                     
                     {/* RECIPE IMAGE */}
 
-                    <div className="lets-cook-img-container mx-auto p-3 row mb-3 ">
+                    <div className="lets-cook-img-container mx-auto py-3 row mb-3 px-0">
                         <img 
-                            className="img-container img-fluid"
+                            className="img-container w-100 p-0"
                             src={require("../images/"+ this.state.currentRecipeToCook.recipeImage +"")} alt=""
                         />
                     </div>
@@ -117,11 +117,19 @@ export default class LetsCook extends React.Component {
                     </div>
 
 
-                    <div className="container-fluid mx-auto">
+                    <div className="container-fluid mx-auto mb-3 w-50">
                         <button 
                             className="btn btn-dark btn-block mx-auto"
                             onClick={() => this.props.setView('recommendedrecipes', this.props.state.view.params.ingredientsToUse.confirmedIngredients)}>
-                            go back to recipes
+                            Go Back to Recipes
+                        </button>
+                    </div>
+
+                    <div className="container-fluid mx-auto mb-3 w-50">
+                        <button 
+                            className="btn btn-dark btn-block mx-auto"
+                            onClick={() => this.props.setView('dashboard')}>
+                            Back to Dashboard
                         </button>
                     </div>
                 </div>

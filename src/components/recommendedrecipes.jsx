@@ -130,15 +130,20 @@ export default class RecommendedRecipes extends React.Component {
                     </h3>
                 </div>
 
-                <div className="container-fluid">
+                <div className="container-fluid mx-auto">
                     {this.state.recommendedRecipes.map((recipe,index) => {
                         return <ConfirmedRecipe key={index} recipe={recipe} setView={this.props.setView} confirmedIngredients={this.props.confirmedIngredients}/>
                     })}
                 </div>
 
-                <button onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
-                    Return to Ingredients List
-                </button>
+                <div className="container-fluid mx-auto">
+                    <button
+                        className="btn btn-dark btn-block w-50 mx-auto text-center"
+                        onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
+                        Return to Ingredients List
+                    </button>
+                </div>
+
             </div>
         )
     }
