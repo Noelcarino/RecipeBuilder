@@ -12,8 +12,11 @@
 }
 
 .lets-cook-img-container{
-    height: 30%; 
+    height: 35%; 
     overflow: hidden;
+    box-shadow: 0 0 25px grey;
+    width: 90%;
+    border-radius: 15px;
 }
 .img-container {
     /* background-position: 50% 50%; */
@@ -25,6 +28,7 @@
 .recipe-instructions-container{
     height: 45%;
     font-family: DM Sans Display;
+    
 }
 .recipe-instructions-list {
     height: 90%;
