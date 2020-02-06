@@ -1,0 +1,30 @@
+.lets-cook-container{
+    height: 100vh;
+    border: 15px solid black;
+    background-color: white;
+    font-family: DM Sans Display;
+    overflow: scroll;
+}
+.recipe-title-container{
+    min-height: 15%;
+    font-family: DM Sans Display;
+}
+.lets-cook-img-container{
+    height: 50%; 
+    overflow: hidden;
+    box-shadow: 0 0 25px grey;
+    width: 90%;
+    border-radius: 15px;
+}
+.img-container {
+    overflow: hidden;
+    position: relative;
+}
+.recipe-instructions-container{
+    height: 45%;
+    font-family: DM Sans Display;
+}
+.recipe-instructions-list {
+    height: 90%;
+    overflow: scroll;
+}

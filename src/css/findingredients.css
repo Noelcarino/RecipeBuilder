@@ -1,28 +1,20 @@
 .find-ingredients-component-container{
     height: 100vh;
-    
     border: 15px solid black;
-
     background-position: fixed;
     background-color: #E4D4BA;
-
     font-family: DM Sans Display;
-
     overflow: scroll;
 }
-
 .search-ingredients-container{
     height: 85vh;
     min-height: 500px;
-    /* max-height: 700px; */
     width: 90%;
-
     background-color: white;
     box-shadow: 0 0 25px grey;
     border-radius: 25px;
     overflow: hidden;
 }
-
 .ingredients-to-use-container {
     min-height: 85vh;
     width: 90%;
