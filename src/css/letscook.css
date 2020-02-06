@@ -16,8 +16,17 @@
     overflow: hidden;
 }
 .img-container {
-    background-position: 50% 50%;
+    /* background-position: 50% 50%; */
     overflow: hidden;
     position: relative;
-    bottom: 70%;
+    bottom: 80%;
+}
+
+.recipe-instructions-container{
+    height: 45%;
+    font-family: DM Sans Display;
+}
+.recipe-instructions-list {
+    height: 90%;
+    overflow: scroll;
 }
