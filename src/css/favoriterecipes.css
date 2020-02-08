@@ -20,10 +20,26 @@
     height: 35vh;
     width: 90%;
     min-width: 400px;
-    max-width: 500px;
+    max-width: 450px;
 
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 0 25px grey;
     overflow: hidden;
+    font-family: DM Sans Display;
+}
+
+.favorite-recipe-top {
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+}
+.favorite-recipe-image {
+    background-size: 100% 100%;
+    background-position: 50% 100%;
+}
+
+.favorite-recipe-bottom {
+    height: 30%;
+    width: 100%;
 }
