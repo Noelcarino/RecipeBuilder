@@ -1,4 +1,5 @@
 import React from 'react';
+import FavoriteRecipe from './favoriterecipe';
 import '../css/favoriterecipes.css';
 
 export default class FavoriteRecipes extends React.Component {
@@ -72,21 +73,35 @@ export default class FavoriteRecipes extends React.Component {
         this.getFavoriteRecipes();
     }
     render(){
-        return (
-            <div className="favorite-recipes-component-container mx-auto row p-3">
+        if (this.state.componentDidMount){
+            return (
+                <div className="favorite-recipes-component-container mx-auto row px-3 py-5">
 
-                <div className="favorite-recipes-component-title text-center">
-                    <h1>
-                        Your Favorites
-                    </h1>
-                </div>
+                    <div className="favorite-recipes-component-title text-center mb-5">
+                        <h1>
+                            Your Favorites
+                        </h1>
+                    </div>
 
-                <div className="favorite-recipe-component-back-to-dashboard mx-auto row p-0 ">
-                    <button className="btn btn-dark btn-block" onClick={() => this.props.setView('dashboard', [])}>
-                        Back to Dashboard
-                    </button>
+                    <div className="container-fluid mx-auto">
+                        {this.state.favoriteRecipes.map((recipe,index) => {
+                            return <FavoriteRecipe key={index} recipe={recipe} setView={this.props.setView} />
+                        })}
+                    </div>
+
+                    <div className="favorite-recipe-component-back-to-dashboard mx-auto row p-0 ">
+                        <button className="btn btn-dark btn-block" onClick={() => this.props.setView('dashboard', [])}>
+                            Back to Dashboard
+                        </button>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <React.Fragment>
+                    LOADING...
+                </React.Fragment>
+            )
+        }
     }
 }
