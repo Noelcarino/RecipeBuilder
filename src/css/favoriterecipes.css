@@ -10,3 +10,8 @@
     height: 25;
     font-family: DM Sans Display;
 }
+
+.favorite-recipe-component-back-to-dashboard {
+    height: 5%;
+    width: 90%;
+}
