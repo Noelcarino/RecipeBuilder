@@ -1,0 +1,12 @@
+.favorite-recipes-component-container {
+    height: 100vh;
+    border: 15px solid black;
+    background-color: #E4D4BA;
+    overflow: scroll;
+}
+
+.favorite-recipes-component-title {
+    width: 90%;
+    height: 25;
+    font-family: DM Sans Display;
+}

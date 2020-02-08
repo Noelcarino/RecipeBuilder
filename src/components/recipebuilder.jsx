@@ -6,13 +6,14 @@ import FindIngredients from './findingredients';
 import ConfirmIngredients from './confirmingredients';
 import RecommendedRecipes from './recommendedrecipes';
 import LetsCook from './letscook';
+import FavoriteRecipes from './favoriterecipes';
 
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             view : {
-                name: 'homepage',
+                name: 'dashboard',
                 params: {
                     ingredientsToUse: [],
                     currentRecipeToCook: {}
@@ -89,6 +90,11 @@ export default class RecipeBuilder extends React.Component {
                 element = <LetsCook
                                 setView={this.setView}
                                 state={this.state}
+                            />
+                break;
+            case 'favoriterecipes':
+                element = <FavoriteRecipes 
+                                setView={this.setView}
                             />
                 break;
             default:
