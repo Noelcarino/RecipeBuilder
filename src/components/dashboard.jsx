@@ -19,11 +19,11 @@ export default class DashBoard extends React.Component {
                 </div>
 
                 {/* FIND INGREDIENTS SECTION */}
-                <div className="find-ingredients-container text-center mx-auto row px-0 mb-5">
+                <div className="find-ingredients-container mx-auto row px-0 mb-5 text-center">
 
                     <div className="container-fluid m-auto">
                         <h1>
-                        Find Ingredients
+                            Find Ingredients
                         </h1>
                     </div>
                     
@@ -32,7 +32,7 @@ export default class DashBoard extends React.Component {
                     </div>
 
                     <div className="container-fluid m-auto">
-                        <button className="btn btn-dark" onClick={() => this.props.setView('findingredients',this.props.ingredientsToUse)}>
+                        <button className="btn" onClick={() => this.props.setView('findingredients',this.props.ingredientsToUse)}>
                             BEGIN SEARCH
                         </button>
                     </div>
@@ -41,23 +41,21 @@ export default class DashBoard extends React.Component {
 
                 {/* FAVORITE RECIPES */}
 
-                <div className="favorite-recipes-container mx-auto row px-0 mb-5">
+                <div className="favorite-recipes-container mx-auto row px-0 mb-5 text-center">
 
                     <div className="container-fluid m-auto">
-                        <h1 className="display-4">
+                        <h1>
                             Favorite Recipes
                         </h1>
                     </div>
 
                     {/* MAKE A CAROUSEL COMPONENT HERE */}
-                    <div className="container-fluid m-auto">
-                        <h2>
+                    <div className="container-fluid m-auto border">
                             !!!ADD CAROUSEL COMPONENT HERE!!!
-                        </h2>
                     </div>
 
                     <div className="container-fluid m-auto">
-                        <button className="view-favorites-button" onClick={() => this.props.setView('favoriterecipes')}>
+                        <button className="btn" onClick={() => this.props.setView('favoriterecipes')}>
                             VIEW FAVORITES
                         </button>
                     </div>
