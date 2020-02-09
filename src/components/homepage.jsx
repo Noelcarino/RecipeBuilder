@@ -20,7 +20,7 @@ export default class HomePage extends React.Component {
                             {/* <button className="login-button" onClick={() => this.props.setView('dashboard')}>
                                 LOGIN AS GUEST
                             </button> */}
-                            <button className="login-button" onClick={() => this.props.setView('dashboard')}>
+                            <button className="login-button" onClick={() => this.props.setView('dashboard', [])}>
                                 LOGIN AS GUEST
                             </button>
                         </div>
