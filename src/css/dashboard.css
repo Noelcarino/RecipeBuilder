@@ -2,23 +2,24 @@
     background-color: black;
     color: white;
     border-radius: 45px;
-
+}
+.btn:hover{
+    color: grey;
 }
 .dashboard-container{
     height: 100vh;
-    padding: 50px 0px;
+    padding: 20px 0px;
     border: 15px solid black;
     background-position: fixed;
     background-color: #E4D4BA;
     overflow: scroll;
 }
 .welcome-back-container{
-    height: 25%;
-    min-height: 200px;
-    max-height: 200px;
+    min-height: 150px;
+    max-height: 150px;
     width: 80%;
     min-width: 425px;
-    max-width: 800px;
+    max-width: 750px;
     font-size: 2.5rem;
     letter-spacing: -0.05rem;
 }
@@ -28,47 +29,30 @@
 .welcome-back-container-description {
     font-family: DM Serif Display;
 }
-
 .find-ingredients-container{
-    height: 35%;
-    min-height: 250px;
-    max-height: 250px;
+    padding: 25px 0px;
+    min-height: 225px;
+    max-height: 225px;
     width: 90%;
     min-width: 425px;
-    max-width: 800px;
+    max-width: 750px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 8px grey;
     font-family: DM Serif Display;
     font-size: 1.8rem;
 }
-
 .favorite-recipes-container {
-    height: 40%;
+    height: 575px;
     width: 90%;
+    min-width: 425px;
+    max-width: 750px;
     background-color: white;
-    border-radius: 25px;
-    box-shadow: 0 0 25px grey;
+    border-radius: 10px;
+    box-shadow: 0 0 8px grey;
     font-family: DM Serif Display;
-    font-weight: bold;
+    font-size: 1.8rem;
 }
-.view-favorites-button{
-    background-color: black;
-    color: whitesmoke;
-    box-shadow: 0 0 20px grey;
-    border-radius: 100px;
-    font-size: 1.5vw;
-    padding: 1.5% 10%;
-    transition: 0.15s;
-}
-.view-favorites-button:hover {
-    font-family: DM Sans;
-    background-color: darkslategray;
-    color: whitesmoke;
-    transition: 0.15s;
-}
-
-
 
 /****************** 
     MEDIA QUERIES
@@ -79,6 +63,15 @@
     and (device-width : 375px) 
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
+        .btn {
+            font-size: 2.3rem;
+            padding: 15px 55px;
+            border-radius: 45px;
+        }
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
         .welcome-back-container {
             min-height: 350px;
         }
@@ -90,6 +83,17 @@
             border-radius: 25px;
             font-size: 3rem;
         }
+        .favorite-recipes-container {
+            border-radius: 25px;
+            min-height: 850px;
+        }
+     }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
         .btn {
             font-size: 2.3rem;
             padding: 15px 55px;
@@ -99,18 +103,12 @@
             font-size: 4rem;
             font-weight: bold;
         }
-     }
-
-/* IPHONE 6/7/8 PLUS */
-@media only screen 
-    and (device-width : 414px) 
-    and (device-height : 736px) 
-    and (-webkit-device-pixel-ratio : 3) {
         .dashboard-container {
             padding: 50px 0px;
         }
         .welcome-back-container{
             min-height: 350px;
+            border-radius: 25px;
         }
         .welcome-back-container-description {
             font-size: 4rem;
@@ -120,14 +118,9 @@
             border-radius: 25px;
             font-size: 3rem;
         }
-        .btn {
-            font-size: 2.3rem;
-            padding: 15px 55px;
-            border-radius: 45px;
-        }
-        h1 {
-            font-size: 4rem;
-            font-weight: bold;
+        .favorite-recipes-container {
+            border-radius: 25px;
+            min-height: 800px;
         }
     }
 
@@ -136,6 +129,14 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .btn {
+            font-size: 2.3rem;
+            padding: 15px 55px;
+        }
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
         .welcome-back-container{
             min-height: 350px;
         }
@@ -145,13 +146,10 @@
         .find-ingredients-container {
             min-height: 500px;
             font-size: 3rem;
+            border-radius: 25px;
         }
-        .btn {
-            font-size: 2.3rem;
-            padding: 15px 55px;
-        }
-        h1 {
-            font-size: 4rem;
-            font-weight: bold;
+        .favorite-recipes-container {
+            min-height: 900px;
+            border-radius: 25px;
         }
     }
