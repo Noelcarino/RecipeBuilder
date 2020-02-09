@@ -9,6 +9,7 @@ export default class RecommendedRecipes extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            previousView: '',
             confirmedIngredients: [],
             recommendedRecipes : [] 
         }
@@ -110,8 +111,10 @@ export default class RecommendedRecipes extends React.Component {
             return b.recipeConfirmedIngredientCount - a.recipeConfirmedIngredientCount;
         })
         console.log(confirmedRecipes);
+
         // Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
         this.setState({
+            previousView: '',
             confirmedIngredients: confirmedIngredients,
             recommendedRecipes: confirmedRecipes
         })
@@ -150,7 +153,12 @@ export default class RecommendedRecipes extends React.Component {
 
                 <div className="container-fluid mx-auto">
                     {this.state.recommendedRecipes.map((recipe,index) => {
-                        return <ConfirmedRecipe key={index} recipe={recipe} setView={this.props.setView} confirmedIngredients={this.props.confirmedIngredients}/>
+                    return (<ConfirmedRecipe 
+                                    key={index} 
+                                    recipe={recipe} 
+                                    previousView='recommendedrecipes' 
+                                    setView={this.props.setView} 
+                                    confirmedIngredients={this.props.confirmedIngredients}/>)
                     })}
                 </div>
 
