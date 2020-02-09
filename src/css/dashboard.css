@@ -70,18 +70,45 @@
     color: whitesmoke;
     transition: 0.15s;
 }
+/* IPHONE 6/7/8 */
 
+    @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .welcome-back-container {
+            min-height: 350px;
+        }
+        .welcome-back-container-description {
+            font-size: 4rem;
+        }
+     }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .dashboard-container {
+            padding: 50px 0px;
+        }
+        .welcome-back-container{
+            min-height: 350px;
+        }
+        .welcome-back-container-description {
+            font-size: 4rem;
+        }
+    }
+
+/* IPHONE X */
 @media only screen 
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
-        .dashboard-container{
-            background-color: lightblue;
-        }
         .welcome-back-container{
             min-height: 350px;
         }
         .welcome-back-container-description{
             font-size: 3.5rem;
         }
-     }
+    }
