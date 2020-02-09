@@ -19,22 +19,20 @@ export default class DashBoard extends React.Component {
                 </div>
 
                 {/* FIND INGREDIENTS SECTION */}
-                <div className="find-ingredients-container mx-auto row px-0 mb-5">
+                <div className="find-ingredients-container text-center mx-auto row px-0 mb-5">
 
                     <div className="container-fluid m-auto">
-                        <h1 className="display-4">
-                            Find Ingredients
+                        <h1>
+                        Find Ingredients
                         </h1>
                     </div>
                     
                     <div className="container-fluid m-auto">
-                        <h2>
-                            Let's create your ingredients list to build your recipe
-                        </h2>
+                        Let's create your ingredients list to build your recipe
                     </div>
 
                     <div className="container-fluid m-auto">
-                        <button className="begin-search-button" onClick={() => this.props.setView('findingredients',this.props.ingredientsToUse)}>
+                        <button className="btn btn-dark" onClick={() => this.props.setView('findingredients',this.props.ingredientsToUse)}>
                             BEGIN SEARCH
                         </button>
                     </div>
