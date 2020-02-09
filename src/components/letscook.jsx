@@ -6,6 +6,7 @@ export default class LetsCook extends React.Component {
         super(props);
         this.state = {
             componentDidMount: false,
+            previousView: '',
             ingredientsToUse: [],
             currentRecipeToCook: {}
         }
@@ -39,6 +40,7 @@ export default class LetsCook extends React.Component {
         // }
         this.setState({
             componentDidMount: true,
+            previousView: this.props.previousView,
             ingredientsToUse: this.props.state.view.params.ingredientsToUse,
             currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
         })
@@ -52,8 +54,21 @@ export default class LetsCook extends React.Component {
         this.getRecipeInformation();
     }
     render(){
-        console.log(this.state);
+        let backButton;
         if (this.state.componentDidMount){
+            if (this.state.previousView === 'favoriterecipes'){
+                backButton = <button 
+                                className="btn btn-dark btn-block mx-auto"
+                                onClick={() => this.props.setView('favoriterecipes')}>
+                                Go Back to Favorite Recipes
+                            </button>
+            } else if (this.state.previousView === 'recommendedrecipes') {
+                backButton = <button 
+                                className="btn btn-dark btn-block mx-auto"
+                                onClick={() => this.props.setView('recommendedrecipes', this.props.state.view.params.ingredientsToUse.confirmedIngredients)}>
+                                Go Back to Recipes
+                            </button>
+            }
             return (
                 <div className="lets-cook-container row p-5 mx-auto">
 
@@ -104,11 +119,7 @@ export default class LetsCook extends React.Component {
 
 
                     <div className="container-fluid mx-auto mb-3 w-50">
-                        <button 
-                            className="btn btn-dark btn-block mx-auto"
-                            onClick={() => this.props.setView('recommendedrecipes', this.props.state.view.params.ingredientsToUse.confirmedIngredients)}>
-                            Go Back to Recipes
-                        </button>
+                        {backButton}
                     </div>
 
                     <div className="container-fluid mx-auto mb-3 w-50">
