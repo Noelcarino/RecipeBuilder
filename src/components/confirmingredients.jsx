@@ -38,7 +38,6 @@ export default class ConfirmIngredients extends React.Component {
         this.setState({
             ingredientsToConfirm: this.props.ingredientsToUse
         })
-        console.log(this.props.ingredientsToUse)
     }
     render(){
         return (
@@ -47,10 +46,7 @@ export default class ConfirmIngredients extends React.Component {
                 {/* INGREDIENTS LIST DESCRIPTION */}
                 <div className="confirm-ingredients-description mx-auto mb-3 text-center p-3">
                     <h1>Ingredients List</h1>
-
-                    <h3>
-                        Confirm your ingredients and build your recipe!
-                    </h3>
+                    Confirm your ingredients and build your recipe!
                 </div>
 
                 {/* REVIEW INGREDIENTS TO SEARCH */}
