@@ -10,7 +10,6 @@
     height: 100vh;
     padding: 20px 0px;
     border: 15px solid black;
-    background-position: fixed;
     background-color: #E4D4BA;
     overflow: scroll;
 }
@@ -59,7 +58,7 @@
 *******************/
 
 /* IPHONE 6/7/8 */
-    @media only screen 
+@media only screen 
     and (device-width : 375px) 
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
@@ -87,7 +86,7 @@
             border-radius: 25px;
             min-height: 850px;
         }
-     }
+    }
 
 /* IPHONE 6/7/8 PLUS */
 @media only screen 
