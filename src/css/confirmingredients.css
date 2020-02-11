@@ -6,7 +6,7 @@
     overflow: scroll;
 }
 .confirm-ingredients-description {
-    height: 20vh;
+    height: 150px;
     width: 80%;
     min-width: 425px;
     max-width: 750px;
@@ -14,16 +14,23 @@
     font-size: 1.8rem; 
 }
 .confirm-ingredients-content {
-    height: 40vh;
-    width: 90%;
+    padding: 25px 0px;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    width: 80%;
+    min-width: 425px;
+    max-width: 750px;
     background-color: white;
-    box-shadow: 0 0 25px grey;
+    box-shadow: 0 0 8px grey;
     border-radius: 10px;
-    border: 2px solid black;
+    font-family: DM Serif Display;
 }
+
 .build-ingredients-return-search{
-    height: 15vh;
+    height: 175px;
     width: 90%;
+    border: 5px solid black;
 }
 
 /****************** 
@@ -37,6 +44,12 @@
     and (-webkit-device-pixel-ratio : 2) {
         .confirm-ingredients-description {
             font-size: 3rem;
+            min-height: 250px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            min-height: 850px;
         }
     }
 

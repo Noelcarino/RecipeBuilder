@@ -44,19 +44,19 @@ export default class ConfirmIngredients extends React.Component {
             <div className="confirm-ingredients-container row px-0 py-5 mx-auto">
 
                 {/* INGREDIENTS LIST DESCRIPTION */}
-                <div className="confirm-ingredients-description mx-auto mb-3 text-center p-3">
+                <div className="confirm-ingredients-description mx-auto text-center p-0 mb-3 border border-dark">
                     <h1>Ingredients List</h1>
-                    Confirm your ingredients and build your recipe!
+                        Confirm your ingredients and build your recipe!
                 </div>
 
                 {/* REVIEW INGREDIENTS TO SEARCH */}
-                <div className="confirm-ingredients-content container-fluid mx-auto mb-3 row align-items-start p-3">
+                <div className="confirm-ingredients-content container-fluid mx-auto mb-3 row align-items-start px-0 py-3">
 
                     <div className="container-fluid row mx-auto align-items-start">
                         {this.state.ingredientsToConfirm.map( ingredient => {
                             return (
-                                <div key={ingredient} className="container-fluid col-6 px-3 row m-auto align-items-start align-self-start">
-                                    <button className="btn btn-dark m-auto" onClick={() => this.removeIngredient(ingredient)}>
+                                <div key={ingredient} className="container-fluid col-sm-12 col-lg-6 px-3 py-0 row m-auto align-self-start d-flex">
+                                    <button className="btn btn-dark align-self-start col-6 py-2 my-1 my-lg-4 mx-auto" onClick={() => this.removeIngredient(ingredient)}>
                                         {ingredient} &nbsp; <i className="fa fa-times" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -70,7 +70,7 @@ export default class ConfirmIngredients extends React.Component {
 
                     <div className="container-fluid m-auto row">
                         <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('recommendedrecipes', this.state.ingredientsToConfirm)}>
-                            BUILD RECIPE
+                            Confirm Ingredients
                         </button>
                     </div>
                     
@@ -81,7 +81,7 @@ export default class ConfirmIngredients extends React.Component {
                     </div>
                     <div className="container-fluid m-auto row">
                         <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToConfirm)}>
-                            RETURN TO DASHBOARD
+                            Return to Dashboard
                         </button>
                     </div>
 
