@@ -50,6 +50,8 @@
         .confirm-ingredients-content {
             margin-top: 0px;
             min-height: 850px;
+            display: flex;
+            justify-content: space-between;
         }
     }
 
@@ -58,7 +60,15 @@
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3){
         .confirm-ingredients-description {
+            min-height: 250px;
             font-size: 3rem;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            min-height: 850px;
+            display: flex;
+            justify-content: space-between;
         }
     }
 
@@ -68,5 +78,13 @@
     and (-webkit-device-pixel-ratio : 3) {
         .confirm-ingredients-description {
             font-size: 3rem;
+            min-height: 300px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            min-height: 1000px;
+            display: flex;
+            justify-content: space-between;
         }
     }
