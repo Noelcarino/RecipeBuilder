@@ -10,6 +10,7 @@ export default class ConfirmIngredients extends React.Component {
         this.removeIngredient = this.removeIngredient.bind(this);
     }
     removeIngredient(ingredient){
+        if (this.state.ingredientsToConfirm.length === 1) return;
         const ingredients = this.state.ingredientsToConfirm.slice();
         ingredients.some((el, i) => {
             if (el === ingredient){
@@ -68,7 +69,7 @@ export default class ConfirmIngredients extends React.Component {
 
                     <div className="container-fluid m-auto row">
                         <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToConfirm)}>
-                            RETURN TO SEARCH
+                            RETURN TO DASHBOARD
                         </button>
                     </div>
 
