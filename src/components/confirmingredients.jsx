@@ -55,7 +55,7 @@ export default class ConfirmIngredients extends React.Component {
                         {this.state.ingredientsToConfirm.map( ingredient => {
                             return (
                                 <div key={ingredient} className="container-fluid col-sm-12 col-lg-6 px-3 py-0 row m-auto align-self-start d-flex">
-                                    <button className="btn align-self-start col-6 py-2 my-1 my-lg-4 mx-auto" onClick={() => this.removeIngredient(ingredient)}>
+                                    <button className="btn align-self-start col-6 py-1 my-1 my-lg-4 mx-auto" onClick={() => this.removeIngredient(ingredient)}>
                                         {ingredient} &nbsp; <i className="fa fa-times" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -66,19 +66,19 @@ export default class ConfirmIngredients extends React.Component {
                 {/* CONFIRM INGREDIENTS TO BUILD RECIPE */}
                 <div className="build-ingredients-return-search mx-auto row">
 
-                    <div className="container-fluid m-auto row col-12 col-md-4">
-                        <button className="btn mx-auto" onClick={() => this.props.setView('recommendedrecipes', this.state.ingredientsToConfirm)}>
+                    <div className="container-fluid mx-auto row ">
+                        <button className="btn mx-auto col-10 col-lg-4 py-0" onClick={() => this.props.setView('recommendedrecipes', this.state.ingredientsToConfirm)}>
                             Confirm Ingredients
                         </button>
                     </div>
                     
-                    <div className="container-fluid m-auto row col-12 col-md-4">
-                        <button className="btn mx-auto" onClick={() => this.resetIngredients()}>
+                    <div className="container-fluid mx-auto row ">
+                        <button className="btn mx-auto col-10 col-lg-4 py-0" onClick={() => this.resetIngredients()}>
                             Reset Ingredients List
                         </button>
                     </div>
-                    <div className="container-fluid m-auto row col-12 col-md-4">
-                        <button className="btn mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToConfirm)}>
+                    <div className="container-fluid mx-auto row  ">
+                        <button className="btn mx-auto col-10 col-lg-4 py-0" onClick={() => this.props.setView('dashboard', this.state.ingredientsToConfirm)}>
                             Return to Dashboard
                         </button>
                     </div>
