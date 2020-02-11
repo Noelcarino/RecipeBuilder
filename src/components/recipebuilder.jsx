@@ -62,7 +62,8 @@ export default class RecipeBuilder extends React.Component {
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }
-        if (param === undefined) param = defaultIngredients;
+        if (param === undefined || param === []) param = defaultIngredients;
+        console.log(param);
         this.setState({
             view: {
                 name:name,
