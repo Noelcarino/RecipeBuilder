@@ -51,8 +51,6 @@ export default class ConfirmIngredients extends React.Component {
 
                 {/* REVIEW INGREDIENTS TO SEARCH */}
                 <div className="confirm-ingredients-content container-fluid mx-auto mb-3 row align-items-start px-0 py-3">
-
-                    <div className="container-fluid row mx-auto align-items-start">
                         {this.state.ingredientsToConfirm.map( ingredient => {
                             return (
                                 <div key={ingredient} className="container-fluid col-sm-12 col-lg-6 px-3 py-0 row m-auto align-self-start d-flex">
@@ -62,7 +60,6 @@ export default class ConfirmIngredients extends React.Component {
                                 </div>
                             )
                         })}
-                    </div>
                 </div>
 
                 {/* CONFIRM INGREDIENTS TO BUILD RECIPE */}
