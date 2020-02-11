@@ -4,10 +4,9 @@
     background-position: fixed;
     background-color: #E4D4BA;
     font-family: DM Sans Display;
-    overflow: scroll;
 }
 .search-ingredients-container{
-    height: 85vh;
+    height: 75vh;
     min-height: 500px;
     width: 90%;
     background-color: white;
@@ -16,13 +15,13 @@
     overflow: hidden;
 }
 .ingredients-to-use-container {
-    min-height: 85vh;
+    min-height: 75vh;
+    height: 80%;
     width: 90%;
     box-shadow: 0 0 25px grey;
     background-color: white;
     border-radius: 25px;
 }
 .ingredients-to-use-map-section {
-    max-height: 30%;
-    overflow: scroll;
+    max-height: 70%;
 }

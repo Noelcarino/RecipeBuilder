@@ -25,6 +25,7 @@ export default class ConfirmIngredients extends React.Component {
         this.setState({
             ingredientsToConfirm: this.props.ingredientsToUse
         })
+        console.log(this.props.ingredientsToUse)
     }
     render(){
         return (
@@ -66,7 +67,7 @@ export default class ConfirmIngredients extends React.Component {
                     
 
                     <div className="container-fluid m-auto row">
-                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('findingredients', this.state.ingredientsToConfirm)}>
+                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToConfirm)}>
                             RETURN TO SEARCH
                         </button>
                     </div>

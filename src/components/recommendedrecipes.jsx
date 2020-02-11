@@ -61,17 +61,17 @@ export default class RecommendedRecipes extends React.Component {
             recipeTimeToCook: '00:50',
             recipeInstructions: recipe1Insructions
         }
+        // const recipe3 = {
+        //     recipeId: 3,
+        //     recipeTitle: 'CrockPot Chicken with Veggies',
+        //     recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
+        //     recipeConfirmedIngredientCount: 0,
+        //     recipeImage: 'crockpotchickenwithveggies.png',
+        //     recipeTimeToCook: '04:00',
+        //     recipeInstructions: recipe1Insructions
+        // }
         const recipe3 = {
             recipeId: 3,
-            recipeTitle: 'CrockPot Chicken with Veggies',
-            recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
-            recipeConfirmedIngredientCount: 0,
-            recipeImage: 'crockpotchickenwithveggies.png',
-            recipeTimeToCook: '04:00',
-            recipeInstructions: recipe1Insructions
-        }
-        const recipe4 = {
-            recipeId: 4,
             recipeTitle: 'Beef w/Rice',
             recipeIngredients: ['Beef', 'Rice'],
             recipeConfirmedIngredientCount: 0,
@@ -79,7 +79,7 @@ export default class RecommendedRecipes extends React.Component {
             recipeTimeToCook: '00:40',
             recipeInstructions: recipe1Insructions
         }
-        const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
+        const recipeDatabase = [recipe1, recipe2, recipe3];
 
         // Step 1) Enter input Array
         console.log(confirmedIngredients);
@@ -136,7 +136,7 @@ export default class RecommendedRecipes extends React.Component {
         //     'Zuccini'
         // ];
         // this.getRecipes(dummyArray);
-        // console.log(this.props.confirmedIngredients);
+        console.log(this.props.confirmedIngredients);
         this.getRecipes(this.props.confirmedIngredients);
     }
     render(){

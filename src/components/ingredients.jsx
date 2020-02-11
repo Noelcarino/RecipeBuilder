@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/ingredient.css';
+import '../css/ingredients.css';
 
 export default class Ingredients extends React.Component{
     constructor(props){
@@ -10,6 +10,8 @@ export default class Ingredients extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(e){
+        var value = document.getElementById("searchbar");
+        // console.log(typeof(value.value));
         let currentIngredients = [];
         let newIngredients = [];
 
@@ -35,17 +37,33 @@ export default class Ingredients extends React.Component{
     }
     render(){
         let ingredientAdded = "bg-info";
+        let beforeSearch = '';
+        let afterSearch = '';
+        // // let beforeSearch = 'before-search';
+        // if (this.state.filtered.length !== 0){
+        //     if (document.getElementById('searchbar').value.length === 0){
+        //         beforeSearch = 'before-search';
+        //         afterSearch = '';
+        //     } else {
+        //         beforeSearch = '';
+        //         afterSearch = 'overflow-scroll';
+        //     }
+        // }
         return (
-            <div className="ingredient-list-container mx-auto">
-                <input type="text" className="ingredients-search-bar input mb-5" onChange={this.handleChange} placeholder="Search..." />
-                <div className="overflow-scroll mx-auto px-0">
-                    <ul className="list-group row px-3 w-100 mx-auto">
+            <div className="ingredient-list-container mx-auto border row bg-dark py-0">
+                <input id="searchbar" type="text" className="ingredients-search-bar input py-0" onChange={this.handleChange} placeholder="Search..." />
+                <div className={"overflow-scroll mx-auto px-0 py-0 " + beforeSearch + ' ' + afterSearch}>
+                    <ul className="overflow-list-group row px-3 w-100 mx-auto">
                         {this.state.filtered.map((ingredient)  => { 
+                            
+                            // console.log(document.getElementById('searchbar').value.length);
                             if (this.props.ingredientsToUse.includes(ingredient)){
+            // This code
+            // renders if ingredient is in list
                                 return (
                                 <li 
                                     key={ingredient}
-                                    className={ingredientAdded + " list-group-item w-100 mx-auto px-0 text-left row border-0"}>
+                                    className={ingredientAdded + " list-group-item w-100 mx-auto px-0 text-left row border py-0"}>
                                     <div className="container-fluid d-flex align-content-middle">
                                         <button className="btn btn-danger" >+ </button>
                                         <div className="container-fluid alingn-middle row">
@@ -54,18 +72,22 @@ export default class Ingredients extends React.Component{
                                     </div>
                                 </li>
                                 )} else {
+            // This code 
+            // renders if ingredient not in ingredients to add list
+            console.log("pasing?");
                                 return (
                                 <li 
                                     key={ingredient} 
-                                    className="list-group-item w-100 mx-auto px-0 text-left row border-0">
-                                    <div className="container-fluid d-flex align-content-middle">
-                                        <button className="btn btn-danger" onClick={() => this.props.addIngredient(ingredient)}> + </button>
-                                        <div className="container-fluid alingn-middle row">
-                                            <h6 className="align-self-center align-middle"> &nbsp; {ingredient}</h6>
+                                    className={"w-100 mx-auto px-0 text-left row border py-0 " + beforeSearch}>
+                                    <div className={"container-fluid d-flex align-content-middle " + beforeSearch}>
+                                        <button className={"btn btn-danger " + beforeSearch} onClick={() => this.props.addIngredient(ingredient)}> + </button>
+                                        <div className={"container-fluid alingn-middle row " + beforeSearch}>
+                                            <h6 className={"align-self-center align-middle " + beforeSearch} ></h6>
                                         </div>
                                     </div>
                                 </li>
-                            )}
+                            )
+                        }
                         })}
 
                     </ul>
