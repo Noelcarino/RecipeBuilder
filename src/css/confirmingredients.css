@@ -34,7 +34,7 @@
 }
 .build-ingredients-return-search button {
     height: 30px;
-    width: 50%;
+    width: 200px;
 }
 
 /****************** 
@@ -66,9 +66,12 @@
         }
         .build-ingredients-return-search button{
             height: 80px;
-            font-size: 2.7rem;
+            font-size: 2rem;
+            width: 425px;
         }
     }
+
+/* IPHONE 6/7/8 PLUS*/
 
 @media only screen 
     and (device-width : 414px) 
@@ -92,12 +95,14 @@
             height: 300px;
             width: 750px;
         }
-        .build-ingredients-return-search button {
+        .build-ingredients-return-search button{
             height: 80px;
-            font-size: 2.7rem;
+            font-size: 2rem;
+            width: 425px;
         }
     }
 
+/* IPHONE X */
 @media only screen 
     and (device-width : 375px) 
     and (device-height : 812px) 
@@ -120,8 +125,9 @@
             height: 300px;
             width: 750px;
         }
-        .build-ingredients-return-search button {
+        .build-ingredients-return-search button{
             height: 80px;
-            font-size: 2.7rem;
+            font-size: 2rem;
+            width: 425px;
         }
     }
