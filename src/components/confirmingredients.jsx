@@ -22,6 +22,18 @@ export default class ConfirmIngredients extends React.Component {
             ingredientsToConfirm: ingredients
         })
     }
+    resetIngredients(){
+        let defaultIngredients = ['Beef',    
+            'Brocolli',
+            'Carrots', 
+            'Chicken', 
+            'Rice',    
+            'Zuccini'  
+        ];
+        this.setState({
+            ingredientsToConfirm: defaultIngredients
+        })
+    }
     componentDidMount(){ 
         this.setState({
             ingredientsToConfirm: this.props.ingredientsToUse
@@ -66,7 +78,11 @@ export default class ConfirmIngredients extends React.Component {
                         </button>
                     </div>
                     
-
+                    <div className="container-fluid m-auto row">
+                        <button className="btn btn-dark mx-auto" onClick={() => this.resetIngredients()}>
+                            Reset Ingredients List
+                        </button>
+                    </div>
                     <div className="container-fluid m-auto row">
                         <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('dashboard', this.state.ingredientsToConfirm)}>
                             RETURN TO DASHBOARD
