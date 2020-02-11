@@ -31,7 +31,10 @@
     width: 90%;
     min-width: 425px;
     max-width: 750px;
-    border: 5px solid black;
+}
+.build-ingredients-return-search button {
+    height: 30px;
+    width: 50%;
 }
 
 /****************** 
@@ -54,8 +57,16 @@
             display: flex;
             justify-content: space-between;
         }
-        button.build-ingredients-return-search.btn {
-            background-color: blue;
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+            width: 750px;
+        }
+        .build-ingredients-return-search button{
+            height: 80px;
+            font-size: 2.7rem;
         }
     }
 
@@ -74,6 +85,17 @@
             display: flex;
             justify-content: space-between;
         }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+            width: 750px;
+        }
+        .build-ingredients-return-search button {
+            height: 80px;
+            font-size: 2.7rem;
+        }
     }
 
 @media only screen 
@@ -90,5 +112,16 @@
             min-height: 1000px;
             display: flex;
             justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+            width: 750px;
+        }
+        .build-ingredients-return-search button {
+            height: 80px;
+            font-size: 2.7rem;
         }
     }
