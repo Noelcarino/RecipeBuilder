@@ -1,7 +1,6 @@
 .confirm-ingredients-container{
     height: 100vh;
     padding: 20px 0px;
-    border: 15px solid black;
     background-color: #E4D4BA;
     overflow: scroll;
 }
@@ -30,6 +29,8 @@
 .build-ingredients-return-search{
     height: 175px;
     width: 90%;
+    min-width: 425px;
+    max-width: 750px;
     border: 5px solid black;
 }
 
