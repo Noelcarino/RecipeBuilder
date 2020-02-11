@@ -16,7 +16,14 @@ export default class RecipeBuilder extends React.Component {
                 name: 'dashboard',
                 previousView: '',
                 params: {
-                    ingredientsToUse: [],
+                    ingredientsToUse: [
+                        'Beef',    
+                        'Brocolli',
+                        'Carrots', 
+                        'Chicken', 
+                        'Rice',    
+                        'Zuccini'  
+                    ],
                     currentRecipeToCook: {}
                 }
             }

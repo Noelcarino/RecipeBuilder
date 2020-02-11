@@ -32,7 +32,7 @@ export default class DashBoard extends React.Component {
                     </div>
 
                     <div className="container-fluid m-auto">
-                        <button className="btn" onClick={() => this.props.setView('findingredients',this.props.ingredientsToUse)}>
+                        <button className="btn" onClick={() => this.props.setView('confirmingredients',this.props.ingredientsToUse)}>
                             BEGIN SEARCH
                         </button>
                     </div>
