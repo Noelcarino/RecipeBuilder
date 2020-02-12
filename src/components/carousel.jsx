@@ -50,8 +50,8 @@ export default class Carousel extends React.Component {
                     direction="left"
                     clickFunction={ this.previousSlide }
                     glyph="&#9664;" />
-                    <div className="img-title-container p-0 mx-auto">
 
+                    <div className="img-title-container p-0 mx-auto">
                     <ImageSlide url={this.state.imageArray[this.state.currentImageIndex]} />
                     {this.state.recipeTitleArray[this.state.currentImageIndex]}
                     </div>

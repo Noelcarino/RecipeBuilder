@@ -65,7 +65,7 @@ export default class DashBoard extends React.Component {
                 </div>
 
 
-                <div className="container-fluid mx-auto row p-0 mb-5">
+                <div className="container-fluid mx-auto row p-0">
                     <button className="btn mx-auto shadow px-5" onClick={() => this.props.setView('homepage')}>
                         Log Out
                     </button>
