@@ -53,6 +53,12 @@
     font-size: 1.8rem;
 }
 
+.carousel-container {
+    height: 250px;
+    width: 250px;
+
+}
+
 /****************** 
     MEDIA QUERIES
 *******************/
