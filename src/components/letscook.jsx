@@ -78,13 +78,13 @@ export default class LetsCook extends React.Component {
         if (this.state.componentDidMount){
             if (this.state.previousView === 'favoriterecipes'){
                 backButton = <button 
-                                className="btn mx-auto py-0"
+                                className="btn mx-auto p-0"
                                 onClick={() => this.props.setView('favoriterecipes')}>
-                                Go Back to Favorite Recipes
+                                View Favorite Recipes
                             </button>
             } else if (this.state.previousView === 'recommendedrecipes') {
                 backButton = <button 
-                                className="btn mx-auto py-0"
+                                className="btn mx-auto p-0"
                                 onClick={() => this.props.setView('recommendedrecipes', this.props.state.view.params.ingredientsToUse.confirmedIngredients)}>
                                 Go Back to Recipes
                             </button>

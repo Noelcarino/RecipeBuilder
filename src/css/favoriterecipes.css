@@ -2,13 +2,23 @@
     height: 100vh;
     border: 15px solid black;
     background-color: #E4D4BA;
+    font-family: DM Sans Diplay;
     overflow: scroll;
 }
-
 .favorite-recipes-component-title {
+    height: 50px;
     width: 90%;
-    height: 25;
+    min-width: 425px;
+    max-width: 750px;
+    font-size: 2.3rem;
     font-family: DM Sans Display;
+}
+.favorite-recipes-map-container {
+    min-height: 300px;
+    width: 90%;
+    box-sizing: border-box;
+    justify-content: space-around;
+    border: 1px solid black;
 }
 
 .favorite-recipe-component-back-to-dashboard {
@@ -17,10 +27,11 @@
 }
 
 .favorite-recipe {
-    height: 35vh;
-    width: 90%;
-    min-width: 400px;
-    max-width: 450px;
+    height: 300px;
+    width: 350px;
+    min-width: 350px;
+    margin-bottom: 35px;
+    border-radius: 10px;
 
     border-radius: 10px;
     background-color: white;
@@ -43,3 +54,37 @@
     height: 30%;
     width: 100%;
 }
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .favorite-recipes-component-title {
+            font-size: 4rem;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS*/
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .favorite-recipes-component-title {
+            font-size: 4rem;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .favorite-recipes-component-title {
+            font-size: 4rem;
+        }
+    }
