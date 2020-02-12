@@ -44,14 +44,14 @@ export default class DashBoard extends React.Component {
 
                 <div className="favorite-recipes-container mx-auto row px-0 mb-5 text-center">
 
-                    <div className="container-fluid m-auto">
+                    <div className="container-fluid m-auto mb-0">
                         <h1>
                             Favorite Recipes
                         </h1>
                     </div>
 
                     {/* MAKE A CAROUSEL COMPONENT HERE */}
-                    <div className="carousel-container container-fluid m-auto border">
+                    <div className="carousel-container container-fluid m-auto px-0">
                             {/* !!!ADD CAROUSEL COMPONENT HERE!!! */}
                             <Carousel />
                     </div>
