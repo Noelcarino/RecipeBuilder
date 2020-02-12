@@ -78,13 +78,13 @@ export default class LetsCook extends React.Component {
         if (this.state.componentDidMount){
             if (this.state.previousView === 'favoriterecipes'){
                 backButton = <button 
-                                className="btn btn-dark btn-block mx-auto"
+                                className="btn mx-auto py-0"
                                 onClick={() => this.props.setView('favoriterecipes')}>
                                 Go Back to Favorite Recipes
                             </button>
             } else if (this.state.previousView === 'recommendedrecipes') {
                 backButton = <button 
-                                className="btn btn-dark btn-block mx-auto"
+                                className="btn mx-auto py-0"
                                 onClick={() => this.props.setView('recommendedrecipes', this.props.state.view.params.ingredientsToUse.confirmedIngredients)}>
                                 Go Back to Recipes
                             </button>
@@ -135,18 +135,20 @@ export default class LetsCook extends React.Component {
                         </div>
                     </div>
 
+                    <div className="lets-cook-buttons mx-auto row py-0">
+                        <div className="container-fluid mx-auto mb-3 row col-12 col-md-6">
+                            {backButton}
+                        </div>
 
-                    <div className="container-fluid mx-auto mb-3 w-50">
-                        {backButton}
+                        <div className="container-fluid mx-auto row col-6">
+                            <button 
+                                className="btn mx-auto py-0"
+                                onClick={() => this.props.setView('dashboard')}>
+                                Back to Dashboard
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="container-fluid mx-auto mb-3 w-50">
-                        <button 
-                            className="btn btn-dark btn-block mx-auto"
-                            onClick={() => this.props.setView('dashboard')}>
-                            Back to Dashboard
-                        </button>
-                    </div>
                 </div>
             )
         } else {
