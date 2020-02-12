@@ -8,17 +8,27 @@
 .recipe-title-container{
     font-family: DM Sans Display;
     font-size: 1.5rem;
+    padding: 0 15vw;
     width: 90%;
+    min-width: 425px;
+    max-width: 1000px;
 }
-.lets-cook-img-container{
-    height: 50%; 
-    overflow: hidden;
-    box-shadow: 0 0 25px grey;
+.lets-cook-img-container {
     width: 90%;
-    border-radius: 15px;
+    min-width: 425px;
+    max-width: 750px;
+}
+.lets-cook-img{
+    height: 280px;
+    min-width: 425px;
+    max-width: 425px;
+
+    overflow: hidden;
+    box-shadow: 0 0 8px grey;
+    border-radius: 8px;
 }
 .img-container {
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
 }
 .recipe-instructions-container{
