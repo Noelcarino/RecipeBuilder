@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/letscook.css'; 
-import FavoriteRecipe from './favoriterecipe';
+
 
 export default class LetsCook extends React.Component {
     constructor(props){
@@ -89,12 +89,13 @@ export default class LetsCook extends React.Component {
                                 Go Back to Recipes
                             </button>
             }
+            // console.log(this.state.currentRecipeToCook.recipeImage);
             return (
-                <div className="lets-cook-container row p-5 mx-auto">
+                <div className="lets-cook-container row py-5 px-2 px-md-5 mx-auto">
 
                     {/* RECIPE TITLE CONTAINER */}
 
-                    <div className="recipe-title-container mx-auto px-0 row mb-5">
+                    <div className="recipe-title-container mx-auto row mb-5">
                         <div className="container-fluid mx-auto col-11 text-left">
                             {this.state.currentRecipeToCook.recipeTitle}
                         </div>
@@ -104,13 +105,16 @@ export default class LetsCook extends React.Component {
                     </div>
                     
                     {/* RECIPE IMAGE */}
-
-                    <div className="lets-cook-img-container mx-auto  row mb-3 p-0">
-                        <img 
-                            className="img-container w-100 p-0"
-                            src={require("../images/"+ this.state.currentRecipeToCook.recipeImage +"")} alt=""
-                        />
+                    <div className="lets-cook-img-container mx-auto p-0">
+                        <div style={{
+                                'backgroundImage' : 'url(' + require("../images/"+ this.state.currentRecipeToCook.recipeImage) + ')',
+                                'backgroundSize' : '100% 100%',
+                                'backgroundRepeat' : 'no-repeat'
+                            }} 
+                            className="lets-cook-img mx-auto p-0">
+                        </div>
                     </div>
+
 
                     {/* RECIPE INSTRUCTIONS */}
 
