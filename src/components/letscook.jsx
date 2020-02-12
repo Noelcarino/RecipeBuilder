@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/letscook.css'; 
+import FavoriteRecipe from './favoriterecipe';
 
 export default class LetsCook extends React.Component {
     constructor(props){
@@ -8,9 +9,11 @@ export default class LetsCook extends React.Component {
             componentDidMount: false,
             previousView: '',
             ingredientsToUse: [],
-            currentRecipeToCook: {}
+            currentRecipeToCook: {},
+            favoriteRecipe: false
         }
         this.getRecipeInformation = this.getRecipeInformation.bind(this);
+        this.addToFavorites = this.addToFavorites.bind(this);
     }
     getRecipeInformation(){
         // let dummyArray = [
@@ -50,11 +53,28 @@ export default class LetsCook extends React.Component {
         //     currentRecipeToCook: recipe1
         // })
     }
+    addToFavorites(newparam){
+        if (newparam) {
+            this.setState({favoriteRecipe: newparam})
+        }
+        if (!newparam) {
+            this.setState({favoriteRecipe: newparam})
+        }
+    }
     componentDidMount(){
         this.getRecipeInformation();
     }
     render(){
         let backButton;
+        let favoriteElement;
+
+        if (this.state.favoriteRecipe) {
+            favoriteElement = <i onClick={() => this.addToFavorites(false)} className="fa fa-heart mx-auto" aria-hidden="true"></i>
+        } 
+        if (!this.state.favoriteRecipe) {
+            favoriteElement = <i onClick={() => this.addToFavorites(true)} className="fa fa-heart-o mx-auto" aria-hidden="true"></i>
+        }
+
         if (this.state.componentDidMount){
             if (this.state.previousView === 'favoriterecipes'){
                 backButton = <button 
@@ -74,17 +94,12 @@ export default class LetsCook extends React.Component {
 
                     {/* RECIPE TITLE CONTAINER */}
 
-                    <div className="recipe-title-container mx-auto p-2 row mb-3">
-                        <div className="container-fluid mx-auto col-8">
-                            <h1>
-                                {this.state.currentRecipeToCook.recipeTitle}
-                            </h1>
+                    <div className="recipe-title-container mx-auto px-0 row mb-5">
+                        <div className="container-fluid mx-auto col-11 text-left">
+                            {this.state.currentRecipeToCook.recipeTitle}
                         </div>
-                        <div className="container-fluid mx-auto col-4">
-                            {/* <i class="far fa-heart"></i> */}
-
-                            <i className="fa fa-heart-o" aria-hidden="true"></i>
-                            <i className="fa fa-heart" aria-hidden="true"></i>
+                        <div className="container-fluid mx-auto col-1 text-center px-0">
+                            {favoriteElement}
                         </div>
                     </div>
                     

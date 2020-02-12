@@ -6,8 +6,9 @@
     overflow: scroll;
 }
 .recipe-title-container{
-    min-height: 15%;
     font-family: DM Sans Display;
+    font-size: 1.5rem;
+    width: 90%;
 }
 .lets-cook-img-container{
     height: 50%; 
