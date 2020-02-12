@@ -7,19 +7,12 @@ export default class FindIngredients extends React.Component {
         super(props);
         this.state = {
             ingredients: [
-                'Asparagus',
-                'Beets',
-                'Beef',
+                'Beef',    
                 'Brocolli',
-                'Cabbage',
-                'Carrots',
-                'Celery',
-                'Cauliflower',
-                'Chicken',
-                'Cucumber',
-                'Potatoes',
-                'Rice',
-                'Zuccini'
+                'Carrots', 
+                'Chicken', 
+                'Rice',    
+                'Zuccini'  
             ],
             ingredientsToUse: [],
         }
@@ -72,7 +65,7 @@ export default class FindIngredients extends React.Component {
         } else {
             element = <React.Fragment></React.Fragment>;
             confirmButton = <div className="container-fluid mx-auto row px-0 ">
-            <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('confirmingredients', this.state.ingredientsToUse)}>
+            <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('confirmingredients', this.state.ingredients)}>
                 CONFIRM
             </button>
             </div>
@@ -80,26 +73,24 @@ export default class FindIngredients extends React.Component {
         return (
             <div className="find-ingredients-component-container py-5 py-sm-45 py-md-5 py-lg-5 px-1 || row mx-auto">
 
-                <div className="search-ingredients-container mx-auto mb-5 row px-0 py-2 || col-sm-11 col-lg-5">
+                {/* <div className="search-ingredients-container mx-auto mb-5 row || col-sm-11 col-lg-5">
 
-                    {/* FIND INGREDIENTS HEADER SECTION */}
+                    FIND INGREDIENTS HEADER SECTION
                     <div className="container-fluid m-auto">
                         <div className="container-fluid mx-auto mb-3 text-center">
-                            <h1 className="display-4">
+                            <h1>
                                 Find Ingredients
                             </h1>
                         </div>
                         <div className="container-fluid mx-auto mb-5 text-center">
-                            <h2>
-                                Find your ingredients and build your recipe
-                            </h2>
+                            Find your ingredients and build your recipe
                         </div>
                     </div>
 
-                    <div className="container-fluid mx-auto ">
-                        <div className="mx-auto text-center ">
+                    <div className="container-fluid mx-auto py-0 ">
+                        <div className="mx-auto text-center py-0">
 
-                            {/* <Ingredients /> */}
+                            <Ingredients />
                             <Ingredients 
                                 ingredients={this.state.ingredients}
                                 ingredientsToUse={this.state.ingredientsToUse}
@@ -107,33 +98,39 @@ export default class FindIngredients extends React.Component {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* INGREDIENTS TO USE SECTION */}
                 <div className="ingredients-to-use-container mx-auto mb-5 p-2 || col-sm-11 col-lg-5">
-                    <div className="container-fluid mx-auto mb-5 text-center">
-                        <h1 className="display-4">
+                    <div className="container-fluid mx-auto mb-2 text-center">
+                        <h1>
                             Ingredients To Use ({this.state.ingredientsToUse.length})
                         </h1>
                     </div>
                     <div className="ingredients-to-use-map-section container-fluid mx-auto text-center row justify-content-start mb-5">
-                        {element}
-                        {this.state.ingredientsToUse.map(ingredient => {
-                            return (
-                                <div key={ingredient} className="col-6 px-3 row mx-auto mb-4">
-                                    <button 
-                                        className="btn btn-dark m-auto"
-                                        onClick={() => this.removeIngredient(ingredient)}>
-                                        <h4>
-                                            {ingredient} &nbsp; <i className="fa fa-times" aria-hidden="true"></i>
-                                        </h4>
-                                    </button>
-                                </div>
-                            )
-                        })}
+                        {/* {element} */}
+                        <ul className="list-group w-100 text-left ">
+                            {this.state.ingredients.map(ingredient => {
+                                return (
+                                    <li key={ingredient} className="list-group-item py-1 px-2 ">
+                                        {/* <button 
+                                            className="btn btn-dark m-auto"
+                                            onClick={() => this.removeIngredient(ingredient)}> */}
+                                            <i className="fa fa-times" aria-hidden="true"></i> &nbsp; 
+                                            {ingredient} 
+                                        {/* </button> */}
+                                    </li>
+                                )
+                            })}
+                        </ul>
                     </div>
 
-                    {confirmButton}
+                    {/* {confirmButton} */}
+                    <div className="container-fluid mx-auto row px-0 ">
+                        <button className="btn btn-dark mx-auto" onClick={() => this.props.setView('confirmingredients', this.state.ingredients)}>
+                            CONFIRM
+                        </button>
+                    </div>
                     
                 </div>
 

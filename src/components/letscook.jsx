@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/letscook.css'; 
 
+
 export default class LetsCook extends React.Component {
     constructor(props){
         super(props);
@@ -8,9 +9,11 @@ export default class LetsCook extends React.Component {
             componentDidMount: false,
             previousView: '',
             ingredientsToUse: [],
-            currentRecipeToCook: {}
+            currentRecipeToCook: {},
+            favoriteRecipe: false
         }
         this.getRecipeInformation = this.getRecipeInformation.bind(this);
+        this.addToFavorites = this.addToFavorites.bind(this);
     }
     getRecipeInformation(){
         // let dummyArray = [
@@ -50,85 +53,102 @@ export default class LetsCook extends React.Component {
         //     currentRecipeToCook: recipe1
         // })
     }
+    addToFavorites(newparam){
+        if (newparam) {
+            this.setState({favoriteRecipe: newparam})
+        }
+        if (!newparam) {
+            this.setState({favoriteRecipe: newparam})
+        }
+    }
     componentDidMount(){
         this.getRecipeInformation();
     }
     render(){
         let backButton;
+        let favoriteElement;
+
+        if (this.state.favoriteRecipe) {
+            favoriteElement = <i onClick={() => this.addToFavorites(false)} className="fa fa-heart mx-auto" aria-hidden="true"></i>
+        } 
+        if (!this.state.favoriteRecipe) {
+            favoriteElement = <i onClick={() => this.addToFavorites(true)} className="fa fa-heart-o mx-auto" aria-hidden="true"></i>
+        }
+
         if (this.state.componentDidMount){
             if (this.state.previousView === 'favoriterecipes'){
                 backButton = <button 
-                                className="btn btn-dark btn-block mx-auto"
+                                className="btn mx-auto p-0"
                                 onClick={() => this.props.setView('favoriterecipes')}>
-                                Go Back to Favorite Recipes
+                                View Favorite Recipes
                             </button>
             } else if (this.state.previousView === 'recommendedrecipes') {
                 backButton = <button 
-                                className="btn btn-dark btn-block mx-auto"
+                                className="btn mx-auto p-0"
                                 onClick={() => this.props.setView('recommendedrecipes', this.props.state.view.params.ingredientsToUse.confirmedIngredients)}>
                                 Go Back to Recipes
                             </button>
             }
             return (
-                <div className="lets-cook-container row p-5 mx-auto">
+                <div className="lets-cook-container row py-5 px-1 mx-auto">
 
                     {/* RECIPE TITLE CONTAINER */}
 
-                    <div className="recipe-title-container mx-auto p-2 row mb-3">
-                        <div className="container-fluid mx-auto col-8">
-                            <h1>
-                                {this.state.currentRecipeToCook.recipeTitle}
-                            </h1>
+                    <div className="recipe-title-container mx-auto row mb-5">
+                        <div className="container-fluid mx-auto col-11 text-left">
+                            {this.state.currentRecipeToCook.recipeTitle}
                         </div>
-                        <div className="container-fluid mx-auto col-4">
-                            {/* <i class="far fa-heart"></i> */}
-
-                            <i className="fa fa-heart-o" aria-hidden="true"></i>
-                            <i className="fa fa-heart" aria-hidden="true"></i>
+                        <div className="container-fluid mx-auto col-1 text-center px-0">
+                            {favoriteElement}
                         </div>
                     </div>
                     
                     {/* RECIPE IMAGE */}
-
-                    <div className="lets-cook-img-container mx-auto  row mb-3 p-0">
-                        <img 
-                            className="img-container w-100 p-0"
-                            src={require("../images/"+ this.state.currentRecipeToCook.recipeImage +"")} alt=""
-                        />
+                    <div className="lets-cook-img-container mx-auto p-0 mb-3">
+                        <div style={{
+                                'backgroundImage' : 'url(' + require("../images/"+ this.state.currentRecipeToCook.recipeImage) + ')',
+                                'backgroundSize' : '100% 100%',
+                                'backgroundRepeat' : 'no-repeat'
+                            }} 
+                            className="lets-cook-img mx-auto p-0">
+                        </div>
                     </div>
+
 
                     {/* RECIPE INSTRUCTIONS */}
 
-                    <div className="recipe-instructions-container row mx-auto px-0 py-3 mb-3">
+                    <div className="recipe-instructions-container row mx-auto px-0 mb-3 py-0">
 
-                        <div className="container-fluid mx-auto">
-                            <h3>
-                                Preparation
-                            </h3>
+                        <div className="container-fluid mx-auto text-center my-0">
+                            Instructions
                         </div>
-                        <div className="container-fluid recipe-instructions-list p-0 px-3 mx-auto">
-                            <ol className="list-group border-0">
+                        <div className="container-fluid recipe-instructions-list px-3 py-1 mx-auto text-center my-0">
+                            Scroll Down for more 
+                            <hr className="my-0" />                            
+                            <ol className="list-group">
                                 {this.state.currentRecipeToCook.recipeInstructions.map((steps,index) => {
                                     return (
-                                        <li className="list-group-item" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
+                                        <li className="list-group-item border-0" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
                                     )
                                 })}
                             </ol>
                         </div>
                     </div>
 
+                    <div className="lets-cook-buttons mx-auto row py-0">
+                        <div className="container-fluid mx-auto mb-3 row col-12 col-md-6">
+                            {backButton}
+                        </div>
 
-                    <div className="container-fluid mx-auto mb-3 w-50">
-                        {backButton}
+                        <div className="container-fluid mx-auto row col-6">
+                            <button 
+                                className="btn mx-auto py-0"
+                                onClick={() => this.props.setView('dashboard')}>
+                                Back to Dashboard
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="container-fluid mx-auto mb-3 w-50">
-                        <button 
-                            className="btn btn-dark btn-block mx-auto"
-                            onClick={() => this.props.setView('dashboard')}>
-                            Back to Dashboard
-                        </button>
-                    </div>
                 </div>
             )
         } else {

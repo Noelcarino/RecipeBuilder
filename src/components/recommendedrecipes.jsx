@@ -61,17 +61,17 @@ export default class RecommendedRecipes extends React.Component {
             recipeTimeToCook: '00:50',
             recipeInstructions: recipe1Insructions
         }
+        // const recipe3 = {
+        //     recipeId: 3,
+        //     recipeTitle: 'CrockPot Chicken with Veggies',
+        //     recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
+        //     recipeConfirmedIngredientCount: 0,
+        //     recipeImage: 'crockpotchickenwithveggies.png',
+        //     recipeTimeToCook: '04:00',
+        //     recipeInstructions: recipe1Insructions
+        // }
         const recipe3 = {
             recipeId: 3,
-            recipeTitle: 'CrockPot Chicken with Veggies',
-            recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
-            recipeConfirmedIngredientCount: 0,
-            recipeImage: 'crockpotchickenwithveggies.png',
-            recipeTimeToCook: '04:00',
-            recipeInstructions: recipe1Insructions
-        }
-        const recipe4 = {
-            recipeId: 4,
             recipeTitle: 'Beef w/Rice',
             recipeIngredients: ['Beef', 'Rice'],
             recipeConfirmedIngredientCount: 0,
@@ -79,7 +79,7 @@ export default class RecommendedRecipes extends React.Component {
             recipeTimeToCook: '00:40',
             recipeInstructions: recipe1Insructions
         }
-        const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
+        const recipeDatabase = [recipe1, recipe2, recipe3];
 
         // Step 1) Enter input Array
         console.log(confirmedIngredients);
@@ -136,22 +136,19 @@ export default class RecommendedRecipes extends React.Component {
         //     'Zuccini'
         // ];
         // this.getRecipes(dummyArray);
-        // console.log(this.props.confirmedIngredients);
+        console.log(this.props.confirmedIngredients);
         this.getRecipes(this.props.confirmedIngredients);
     }
     render(){
         return (
             <div className="recommended-recipes-container row px-0 py-5 mx-auto">
 
-                <div className="recommended-recipes-content-container mx-auto mb-5 text-center p-3">
+                <div className="recommended-recipes-content-container mx-auto text-center py-0 px-1">
                     <h1>Recommended Recipes</h1>
-
-                    <h3>
-                        With the recipes you've picked, here are some ingredients for you to try and cook!
-                    </h3>
+                    With the recipes you've picked, here are some ingredients for you to try and cook!
                 </div>
 
-                <div className="container-fluid mx-auto">
+                <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-0 px-3 py-0 row">
                     {this.state.recommendedRecipes.map((recipe,index) => {
                     return (<ConfirmedRecipe 
                                     key={index} 
@@ -162,9 +159,9 @@ export default class RecommendedRecipes extends React.Component {
                     })}
                 </div>
 
-                <div className="container-fluid mx-auto">
+                <div className="recommended-recipes-return-button-container mx-auto">
                     <button
-                        className="btn btn-dark btn-block w-50 mx-auto text-center"
+                        className="btn btn-dark mx-auto text-center"
                         onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
                         Return to Ingredients List
                     </button>

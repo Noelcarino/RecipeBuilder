@@ -77,20 +77,18 @@ export default class FavoriteRecipes extends React.Component {
             return (
                 <div className="favorite-recipes-component-container mx-auto row px-3 py-5">
 
-                    <div className="favorite-recipes-component-title text-center mb-5 mx-auto">
-                        <h1>
-                            Your Favorites
-                        </h1>
+                    <div className="favorite-recipes-component-title text-center mx-auto">
+                        Your Favorites
                     </div>
 
-                    <div className="container-fluid mx-auto">
+                    <div className="favorite-recipes-map-container mx-auto mb-3 px-3 py-0 row">
                         {this.state.favoriteRecipes.map((recipe,index) => {
                             return <FavoriteRecipe key={index} recipe={recipe} setView={this.props.setView} />
                         })}
                     </div>
 
                     <div className="favorite-recipe-component-back-to-dashboard mx-auto row p-0 ">
-                        <button className="btn btn-dark btn-block" onClick={() => this.props.setView('dashboard', [])}>
+                        <button className="btn mx-auto p-0 px-3" onClick={() => this.props.setView('dashboard')}>
                             Back to Dashboard
                         </button>
                     </div>
