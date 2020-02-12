@@ -49,7 +49,6 @@
     width: 95%;
     min-width: 425px;
     max-width: 850px;
-    border: 1px solid black;
 }
 .lets-cook-buttons button{
     height: 25px;
@@ -91,6 +90,15 @@
         .recipe-instructions-list{
             font-size: 2rem;
         }
+        .lets-cook-buttons {
+            height: 125px;
+        }
+        .lets-cook-buttons button{
+            height: 75px;
+            width: 475px;
+            font-size: 2.2rem;
+            margin-top: 25px;
+        }
         hr {
             background-color: black;
         }
@@ -128,6 +136,15 @@
         .recipe-instructions-list{
             font-size: 2rem;
         }
+        .lets-cook-buttons {
+            height: 125px;
+        }
+        .lets-cook-buttons button{
+            height: 75px;
+            width: 475px;
+            font-size: 2.2rem;
+            margin-top: 25px;
+        }
         hr {
             background-color: black;
         }
@@ -164,6 +181,15 @@
         }
         .recipe-instructions-list{
             font-size: 2rem;
+        }
+        .lets-cook-buttons {
+            height: 125px;
+        }
+        .lets-cook-buttons button{
+            height: 75px;
+            width: 475px;
+            font-size: 2.2rem;
+            margin-top: 25px;
         }
         hr {
             background-color: black;
