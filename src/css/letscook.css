@@ -20,8 +20,7 @@
 }
 .lets-cook-img{
     height: 280px;
-    min-width: 425px;
-    max-width: 425px;
+    width: 425px;
 
     overflow: hidden;
     box-shadow: 0 0 8px grey;
@@ -55,10 +54,13 @@
             padding: 0px;
         }
         .lets-cook-img-container {
-            width: 90%;
-            min-width: 425px;
-            max-width: 750px;
-            
+            width: 95%;
+            min-width: 500px;
+            max-width: 900px;
+        }
+        .lets-cook-img {
+            height: 500px;
+            width: 850px;
         }
     }
 
@@ -72,6 +74,15 @@
             font-size: 4rem;
             padding: 0px;
         }
+        .lets-cook-img-container {
+            width: 95%;
+            min-width: 500px;
+            max-width: 900px;
+        }
+        .lets-cook-img {
+            height: 500px;
+            width: 850px;
+        }
     }
 
 /* IPHONE X */
@@ -83,5 +94,14 @@
             font-family: DM Sans Display;
             font-size: 4rem;
             padding: 0px;
+        }
+        .lets-cook-img-container {
+            width: 95%;
+            min-width: 500px;
+            max-width: 900px;
+        }
+        .lets-cook-img {
+            height: 500px;
+            width: 850px;
         }
     }
