@@ -62,7 +62,8 @@
 }
 .carousel {
     height: 100%;
-    width: 100%;
+    width: 425px;
+    max-width: 425px;
     display: flex;
     flex-direction: row;
 }
@@ -72,12 +73,14 @@
 }
 .img-title-container {
     height: 100%;
+    width: 80%;
     padding: 0px;
+    font-size: 1.3rem;
 }
 .arrow {
     display: flex;
     justify-content: space-around;
-    padding: 15% 0px;
+    padding: 125px 0px;
 }
 /****************** 
     MEDIA QUERIES
