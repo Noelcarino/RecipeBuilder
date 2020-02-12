@@ -89,7 +89,6 @@ export default class LetsCook extends React.Component {
                                 Go Back to Recipes
                             </button>
             }
-            // console.log(this.state.currentRecipeToCook.recipeImage);
             return (
                 <div className="lets-cook-container row py-5 px-1 mx-auto">
 
@@ -105,7 +104,7 @@ export default class LetsCook extends React.Component {
                     </div>
                     
                     {/* RECIPE IMAGE */}
-                    <div className="lets-cook-img-container mx-auto p-0">
+                    <div className="lets-cook-img-container mx-auto p-0 mb-3">
                         <div style={{
                                 'backgroundImage' : 'url(' + require("../images/"+ this.state.currentRecipeToCook.recipeImage) + ')',
                                 'backgroundSize' : '100% 100%',
@@ -118,18 +117,18 @@ export default class LetsCook extends React.Component {
 
                     {/* RECIPE INSTRUCTIONS */}
 
-                    <div className="recipe-instructions-container row mx-auto px-0 py-3 mb-3">
+                    <div className="recipe-instructions-container row mx-auto px-0 mb-3 py-0">
 
-                        <div className="container-fluid mx-auto">
-                            <h3>
-                                Preparation
-                            </h3>
+                        <div className="container-fluid mx-auto text-center my-0">
+                            Instructions
                         </div>
-                        <div className="container-fluid recipe-instructions-list p-0 px-3 mx-auto">
-                            <ol className="list-group border-0">
+                        <div className="container-fluid recipe-instructions-list px-3 py-1 mx-auto text-center my-0">
+                            Scroll Down for more 
+                            <hr className="my-0" />                            
+                            <ol className="list-group">
                                 {this.state.currentRecipeToCook.recipeInstructions.map((steps,index) => {
                                     return (
-                                        <li className="list-group-item" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
+                                        <li className="list-group-item border-0" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
                                     )
                                 })}
                             </ol>
