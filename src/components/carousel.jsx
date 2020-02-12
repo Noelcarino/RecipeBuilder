@@ -45,7 +45,7 @@ export default class Carousel extends React.Component {
     }
     render(){
         return (
-            <div className="carousel mx-auto row p-0 d-flex border border-dark">
+            <div className="carousel mx-auto row p-0 d-flex">
                 <Arrow
                     direction="left"
                     clickFunction={ this.previousSlide }
@@ -72,13 +72,13 @@ const ImageSlide = ({ url }) => {
         backgroundRepeat: 'no-repeat',
     }
     return (
-        <div className="image-slide mx-auto px-0" style={styles}></div>
+        <div className="image-slide mx-auto px-0 mb-3" style={styles}></div>
     )
 }
 
 const Arrow = ({ direction, clickFunction, glyph }) => (
     <div
-      className={ `slide-arrow ${direction}` + " arrow mx-auto px-0 border border-dark"}
+      className={ `slide-arrow ${direction}` + " arrow mx-auto px-0"}
       onClick={ clickFunction }>
       { glyph }
     </div>
