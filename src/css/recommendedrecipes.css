@@ -14,11 +14,12 @@
     font-size: 1.5rem;
 }
 .recomended-recipes-confirmed-recipe-container {
+    min-height: 300px;
     width: 90%;
     min-width: 425px;
-    max-width: 1000px;
     border: 5px solid black;
     box-sizing: border-box;
+    justify-content: space-around;
 }
 
 /****************** 
