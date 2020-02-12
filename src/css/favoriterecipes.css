@@ -1,6 +1,6 @@
 .favorite-recipes-component-container {
     height: 100vh;
-    border: 15px solid black;
+    border: 15px solid #230F0F;
     background-color: #E4D4BA;
     font-family: DM Sans Diplay;
     overflow: scroll;
