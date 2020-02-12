@@ -51,7 +51,7 @@ export default class DashBoard extends React.Component {
                     </div>
 
                     {/* MAKE A CAROUSEL COMPONENT HERE */}
-                    <div className="carousel-container container-fluid m-auto px-0">
+                    <div className="carousel-container container-fluid m-auto px-0 mb-5">
                             {/* !!!ADD CAROUSEL COMPONENT HERE!!! */}
                             <Carousel />
                     </div>

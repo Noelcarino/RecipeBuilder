@@ -92,8 +92,9 @@
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
         .btn {
-            font-size: 2.3rem;
-            padding: 15px 55px;
+            height: 50px;
+            width: 300px;
+            font-size: 1.8rem;
             border-radius: 45px;
         }
         h1 {
@@ -115,6 +116,22 @@
             border-radius: 25px;
             min-height: 850px;
         }
+        .carousel-container {
+            height: 450px;
+        }
+        .carousel {
+            width: 550px;
+            max-width: 550px;
+        }
+        .image-slide {
+            width: 400px;
+        }
+        .img-title-container {
+            font-size: 1.8rem;
+        }
+        .arrow {
+            padding: 200px 0px;
+        }
     }
 
 /* IPHONE 6/7/8 PLUS */
@@ -123,20 +140,17 @@
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
         .btn {
-            font-size: 2.3rem;
-            padding: 15px 55px;
+            height: 50px;
+            width: 300px;
+            font-size: 1.8rem;
             border-radius: 45px;
         }
         h1 {
             font-size: 4rem;
             font-weight: bold;
         }
-        .dashboard-container {
-            padding: 50px 0px;
-        }
-        .welcome-back-container{
+        .welcome-back-container {
             min-height: 350px;
-            border-radius: 25px;
         }
         .welcome-back-container-description {
             font-size: 4rem;
@@ -148,7 +162,23 @@
         }
         .favorite-recipes-container {
             border-radius: 25px;
-            min-height: 800px;
+            min-height: 850px;
+        }
+        .carousel-container {
+            height: 450px;
+        }
+        .carousel {
+            width: 550px;
+            max-width: 550px;
+        }
+        .image-slide {
+            width: 400px;
+        }
+        .img-title-container {
+            font-size: 1.8rem;
+        }
+        .arrow {
+            padding: 200px 0px;
         }
     }
 
@@ -158,26 +188,44 @@
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
         .btn {
-            font-size: 2.3rem;
-            padding: 15px 55px;
+            height: 50px;
+            width: 300px;
+            font-size: 1.8rem;
+            border-radius: 45px;
         }
         h1 {
             font-size: 4rem;
             font-weight: bold;
         }
-        .welcome-back-container{
+        .welcome-back-container {
             min-height: 350px;
         }
-        .welcome-back-container-description{
-            font-size: 3.5rem;
+        .welcome-back-container-description {
+            font-size: 4rem;
         }
         .find-ingredients-container {
-            min-height: 500px;
-            font-size: 3rem;
+            min-height: 550px;
             border-radius: 25px;
+            font-size: 3rem;
         }
         .favorite-recipes-container {
-            min-height: 900px;
             border-radius: 25px;
+            min-height: 850px;
+        }
+        .carousel-container {
+            height: 450px;
+        }
+        .carousel {
+            width: 550px;
+            max-width: 550px;
+        }
+        .image-slide {
+            width: 400px;
+        }
+        .img-title-container {
+            font-size: 1.8rem;
+        }
+        .arrow {
+            padding: 200px 0px;
         }
     }
