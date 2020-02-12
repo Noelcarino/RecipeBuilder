@@ -19,7 +19,6 @@
     width: 90%;
     box-sizing: border-box;
     justify-content: space-around;
-    border: 1px solid black;
 }
 
 .favorite-recipe-component-back-to-dashboard {
@@ -59,6 +58,11 @@
     font-size: 0.8rem;
     width: 150px;
 }
+.favorite-recipe-component-back-to-dashboard button {
+    height: 30px;
+    font-size: 1rem;
+    width: 175px;
+}
 /****************** 
     MEDIA QUERIES
 *******************/
@@ -82,6 +86,11 @@
             font-size: 2rem;
             width: 300px;
         }
+        .favorite-recipe-component-back-to-dashboard button {
+            height: 70px;
+            font-size: 2.2rem;
+            width: 400px;
+        }
     }
 
 /* IPHONE 6/7/8 PLUS*/
@@ -103,6 +112,11 @@
             font-size: 2rem;
             width: 300px;
         }
+        .favorite-recipe-component-back-to-dashboard button {
+            height: 70px;
+            font-size: 2.2rem;
+            width: 400px;
+        }
     }
 
 /* IPHONE X */
@@ -123,5 +137,10 @@
         .favorite-recipe button {
             font-size: 2rem;
             width: 300px;
+        }
+        .favorite-recipe-component-back-to-dashboard button {
+            height: 70px;
+            font-size: 2.2rem;
+            width: 400px;
         }
     }

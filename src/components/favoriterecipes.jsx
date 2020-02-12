@@ -88,7 +88,7 @@ export default class FavoriteRecipes extends React.Component {
                     </div>
 
                     <div className="favorite-recipe-component-back-to-dashboard mx-auto row p-0 ">
-                        <button className="btn btn-dark btn-block" onClick={() => this.props.setView('dashboard')}>
+                        <button className="btn mx-auto p-0 px-3" onClick={() => this.props.setView('dashboard')}>
                             Back to Dashboard
                         </button>
                     </div>
