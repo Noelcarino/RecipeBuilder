@@ -91,7 +91,7 @@ export default class LetsCook extends React.Component {
             }
             // console.log(this.state.currentRecipeToCook.recipeImage);
             return (
-                <div className="lets-cook-container row py-5 px-2 px-md-5 mx-auto">
+                <div className="lets-cook-container row py-5 px-1 mx-auto">
 
                     {/* RECIPE TITLE CONTAINER */}
 
