@@ -24,7 +24,7 @@
 
     overflow: hidden;
     box-shadow: 0 0 8px grey;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 .recipe-instructions-container{
     height: 400px;
@@ -70,14 +70,19 @@
         }
         .recipe-instructions-container{
             height: 500px;
-            width: 95%;
+            width: 100%;
             min-width: 425px;
-            max-width: 750px;
-            background-color: grey;
+            max-width: 850px;
             font-size: 3rem
         }
         .recipe-instructions-container li {
             font-size: 2.3rem;
+        }
+        .recipe-instructions-list{
+            font-size: 2rem;
+        }
+        hr {
+            background-color: black;
         }
     }
 
@@ -100,6 +105,22 @@
             height: 500px;
             width: 850px;
         }
+        .recipe-instructions-container{
+            height: 500px;
+            width: 100%;
+            min-width: 425px;
+            max-width: 850px;
+            font-size: 3rem
+        }
+        .recipe-instructions-container li {
+            font-size: 2.3rem;
+        }
+        .recipe-instructions-list{
+            font-size: 2rem;
+        }
+        hr {
+            background-color: black;
+        }
     }
 
 /* IPHONE X */
@@ -120,5 +141,21 @@
         .lets-cook-img {
             height: 500px;
             width: 850px;
+        }
+        .recipe-instructions-container{
+            height: 900px;
+            width: 100%;
+            min-width: 425px;
+            max-width: 850px;
+            font-size: 3rem
+        }
+        .recipe-instructions-container li {
+            font-size: 2.3rem;
+        }
+        .recipe-instructions-list{
+            font-size: 2rem;
+        }
+        hr {
+            background-color: black;
         }
     }
