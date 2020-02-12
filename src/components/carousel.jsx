@@ -7,10 +7,9 @@ export default class Carousel extends React.Component {
         this.state = {
             imageArray: [
                 require("../images/beefwithrice.jpg"),
-                require("../images/beefwithrice.jpg"),
-                require("../images/beefwithrice.jpg"),
-                require("../images/beefwithrice.jpg"),
-                require("../images/beefwithrice.jpg")
+                require("../images/braisedchickenwithsteamedveggies.png"),
+                require("../images/herbedchickenwithroastedveggies.png"),
+                require("../images/crockpotchickenwithveggies.png"),
             ],
             currentImageIndex: 0
         };

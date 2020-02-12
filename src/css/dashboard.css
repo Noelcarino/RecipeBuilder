@@ -54,11 +54,16 @@
 }
 
 .carousel-container {
-    height: 250px;
-    width: 250px;
-
+    height: 300px;
+    width: 300px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;;
 }
-
+.image-slide {
+    height: 175px;
+    width: 175px;
+}
 /****************** 
     MEDIA QUERIES
 *******************/
