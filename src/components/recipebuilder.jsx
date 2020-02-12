@@ -15,7 +15,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'favoriterecipes',
+                name: 'dashboard',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -65,7 +65,6 @@ export default class RecipeBuilder extends React.Component {
             param = param.confirmedIngredients;
         }
         if (param === undefined || param === []) param = defaultIngredients;
-        console.log(param);
         this.setState({
             view: {
                 name:name,

@@ -1,4 +1,5 @@
 import React from 'react';
+import Carousel from './carousel';
 import '../css/dashboard.css';
 export default class DashBoard extends React.Component {
     render(){
@@ -50,8 +51,9 @@ export default class DashBoard extends React.Component {
                     </div>
 
                     {/* MAKE A CAROUSEL COMPONENT HERE */}
-                    <div className="container-fluid m-auto border">
-                            !!!ADD CAROUSEL COMPONENT HERE!!!
+                    <div className="carousel-container container-fluid m-auto border">
+                            {/* !!!ADD CAROUSEL COMPONENT HERE!!! */}
+                            <Carousel />
                     </div>
 
                     <div className="container-fluid m-auto">
