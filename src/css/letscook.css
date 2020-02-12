@@ -44,7 +44,17 @@
     overflow: scroll;
     font-size: 0.7rem;
 }
-
+.lets-cook-buttons {
+    height: 70px;
+    width: 95%;
+    min-width: 425px;
+    max-width: 850px;
+    border: 1px solid black;
+}
+.lets-cook-buttons button{
+    height: 25px;
+    width: 175px;
+}
 /****************** 
     MEDIA QUERIES
 *******************/
