@@ -1,4 +1,5 @@
 import React from 'react';
+import Carousel from './carousel';
 import '../css/dashboard.css';
 export default class DashBoard extends React.Component {
     render(){
@@ -43,15 +44,16 @@ export default class DashBoard extends React.Component {
 
                 <div className="favorite-recipes-container mx-auto row px-0 mb-5 text-center">
 
-                    <div className="container-fluid m-auto">
+                    <div className="container-fluid m-auto mb-0">
                         <h1>
                             Favorite Recipes
                         </h1>
                     </div>
 
                     {/* MAKE A CAROUSEL COMPONENT HERE */}
-                    <div className="container-fluid m-auto border">
-                            !!!ADD CAROUSEL COMPONENT HERE!!!
+                    <div className="carousel-container container-fluid m-auto px-0 mb-5">
+                            {/* !!!ADD CAROUSEL COMPONENT HERE!!! */}
+                            <Carousel />
                     </div>
 
                     <div className="container-fluid m-auto">
@@ -63,7 +65,7 @@ export default class DashBoard extends React.Component {
                 </div>
 
 
-                <div className="container-fluid mx-auto row p-0 mb-5">
+                <div className="container-fluid mx-auto row p-0">
                     <button className="btn mx-auto shadow px-5" onClick={() => this.props.setView('homepage')}>
                         Log Out
                     </button>
