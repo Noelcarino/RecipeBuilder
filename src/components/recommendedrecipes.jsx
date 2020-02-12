@@ -143,12 +143,12 @@ export default class RecommendedRecipes extends React.Component {
         return (
             <div className="recommended-recipes-container row px-0 py-5 mx-auto">
 
-                <div className="recommended-recipes-content-container mx-auto mb-3 text-center py-0 px-1">
+                <div className="recommended-recipes-content-container mx-auto text-center py-0 px-1">
                     <h1>Recommended Recipes</h1>
                     With the recipes you've picked, here are some ingredients for you to try and cook!
                 </div>
 
-                <div className="recomended-recipes-confirmed-recipe-container mx-auto py-3 mb-3 px-0 row">
+                <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-0 px-3 py-0 row">
                     {this.state.recommendedRecipes.map((recipe,index) => {
                     return (<ConfirmedRecipe 
                                     key={index} 

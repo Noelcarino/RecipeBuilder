@@ -4,7 +4,7 @@ export default class ConfirmedRecipe extends React.Component{
     render(){
         console.log(this.props);
         return (
-                <div className="confirmed-recipe mx-auto mb-4 align-items-end p-0">
+                <div className="confirmed-recipe mx-auto align-items-end p-0">
 
                     <div className="recipe-top-container p-0 ">
                         <img 
@@ -13,7 +13,7 @@ export default class ConfirmedRecipe extends React.Component{
                             alt={this.props.recipe.recipeTitle}/>
                     </div>
 
-                    <div className="recipe-bottom-container mx-auto row align-items-start border">
+                    <div className="recipe-bottom-container mx-auto row align-items-start">
 
                         <div className="container-fluid mx-auto text-center p-0">
                             {this.props.recipe.recipeTitle}
