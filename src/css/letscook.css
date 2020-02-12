@@ -16,7 +16,7 @@
 .lets-cook-img-container {
     width: 90%;
     min-width: 425px;
-    max-width: 750px;
+    max-width: 50%;
 }
 .lets-cook-img{
     height: 280px;
@@ -26,17 +26,23 @@
     box-shadow: 0 0 8px grey;
     border-radius: 8px;
 }
-.img-container {
-    /* overflow: hidden; */
-    position: relative;
-}
 .recipe-instructions-container{
-    height: 45%;
+    height: 400px;
+    width: 90%;
+    min-width: 425px;
+    max-width: 50%;
+    box-sizing: border-box;
     font-family: DM Sans Display;
+    font-size: 2rem;
+}
+.recipe-instructions-container li {
+    font-size: 1.2rem;
+    text-align: left;
 }
 .recipe-instructions-list {
-    height: 90%;
+    height: 85%;
     overflow: scroll;
+    font-size: 0.7rem;
 }
 
 /****************** 
@@ -61,6 +67,17 @@
         .lets-cook-img {
             height: 500px;
             width: 850px;
+        }
+        .recipe-instructions-container{
+            height: 500px;
+            width: 95%;
+            min-width: 425px;
+            max-width: 750px;
+            background-color: grey;
+            font-size: 3rem
+        }
+        .recipe-instructions-container li {
+            font-size: 2.3rem;
         }
     }
 
