@@ -28,7 +28,7 @@ export default class HomePage extends React.Component {
 
                     {/* CREDIT SECTION */}
                     <div className="thankyou-container row p-0 mx-auto">
-                        <div className="h-100 col-12 border p-0  mx-auto text-center">
+                        <div className="h-100 col-12 p-0  mx-auto text-center">
                             <div className="container">
                                 @ Katherine Tor - (UI/UX Designer)
                             </div>
