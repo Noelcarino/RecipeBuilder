@@ -15,7 +15,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'homepage',
+                name: 'confirmingredients',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -97,12 +97,12 @@ export default class RecipeBuilder extends React.Component {
                                 ingredientsToUse={this.state.view.params.ingredientsToUse}
                             />
                 break;
-            case 'findingredients':
-                element = <FindIngredients 
-                                setView={this.setView}
-                                ingredientsToUse={this.state.view.params.ingredientsToUse} 
-                            />
-                break;
+            // case 'findingredients':
+            //     element = <FindIngredients 
+            //                     setView={this.setView}
+            //                     ingredientsToUse={this.state.view.params.ingredientsToUse} 
+            //                 />
+            //     break;
             case 'confirmingredients':
                 element = <ConfirmIngredients 
                                 setView={this.setView}
