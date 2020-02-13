@@ -75,7 +75,7 @@ export default class FavoriteRecipes extends React.Component {
     render(){
         if (this.state.componentDidMount){
             return (
-                <div className="favorite-recipes-component-container mx-auto row px-3 py-5">
+                <div className="favorite-recipes-component-container mx-auto row px-3">
 
                     <div className="favorite-recipes-component-title text-center mx-auto">
                         Your Favorites
