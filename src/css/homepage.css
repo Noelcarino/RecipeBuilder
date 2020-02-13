@@ -46,5 +46,39 @@
 .thankyou-container{
     height: 10%;
     width: 75%;
-    font-size: 2vh;
+    font-size: 0.7rem;
 }
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .thankyou-container{
+            font-size: 1.9rem;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS*/
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .thankyou-container{
+            font-size: 1.9rem;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .thankyou-container{
+            font-size: 1.9rem;
+        }
+    }
