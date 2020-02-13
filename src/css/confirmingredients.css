@@ -1,6 +1,6 @@
 .confirm-ingredients-container{
     height: 100vh;
-    padding: 20px 0px;
+    padding-top: 50px;
     border: 15px solid #230F0F;
     background-color: #E4D4BA;
 }
@@ -46,6 +46,9 @@
     and (device-width : 375px) 
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
+        .confirm-ingredients-container{
+            padding-top: 175px;
+        }
         .confirm-ingredients-description {
             font-size: 3rem;
             min-height: 250px;
@@ -77,6 +80,9 @@
     and (device-width : 414px) 
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3){
+        .confirm-ingredients-container{
+            padding-top: 175px;
+        }
         .confirm-ingredients-description {
             min-height: 250px;
             font-size: 3rem;
@@ -107,6 +113,9 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .confirm-ingredients-container{
+            padding-top: 175px;
+        }
         .confirm-ingredients-description {
             font-size: 3rem;
             min-height: 300px;

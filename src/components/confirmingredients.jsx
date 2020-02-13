@@ -42,7 +42,7 @@ export default class ConfirmIngredients extends React.Component {
     }
     render(){
         return (
-            <div className="confirm-ingredients-container row px-0 py-5 mx-auto">
+            <div className="confirm-ingredients-container row px-0 mx-auto">
 
                 {/* INGREDIENTS LIST DESCRIPTION */}
                 <div className="confirm-ingredients-description mx-auto text-center p-0 mb-3">
