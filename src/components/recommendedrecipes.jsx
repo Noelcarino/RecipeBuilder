@@ -141,7 +141,7 @@ export default class RecommendedRecipes extends React.Component {
     }
     render(){
         return (
-            <div className="recommended-recipes-container row px-0 py-5 mx-auto">
+            <div className="recommended-recipes-container row px-0 mx-auto">
 
                 <div className="recommended-recipes-content-container mx-auto text-center py-0 px-1">
                     <h1>Recommended Recipes</h1>
