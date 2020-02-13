@@ -3,6 +3,18 @@
     color: white;
     border-radius: 45px;
 }
+.bg-test {
+    height: 100%;
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-5.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .btn:hover{
     color: grey;
 }

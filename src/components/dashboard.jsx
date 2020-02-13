@@ -4,7 +4,7 @@ import '../css/dashboard.css';
 export default class DashBoard extends React.Component {
     render(){
         return (
-            <div className="dashboard-container row m-0 px-3">
+            <div className="dashboard-container bg-test row m-0 px-3">
 
                 {/* WELCOME BACK SECTION */}
                 <div className="welcome-back-container mx-auto row mb-5">

@@ -161,7 +161,7 @@ export default class RecommendedRecipes extends React.Component {
 
                 <div className="recommended-recipes-return-button-container mx-auto">
                     <button
-                        className="btn btn-dark mx-auto text-center"
+                        className="btn mx-auto text-center py-0"
                         onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
                         Return to Ingredients List
                     </button>
