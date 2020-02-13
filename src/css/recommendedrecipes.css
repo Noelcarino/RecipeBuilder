@@ -34,8 +34,8 @@
             height: 215px;
             font-size: 2.5rem;
         }
-        .recomended-recipes-confirmed-recipe-container {
-            padding: 25px;
+        .recommended-recipes-return-button-container button {
+            width: 350px;
         }
     }
 
@@ -46,6 +46,9 @@
         .recommended-recipes-content-container {
             height: 215px;
             font-size: 2.5rem;
+        }
+        .recommended-recipes-return-button-container button {
+            width: 350px;
         }
     }
 
@@ -58,5 +61,8 @@
             height: 215px;
             font-size: 2.5rem;
             margin: 75px auto;
+        }
+        .recommended-recipes-return-button-container button {
+            width: 350px;
         }
     }
