@@ -1,5 +1,7 @@
 .recommended-recipes-container{
     height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
     border: 15px solid #230F0F;
     background-color: #E4D4BA;
     font-family: DM Sans Display;
@@ -30,6 +32,9 @@
     and (device-width : 375px) 
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
+        .recommended-recipes-container{
+            padding-top: 175px;
+        }
         .recommended-recipes-content-container {
             height: 215px;
             font-size: 2.5rem;
@@ -43,6 +48,9 @@
     and (device-width : 414px) 
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .recommended-recipes-container{
+            padding-top: 175px;
+        }
         .recommended-recipes-content-container {
             height: 215px;
             font-size: 2.5rem;
@@ -57,6 +65,9 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .recommended-recipes-container{
+            padding-top: 100px;
+        }
         .recommended-recipes-content-container {
             height: 215px;
             font-size: 2.5rem;

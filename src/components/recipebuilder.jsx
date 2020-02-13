@@ -15,7 +15,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'confirmingredients',
+                name: 'recommendedrecipes',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
