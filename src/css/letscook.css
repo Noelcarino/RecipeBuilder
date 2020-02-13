@@ -4,6 +4,7 @@
     background-color: white;
     font-family: DM Sans Display;
     overflow: scroll;
+    padding-top: 50px;
 }
 .recipe-title-container{
     font-family: DM Sans Display;
@@ -63,6 +64,9 @@
     and (device-width : 375px) 
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
+        .lets-cook-container {
+            padding-top: 175px;
+        }
         .recipe-title-container{
             font-family: DM Sans Display;
             font-size: 4rem;
@@ -109,6 +113,9 @@
     and (device-width : 414px) 
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .lets-cook-container {
+            padding-top: 175px;
+        }
         .recipe-title-container{
             font-family: DM Sans Display;
             font-size: 4rem;
@@ -155,6 +162,9 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .lets-cook-container {
+            padding-top: 175px;
+        }
         .recipe-title-container{
             font-family: DM Sans Display;
             font-size: 4rem;

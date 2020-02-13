@@ -90,7 +90,7 @@ export default class LetsCook extends React.Component {
                             </button>
             }
             return (
-                <div className="lets-cook-container row py-5 px-1 mx-auto">
+                <div className="lets-cook-container row  px-1 mx-auto">
 
                     {/* RECIPE TITLE CONTAINER */}
 
