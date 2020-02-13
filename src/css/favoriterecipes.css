@@ -4,6 +4,8 @@
     background-color: #E4D4BA;
     font-family: DM Sans Diplay;
     overflow: scroll;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 .favorite-recipes-component-title {
     height: 50px;
@@ -72,6 +74,9 @@
     and (device-width : 375px) 
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
+        .favorite-recipes-component-container {
+            padding-top: 175px;
+        }
         .favorite-recipes-component-title {
             margin-bottom: 100px;
             font-size: 4rem;
@@ -98,6 +103,9 @@
     and (device-width : 414px) 
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .favorite-recipes-component-container {
+            padding-top: 175px;
+        }
         .favorite-recipes-component-title {
             margin-bottom: 100px;
             font-size: 4rem;
@@ -124,6 +132,9 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        .favorite-recipes-component-container {
+            padding-top: 175px;
+        }
         .favorite-recipes-component-title {
             margin-bottom: 100px;
             font-size: 4rem;
