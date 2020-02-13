@@ -10,10 +10,54 @@
     padding: 0px 15px;
 }
 .recipebuilder-header-house-icon {
-    height: auto;
     height: 50px;
     width: 50px;
     background-image: url('../images/home-button.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .recipebuilder-header {
+            height: 150px;
+        }
+        .recipebuilder-header-house-icon {
+            height: 150px;
+            width: 150px;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .recipebuilder-header {
+            height: 150px;
+        }
+        .recipebuilder-header-house-icon {
+            height: 150px;
+            width: 150px;
+        }
+    }
+
+/* IPHONE X*/
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .recipebuilder-header {
+            height: 150px;
+        }
+        .recipebuilder-header-house-icon {
+            height: 150px;
+            width: 150px;
+        }
+    }

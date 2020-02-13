@@ -20,7 +20,7 @@
 }
 .dashboard-container{
     height: 100vh;
-    padding: 20px 0px;
+    padding: 25px 0px;
     border: 15px solid #230F0F;
     background-color: #E4D4BA;
     overflow: scroll;
@@ -113,6 +113,9 @@
             font-size: 4rem;
             font-weight: bold;
         }
+        .dashboard-container {
+            padding: 125px 0px;
+        }
         .welcome-back-container {
             min-height: 350px;
         }
@@ -161,6 +164,9 @@
             font-size: 4rem;
             font-weight: bold;
         }
+        .dashboard-container {
+            padding: 125px 0px;
+        }
         .welcome-back-container {
             min-height: 350px;
         }
@@ -199,6 +205,7 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        
         .btn {
             height: 50px;
             width: 300px;
@@ -208,6 +215,9 @@
         h1 {
             font-size: 4rem;
             font-weight: bold;
+        }
+        .dashboard-container {
+            padding: 125px 0px;
         }
         .welcome-back-container {
             min-height: 350px;
