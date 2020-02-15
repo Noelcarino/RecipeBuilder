@@ -1,0 +1,5 @@
+node_modules
+.idea
+.vscode
+server/public/main.js
+.DS_store
