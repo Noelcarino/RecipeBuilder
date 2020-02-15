@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import RecipeBuilder from './components/recipebuilder';
+
 
 ReactDOM.render(
-  <App/>,
+  <RecipeBuilder/>,
   document.querySelector('#root')
 );
