@@ -5,6 +5,7 @@ import FavoriteRecipes from './favoriterecipes';
 import ConfirmIngredients from './confirmingredients';
 import RecommendedRecipes from './recommendedrecipes';
 import LetsCook from './letscook';
+import Header from './header';
 
 export default class RecipeBuilder extends React.Component {
     constructor(props){
@@ -81,12 +82,12 @@ export default class RecipeBuilder extends React.Component {
     render(){
         const { name } = this.state.view;
         let element;
-        // let headerElement;
-        // if (name !== 'homepage'){
-        //     headerElement = <Header setView = {this.setView}/>
-        // } else {
-        //     headerElement = <React.Fragment></React.Fragment>
-        // }
+        let headerElement;
+        if (name !== 'homepage'){
+            headerElement = <Header setView = {this.setView}/>
+        } else {
+            headerElement = <React.Fragment></React.Fragment>
+        }
         switch(name){
             case 'homepage':
                 element = <HomePage 
@@ -138,7 +139,7 @@ export default class RecipeBuilder extends React.Component {
         }
         return (
             <div>
-                {/* {headerElement} */}
+                {headerElement}
                 {element}
             </div>
         )
