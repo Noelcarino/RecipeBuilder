@@ -9,7 +9,7 @@ export default class ConfirmedRecipe extends React.Component{
                     <div className="recipe-top-container p-0 ">
                         <img 
                             className="recipe-image img-fluid p-0 w-100 h-100" 
-                            src={require("../../server/public/images/"+this.props.recipe.recipeImage+"")}
+                            src={"images/"+this.props.recipe.recipeImage}
                             alt={this.props.recipe.recipeTitle}/>
                     </div>
 
