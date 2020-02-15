@@ -1,5 +1,6 @@
 import React from 'react';
 import HomePage from './homepage';
+import DashBoard from './dashboard';
 
 export default class RecipeBuilder extends React.Component {
     constructor(props){
