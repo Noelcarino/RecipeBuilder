@@ -6,10 +6,10 @@ export default class Carousel extends React.Component {
 
         this.state = {
             imageArray: [
-                require("../images/beefwithrice.jpg"),
-                require("../images/braisedchickenwithsteamedveggies.png"),
-                require("../images/herbedchickenwithroastedveggies.png"),
-                require("../images/crockpotchickenwithveggies.png"),
+                "images/beefwithrice.jpg",
+                "images/braisedchickenwithsteamedveggies.png",
+                "images/herbedchickenwithroastedveggies.png",
+                "images/crockpotchickenwithveggies.png",
             ],
             recipeTitleArray : [
                 'Beef W/ Rice',
@@ -52,8 +52,8 @@ export default class Carousel extends React.Component {
                     glyph="&#9664;" />
 
                     <div className="img-title-container p-0 mx-auto">
-                    <ImageSlide url={this.state.imageArray[this.state.currentImageIndex]} />
-                    {this.state.recipeTitleArray[this.state.currentImageIndex]}
+                        <ImageSlide url={this.state.imageArray[this.state.currentImageIndex]} />
+                        {this.state.recipeTitleArray[this.state.currentImageIndex]}
                     </div>
 
                 <Arrow
