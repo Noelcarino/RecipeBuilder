@@ -1,0 +1,142 @@
+.confirm-ingredients-container{
+    height: 100vh;
+    padding-top: 50px;
+    border: 15px solid #230F0F;
+    background-color: #E4D4BA;
+}
+.confirm-ingredients-description {
+    height: 150px;
+    width: 80%;
+    min-width: 425px;
+    max-width: 750px;
+    font-family: DM Sans Display;
+    font-size: 1.8rem; 
+}
+.confirm-ingredients-content {
+    padding: 25px 0px;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    width: 80%;
+    min-width: 425px;
+    max-width: 750px;
+    background-color: white;
+    box-shadow: 0 0 8px grey;
+    border-radius: 10px;
+    font-family: DM Serif Display;
+}
+
+.build-ingredients-return-search{
+    height: 175px;
+    width: 90%;
+    min-width: 425px;
+    max-width: 750px;
+}
+.build-ingredients-return-search button {
+    height: 30px;
+    width: 200px;
+}
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .confirm-ingredients-container{
+            padding-top: 175px;
+        }
+        .confirm-ingredients-description {
+            font-size: 3rem;
+            min-height: 250px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            min-height: 850px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+            width: 750px;
+        }
+        .build-ingredients-return-search button{
+            height: 80px;
+            font-size: 2rem;
+            width: 425px;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS*/
+
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3){
+        .confirm-ingredients-container{
+            padding-top: 175px;
+        }
+        .confirm-ingredients-description {
+            min-height: 250px;
+            font-size: 3rem;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            min-height: 850px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+            width: 750px;
+        }
+        .build-ingredients-return-search button{
+            height: 80px;
+            font-size: 2rem;
+            width: 425px;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .confirm-ingredients-container{
+            padding-top: 175px;
+        }
+        .confirm-ingredients-description {
+            font-size: 3rem;
+            min-height: 300px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            min-height: 1000px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+            width: 750px;
+        }
+        .build-ingredients-return-search button{
+            height: 80px;
+            font-size: 2rem;
+            width: 425px;
+        }
+    }
