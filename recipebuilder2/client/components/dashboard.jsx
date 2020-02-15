@@ -10,9 +10,11 @@ export default class DashBoard extends React.Component {
                 <div className="welcome-back-container mx-auto row mb-5">
 
                     <div className="container-fluid px-0 mx-auto col-4 row h-100">
-                        <img style={{"backgroundImage":"url('../src/images/catbug-profile-pic.jpg')"}} className="img-fluid rounded-circle m-auto welcome-back-container-image shadow-lg" 
+                        <img 
+                        // style={{backgroundImage:"url(" +"../../images/catbug-profile-pic.jpg"+ ")"}} 
+                        className="img-fluid rounded-circle m-auto welcome-back-container-image shadow-lg" 
                         // 'recipebuilder/recipebuilder2/client/components'
-                        // src={require('../../server/public/images/catbug-profile-pic.jpg')} 
+                        src={"images/catbug-profile-pic.jpg"} 
                         alt=""/>
                     </div>
 

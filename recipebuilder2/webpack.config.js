@@ -13,6 +13,10 @@ module.exports = {
   },
   module: {
     rules: [
+        {loaders: [{
+            test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+            loader: 'url-loader?limit=100000' 
+        }]},
       {
         test: /\.jsx?$/,
         include: srcPath,
@@ -24,6 +28,14 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       }
     ]
   },
