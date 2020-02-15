@@ -1,8 +1,9 @@
 import React from 'react';
 import HomePage from './homepage';
 import DashBoard from './dashboard';
-// import FavoriteRecipes from './favoriterecipes.jsx';
+import FavoriteRecipes from './favoriterecipes.jsx';
 import ConfirmIngredients from './confirmingredients.jsx';
+import RecommendedRecipes from './recommendedrecipes.jsx';
 
 export default class RecipeBuilder extends React.Component {
     constructor(props){

@@ -1,15 +1,20 @@
 import React from 'react';
+// let img = require('../..server/public/images/herbedchickenwithroastedveggies.png')
 
 export default class FavoriteRecipe extends React.Component {
     render(){
+        console.log(this.props.recipe.recipeImage)
         return (
             <div className="favorite-recipe mx-auto">
                 
                 <div className="favorite-recipe-top p-0">
                     <img 
                         className="recipe-image img-fluid p-0 w-100 h-100" 
-                        src={require("../images/"+this.props.recipe.recipeImage+"")}
-                        alt={this.props.recipe.recipeTitle}/>
+                        src={"images/"+this.props.recipe.recipeImage}
+                        // src={img}
+                        // style={{backgroundImage : "url("+"../../srver/public/images/herbedchickenwithroastedveggies.png" + ")"}}
+                        alt={this.props.recipe.recipeTitle}
+                        />
                 </div>
 
                 <div className="favorite-recipe-bottom mx-auto row align-items-start border py-2">
