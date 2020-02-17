@@ -1,5 +1,6 @@
 import React from 'react';
 import FavoriteRecipe from './favoriterecipe';
+import './css/favoriterecipes.css';
 
 export default class FavoriteRecipes extends React.Component {
     constructor(props){
@@ -77,17 +78,19 @@ export default class FavoriteRecipes extends React.Component {
                 <div className="favorite-recipes-component-container mx-auto row px-3">
 
                     <div className="favorite-recipes-component-title text-center mx-auto">
-                        Your Favorites
+                        <h1>
+                            Your Favorites
+                        </h1>
                     </div>
 
-                    <div className="favorite-recipes-map-container mx-auto mb-3 px-3 py-0 row">
+                    <div className="favorite-recipes-map-container mx-auto mb-3 px-0 py-0 row">
                         {this.state.favoriteRecipes.map((recipe,index) => {
                             return <FavoriteRecipe key={index} recipe={recipe} setView={this.props.setView} />
                         })}
                     </div>
 
                     <div className="favorite-recipe-component-back-to-dashboard mx-auto row p-0 ">
-                        <button className="btn mx-auto p-0 px-3" onClick={() => this.props.setView('dashboard')}>
+                        <button className="btn mx-auto p-0" onClick={() => this.props.setView('dashboard')}>
                             Back to Dashboard
                         </button>
                     </div>
