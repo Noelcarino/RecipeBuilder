@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from './carousel';
 import './css/dashboard.css';
-// import '!style-loader!css-loader!../../server/public/css/dashboard.css';
 
 export default class DashBoard extends React.Component {
     render(){
@@ -73,7 +72,7 @@ export default class DashBoard extends React.Component {
 
 
                 <div className="container-fluid mx-auto row p-0">
-                    <button className="btn mx-auto shadow px-5" onClick={() => this.props.setView('homepage')}>
+                    <button className="btn mx-auto shadow " onClick={() => this.props.setView('homepage')}>
                         Log Out
                     </button>
                 </div>
