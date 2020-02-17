@@ -208,9 +208,6 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
-        body {
-            font-size: 16rem;
-        }
         .btn {
             height: 25px;
             width: 150px;
@@ -218,8 +215,7 @@
             border-radius: 45px;
         }
         h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.2rem;
         }
         .dashboard-container {
             padding: 60px 0px;
@@ -231,12 +227,12 @@
             height: 50%;
         }
         .find-ingredients-container {
-            border-radius: 25px;
+            border-radius: 8px;
             font-size: 1.5rem;
         }
         .favorite-recipes-container {
-            height: 300px;
-            border-radius: 25px;
+            height: 350px;
+            border-radius: 8px;
         }
 
         .carousel-container {
