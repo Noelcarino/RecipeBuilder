@@ -1,6 +1,6 @@
 import React from 'react';
 import ConfirmedRecipe from './confirmedrecipe';
-
+import './css/recommendedrecipes.css';
 
 export default class RecommendedRecipes extends React.Component {
     constructor(props){
@@ -140,12 +140,12 @@ export default class RecommendedRecipes extends React.Component {
         return (
             <div className="recommended-recipes-container row px-0 mx-auto">
 
-                <div className="recommended-recipes-content-container mx-auto text-center py-0 px-1">
+                <div className="recommended-recipes-content-container mx-auto mb-3 text-center py-0 px-1">
                     <h1>Recommended Recipes</h1>
                     With the recipes you've picked, here are some ingredients for you to try and cook!
                 </div>
 
-                <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-0 px-3 py-0 row">
+                <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-3 py-0 row">
                     {this.state.recommendedRecipes.map((recipe,index) => {
                     return (<ConfirmedRecipe 
                                     key={index} 
@@ -156,7 +156,7 @@ export default class RecommendedRecipes extends React.Component {
                     })}
                 </div>
 
-                <div className="recommended-recipes-return-button-container mx-auto">
+                <div className="recommended-recipes-return-button-container mx-auto mb-3">
                     <button
                         className="btn mx-auto text-center py-0"
                         onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>

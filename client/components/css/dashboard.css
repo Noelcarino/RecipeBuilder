@@ -208,6 +208,9 @@
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
+        body {
+            font-size: 16rem;
+        }
         .btn {
             height: 25px;
             width: 150px;
