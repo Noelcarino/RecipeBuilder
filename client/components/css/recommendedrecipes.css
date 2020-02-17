@@ -1,5 +1,5 @@
 body {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 .recommended-recipes-container{
     height: 100vh;
@@ -67,6 +67,6 @@ body {
             padding-top: 75px;
         }
         .recomended-recipes-confirmed-recipe-container {
-            width: 85%;
+            width: 87%;
         }
     }

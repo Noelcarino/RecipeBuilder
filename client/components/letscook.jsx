@@ -1,5 +1,5 @@
 import React from 'react';
-// import '../css/letscook.css'; 
+import './css/letscook.css'; 
 
 
 export default class LetsCook extends React.Component {
@@ -96,7 +96,9 @@ export default class LetsCook extends React.Component {
 
                     <div className="recipe-title-container mx-auto row mb-5">
                         <div className="container-fluid mx-auto col-11 text-left">
-                            {this.state.currentRecipeToCook.recipeTitle}
+                            <h1>
+                                {this.state.currentRecipeToCook.recipeTitle}
+                            </h1>
                         </div>
                         <div className="container-fluid mx-auto col-1 text-center px-0">
                             {favoriteElement}
@@ -135,12 +137,12 @@ export default class LetsCook extends React.Component {
                         </div>
                     </div>
 
-                    <div className="lets-cook-buttons mx-auto row py-0">
+                    <div className="lets-cook-buttons mx-auto mb-3 row py-3">
                         <div className="container-fluid mx-auto mb-3 row col-12 col-md-6">
                             {backButton}
                         </div>
 
-                        <div className="container-fluid mx-auto row col-6">
+                        <div className="container-fluid mx-auto row col-12 col-md-6">
                             <button 
                                 className="btn mx-auto py-0"
                                 onClick={() => this.props.setView('dashboard')}>
