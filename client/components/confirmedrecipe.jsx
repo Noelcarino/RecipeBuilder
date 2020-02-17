@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './css/confirmedrecipe.css';
 export default class ConfirmedRecipe extends React.Component{
     render(){
         console.log(this.props);

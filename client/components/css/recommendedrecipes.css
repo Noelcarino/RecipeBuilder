@@ -1,3 +1,6 @@
+body {
+    font-size: 1.2rem;
+}
 .recommended-recipes-container{
     height: 100vh;
     padding-top: 50px;
@@ -10,15 +13,12 @@
 .recommended-recipes-content-container {
     height: 150px;
     width: 90%;
-    min-width: 425px;
     max-width: 750px;
     font-family: DM Display;
-    font-size: 1.5rem;
 }
 .recomended-recipes-confirmed-recipe-container {
     min-height: 300px;
     width: 90%;
-    min-width: 425px;
     box-sizing: border-box;
     justify-content: space-around;
 }
@@ -33,14 +33,7 @@
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
         .recommended-recipes-container{
-            padding-top: 175px;
-        }
-        .recommended-recipes-content-container {
-            height: 215px;
-            font-size: 2.5rem;
-        }
-        .recommended-recipes-return-button-container button {
-            width: 350px;
+            padding-top: 75px;
         }
     }
 
@@ -49,31 +42,31 @@
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
         .recommended-recipes-container{
-            padding-top: 175px;
-        }
-        .recommended-recipes-content-container {
-            height: 215px;
-            font-size: 2.5rem;
-        }
-        .recommended-recipes-return-button-container button {
-            width: 350px;
+            padding-top: 75px;
         }
     }
 
 /* IPHONE X */
+
+/* Vertical View */
 @media only screen 
     and (device-width : 375px) 
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
         .recommended-recipes-container{
-            padding-top: 100px;
+            padding-top: 75px;
         }
-        .recommended-recipes-content-container {
-            height: 215px;
-            font-size: 2.5rem;
-            margin: 75px auto;
+    }
+    
+/* Horizontal View */
+@media only screen 
+    and (device-width : 812px) 
+    and (device-height : 375px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .recommended-recipes-container{
+            padding-top: 75px;
         }
-        .recommended-recipes-return-button-container button {
-            width: 350px;
+        .recomended-recipes-confirmed-recipe-container {
+            width: 85%;
         }
     }
