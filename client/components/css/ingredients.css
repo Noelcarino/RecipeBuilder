@@ -1,0 +1,19 @@
+.ingredient-list-container {
+    height: 250px; 
+    /* overflow: hidden; */
+}
+.ingredients-search-bar {
+    border: 2px solid grey;
+    width: 100%;
+    /* padding: 1% 5%; */
+}
+.overflow-scroll {
+    border: 5px solid black;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.before-search {
+    height: 0px;
+}

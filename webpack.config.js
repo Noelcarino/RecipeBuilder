@@ -1,19 +1,23 @@
 const path = require('path');
 
-const srcPath = path.resolve(__dirname, 'src');
+const srcPath = path.resolve(__dirname, 'client');
 const publicPath = path.resolve(__dirname, 'server/public');
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  entry: './src',
+  entry: './client',
   output: {
     path: publicPath
   },
   module: {
     rules: [
-      { test: /\.css$/, use: 'css-loader' },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      // { test: /\.css$/i, use: ['css-loader', 'style-loader'] },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
@@ -45,7 +49,7 @@ module.exports = {
     watchContentBase: true,
     stats: 'minimal',
     proxy: {
-      '/api': {
+      '/api/': {
         target: 'http://localhost',
         headers: {
           Host: 'recipebuilder.localhost'
