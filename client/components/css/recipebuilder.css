@@ -18,7 +18,7 @@
 .recipebuilder-header-house-icon {
     height: 50px;
     width: 50px;
-    /* background-image: url('../images/home-button.png'); */
+    background-image: url('../images/home-button.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -32,11 +32,11 @@
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
         .recipebuilder-header {
-            height: 150px;
+            height: 55px;
         }
         .recipebuilder-header-house-icon {
-            height: 150px;
-            width: 150px;
+            height: 55px;
+            width: 55px;
         }
     }
 
@@ -46,11 +46,11 @@
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
         .recipebuilder-header {
-            height: 150px;
+            height: 55px;
         }
         .recipebuilder-header-house-icon {
-            height: 150px;
-            width: 150px;
+            height: 55px;
+            width: 55px;
         }
     }
 
@@ -60,10 +60,10 @@
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
         .recipebuilder-header {
-            height: 150px;
+            height: 55px;
         }
         .recipebuilder-header-house-icon {
-            height: 150px;
-            width: 150px;
+            height: 55px;
+            width: 55px;
         }
     }

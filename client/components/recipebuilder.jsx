@@ -8,7 +8,7 @@ import LetsCook from './letscook';
 import Header from './header';
 
 // require('!style-loader!css-loader!../../server/public/css/homepage.css')
-// import './css/recipebuilder.css';
+import './css/recipebuilder.css';
 
 
 export default class RecipeBuilder extends React.Component {
@@ -16,7 +16,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'homepage',
+                name: 'dashboard',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
