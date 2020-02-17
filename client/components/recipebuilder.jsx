@@ -7,9 +7,6 @@ import RecommendedRecipes from './recommendedrecipes';
 import LetsCook from './letscook';
 import Header from './header';
 
-// require('!style-loader!css-loader!../../server/public/css/homepage.css')
-import './css/recipebuilder.css';
-
 
 export default class RecipeBuilder extends React.Component {
     constructor(props){
