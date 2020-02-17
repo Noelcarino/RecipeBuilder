@@ -1,40 +1,38 @@
+body {
+    font-size: 1.8rem;
+}
 .confirm-ingredients-container{
     height: 100vh;
     padding-top: 50px;
     border: 15px solid #230F0F;
     background-color: #E4D4BA;
+    overflow: scroll;
 }
 .confirm-ingredients-description {
     height: 150px;
     width: 80%;
-    min-width: 425px;
     max-width: 750px;
     font-family: DM Sans Display;
-    font-size: 1.8rem; 
 }
 .confirm-ingredients-content {
     padding: 25px 0px;
     height: 350px;
-    min-height: 350px;
     max-height: 350px;
     width: 80%;
-    min-width: 425px;
     max-width: 750px;
     background-color: white;
     box-shadow: 0 0 8px grey;
     border-radius: 10px;
     font-family: DM Serif Display;
 }
-
 .build-ingredients-return-search{
     height: 175px;
     width: 90%;
-    min-width: 425px;
     max-width: 750px;
 }
 .build-ingredients-return-search button {
     height: 30px;
-    width: 200px;
+    width: 175px;
 }
 
 /****************** 
@@ -47,30 +45,23 @@
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
         .confirm-ingredients-container{
-            padding-top: 175px;
+            padding-top: 75px;
         }
         .confirm-ingredients-description {
-            font-size: 3rem;
-            min-height: 250px;
+            height: 175px;
             margin-bottom: 0px;
         }
         .confirm-ingredients-content {
             margin-top: 0px;
-            min-height: 850px;
             display: flex;
+            flex-direction: row;
+            height: 275px;
             justify-content: space-between;
         }
         .build-ingredients-return-search {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 300px;
-            width: 750px;
-        }
-        .build-ingredients-return-search button{
-            height: 80px;
-            font-size: 2rem;
-            width: 425px;
+            height: 150px;
         }
     }
 
@@ -81,30 +72,23 @@
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3){
         .confirm-ingredients-container{
-            padding-top: 175px;
+            padding-top: 75px;
         }
         .confirm-ingredients-description {
-            min-height: 250px;
-            font-size: 3rem;
+            height: 175px;
             margin-bottom: 0px;
         }
         .confirm-ingredients-content {
             margin-top: 0px;
-            min-height: 850px;
             display: flex;
+            flex-direction: row;
+            height: 275px;
             justify-content: space-between;
         }
         .build-ingredients-return-search {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 300px;
-            width: 750px;
-        }
-        .build-ingredients-return-search button{
-            height: 80px;
-            font-size: 2rem;
-            width: 425px;
+            height: 150px;
         }
     }
 
@@ -114,29 +98,22 @@
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
         .confirm-ingredients-container{
-            padding-top: 175px;
+            padding-top: 75px;
         }
         .confirm-ingredients-description {
-            font-size: 3rem;
-            min-height: 300px;
+            height: 175px;
             margin-bottom: 0px;
         }
         .confirm-ingredients-content {
             margin-top: 0px;
-            min-height: 1000px;
             display: flex;
+            flex-direction: row;
+            height: 275px;
             justify-content: space-between;
         }
         .build-ingredients-return-search {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 300px;
-            width: 750px;
-        }
-        .build-ingredients-return-search button{
-            height: 80px;
-            font-size: 2rem;
-            width: 425px;
+            height: 150px;
         }
     }

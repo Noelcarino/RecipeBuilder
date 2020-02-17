@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/confirmingredients.css';
 
 export default class ConfirmIngredients extends React.Component {
     constructor(props){
@@ -63,7 +64,7 @@ export default class ConfirmIngredients extends React.Component {
                 </div>
 
                 {/* CONFIRM INGREDIENTS TO BUILD RECIPE */}
-                <div className="build-ingredients-return-search mx-auto row">
+                <div className="build-ingredients-return-search mx-auto row mb-3">
 
                     <div className="container-fluid m-auto row col-lg-3 px-0">
                         <button className="btn mx-auto py-0" onClick={() => this.props.setView('recommendedrecipes', this.state.ingredientsToConfirm)}>
