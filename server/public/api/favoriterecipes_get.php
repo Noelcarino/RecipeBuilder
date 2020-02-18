@@ -14,6 +14,5 @@
     while($row = mysqli_fetch_assoc($getFavoritesResult)) $output[] = $row;
 
     if ($output === "[]") exit();
-
     print(json_encode($output));
 ?>
