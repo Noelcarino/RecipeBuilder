@@ -13,7 +13,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'favoriterecipes',
+                name: 'homepage',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -31,11 +31,11 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
 
     }
-    // componentDidMount(){
-    //     fetch('/api/recipebuilder.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
-    //         .then( res => res.text())
-    //         .then( res => console.log(res));
-    // }
+    componentDidMount(){
+        fetch('/api/recipebuilder.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
+            .then( res => res.text())
+            .then( res => console.log(res));
+    }
     setView(name, param){
         let defaultIngredients = ['Beef',    
             'Brocolli',
