@@ -11,6 +11,24 @@ export default class FavoriteRecipes extends React.Component {
         }
     }
     getFavoriteRecipes(){
+        let recipeDatabase;
+        fetch('/api/favoriterecipes.php', 
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    }
+                }
+            )
+            .then(res => res.json())
+            .then(res => {
+                this.setState({
+                    componentDidMount: true,
+                    favoriteRecipes: res
+                })
+                
+            });
+        console.log("favorite recipes recieved");
         let recipe1Insructions = [
             'First you gotta start the fire',
             'season the beef',
@@ -62,12 +80,12 @@ export default class FavoriteRecipes extends React.Component {
             recipeTimeToCook: '00:40',
             recipeInstructions: recipe1Insructions
         }
-        const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
+        // const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
 
-        this.setState({
-            componentDidMount: true,
-            favoriteRecipes: recipeDatabase
-        })
+        // this.setState({
+        //     componentDidMount: true,
+        //     favoriteRecipes: recipeDatabase
+        // })
     }
     componentDidMount(){
         this.getFavoriteRecipes();
