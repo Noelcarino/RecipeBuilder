@@ -10,8 +10,6 @@ export default class FavoriteRecipe extends React.Component {
                     <img 
                         className="recipe-image img-fluid p-0 w-100 h-100" 
                         src={"images/"+this.props.recipe.image}
-                        // src={img}
-                        // style={{backgroundImage : "url("+"../../srver/public/images/herbedchickenwithroastedveggies.png" + ")"}}
                         alt={this.props.recipe.title}
                         />
                 </div>
