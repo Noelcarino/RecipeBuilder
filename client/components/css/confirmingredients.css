@@ -24,6 +24,7 @@ body {
     box-shadow: 0 0 8px grey;
     border-radius: 10px;
     font-family: DM Serif Display;
+    overflow: scroll;
 }
 .build-ingredients-return-search{
     height: 175px;

@@ -20,7 +20,10 @@ export default class RecipeBuilder extends React.Component {
                         'Beef',    
                         'Brocolli',
                         'Carrots', 
-                        'Chicken', 
+                        'Cheese',
+                        'Chicken',
+                        'Macaroni',
+                        'Salmon', 
                         'Rice',    
                         'Zuccini'  
                     ],
@@ -31,16 +34,20 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
 
     }
-    componentDidMount(){
-        fetch('/api/recipes.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
-            .then( res => res.text())
-            .then( res => console.log(res));
-    }
+    // componentDidMount(){
+    //     fetch('/api/recipes.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
+    //         .then( res => res.text())
+    //         .then( res => console.log(res));
+    // }
     setView(name, param){
-        let defaultIngredients = ['Beef',    
+        let defaultIngredients = [
+            'Beef',    
             'Brocolli',
             'Carrots', 
-            'Chicken', 
+            'Cheese',
+            'Chicken',
+            'Macaroni',
+            'Salmon', 
             'Rice',    
             'Zuccini'  
         ];
