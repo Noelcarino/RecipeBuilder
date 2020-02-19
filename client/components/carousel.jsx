@@ -45,13 +45,13 @@ export default class Carousel extends React.Component {
     }
     render(){
         return (
-            <div className="carousel mx-auto row p-0 d-flex">
+            <div className="carousel container-fluid mx-auto row p-0 d-flex mb-0">
                 <Arrow
                     direction="left"
                     clickFunction={ this.previousSlide }
                     glyph="&#9664;" />
 
-                    <div className="img-title-container p-0 mx-auto">
+                    <div className="img-title-container p-0 mx-auto mb-0">
                         <ImageSlide url={this.state.imageArray[this.state.currentImageIndex]} />
                         {this.state.recipeTitleArray[this.state.currentImageIndex]}
                     </div>
@@ -72,7 +72,7 @@ const ImageSlide = ({ url }) => {
         backgroundRepeat: 'no-repeat',
     }
     return (
-        <div className="image-slide mx-auto px-0 mb-3" style={styles}></div>
+        <div className="image-slide mx-auto px-0 mb-1" style={styles}></div>
     )
 }
 

@@ -1,6 +1,4 @@
 import React from 'react';
-//  require('!style-loader!css-loader!../../server/public/css/homepage.css');
-//  import Styles from 'style-loader!css-loader!../../server/public/css/homepage.css';
 import './css/homepage.css';
 
 export default class HomePage extends React.Component {
@@ -8,7 +6,6 @@ export default class HomePage extends React.Component {
         return (
             <div className="homepage-container m-0">
                 <div className="homepage-bg py-5">
-
 
                     {/* WELCOME SECTION */}
                     <div className="welcome-container row text-center p-0 mb-4 mx-auto ">

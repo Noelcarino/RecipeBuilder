@@ -19,9 +19,12 @@
 .favorite-recipes-component-title {
     height: 50px;
     width: 90%;
-    max-width: 750px;
+    max-width: 425px;
     margin-bottom: 30px;
     font-family: DM Sans Display;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 8px grey;
 }
 .favorite-recipes-map-container {
     min-height: 300px;

@@ -73,7 +73,6 @@ export default class LetsCook extends React.Component {
                         </div>
                     </div>
 
-
                     {/* RECIPE IMAGE */}
                     <div className="lets-cook-img-container mx-auto p-0 mb-3">
                         <div style={{
@@ -84,7 +83,6 @@ export default class LetsCook extends React.Component {
                             className="lets-cook-img mx-auto p-0">
                         </div>
                     </div>
-
 
                     {/* RECIPE INSTRUCTIONS */}
                     <div className="recipe-instructions-container row mx-auto px-0 mb-3 py-0">

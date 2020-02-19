@@ -12,11 +12,10 @@ export default class DashBoard extends React.Component {
 
                     <div className="container-fluid px-0 mx-auto col-4 row h-100">
                         <img 
-                        // style={{backgroundImage:"url(" +"../../images/catbug-profile-pic.jpg"+ ")"}} 
                         className="img-fluid rounded-circle m-auto welcome-back-container-image shadow-lg" 
-                        // 'recipebuilder/recipebuilder2/client/components'
                         src={"images/catbug-profile-pic.jpg"} 
-                        alt=""/>
+                        alt=""
+                        />
                     </div>
 
                     <div className="welcome-back-container-description col-7 text-center p-0 m-auto">
@@ -33,11 +32,9 @@ export default class DashBoard extends React.Component {
                             Find Ingredients
                         </h1>
                     </div>
-                    
                     <div className="container-fluid m-auto">
                         Let's create your ingredients list to build your recipe
                     </div>
-
                     <div className="container-fluid m-auto">
                         <button className="btn" onClick={() => this.props.setView('confirmingredients',this.props.ingredientsToUse)}>
                             BEGIN SEARCH
@@ -47,7 +44,6 @@ export default class DashBoard extends React.Component {
                 </div>
 
                 {/* FAVORITE RECIPES */}
-
                 <div className="favorite-recipes-container mx-auto row px-0 mb-5 text-center">
 
                     <div className="container-fluid m-auto mb-0">
@@ -57,7 +53,7 @@ export default class DashBoard extends React.Component {
                     </div>
 
                     {/* MAKE A CAROUSEL COMPONENT HERE */}
-                    <div className="carousel-container container-fluid m-auto px-0 mb-5">
+                    <div className="carousel-container container-fluid m-auto px-0">
                             {/* !!!ADD CAROUSEL COMPONENT HERE!!! */}
                             <Carousel />
                     </div>
@@ -76,8 +72,6 @@ export default class DashBoard extends React.Component {
                         Log Out
                     </button>
                 </div>
-                
-                
             </div>
         )
     }

@@ -34,11 +34,6 @@ export default class RecipeBuilder extends React.Component {
         this.setView = this.setView.bind(this);
 
     }
-    // componentDidMount(){
-    //     fetch('/api/recipes.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
-    //         .then( res => res.text())
-    //         .then( res => console.log(res));
-    // }
     setView(name, param){
         let defaultIngredients = [
             'Beef',

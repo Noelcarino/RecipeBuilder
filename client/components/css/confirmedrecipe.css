@@ -1,6 +1,6 @@
 .confirmed-recipe{
-    height: 300px;
-    width: 350px;
+    height: 250px;
+    width: 300px;
     margin-bottom: 35px;
     border-radius: 10px;
     background-color: white;
@@ -35,8 +35,6 @@
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
         .confirmed-recipe {
-            height: 300px;
-            width: 300px;
             margin-bottom: 50px;
             font-size: 1rem;
         }
@@ -51,8 +49,6 @@
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3) {
         .confirmed-recipe {
-            height: 300px;
-            width: 300px;
             margin-bottom: 50px;
             font-size: 1rem;
         }
@@ -67,8 +63,6 @@
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
         .confirmed-recipe {
-            height: 300px;
-            width: 300px;
             margin-bottom: 50px;
             font-size: 1rem;
         }
