@@ -98,7 +98,7 @@ export default class FavoriteRecipes extends React.Component {
             return (
                 <div className="favorite-recipes-component-container mx-auto row px-3">
 
-                    <div className="favorite-recipes-component-title text-center mx-auto">
+                    <div className="favorite-recipes-component-title text-center mx-auto py-0">
                         <h1>
                             Your Favorites
                         </h1>
