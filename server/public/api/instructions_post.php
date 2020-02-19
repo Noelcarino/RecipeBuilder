@@ -14,10 +14,8 @@
 
     $output = [];
     $row = mysqli_fetch_assoc($recipeInstructionsQueryResult);
-    $pieces = explode('-', $row['instructions']);
-    for ($i = 0; $i < count($pieces); $i++){
-        $output[] = $pieces[$i];
-    }
+    $pieces = preg_split('/\\r\\n|\\r|\\n/', $row['instructions']);
+    for ($i = 0; $i < count($pieces); $i++)if ($pieces[$i] !== "" && $pieces[$i] !== " ")$output[] = $pieces[$i];
 
     if ($output === "[]") exit();
     print(json_encode($output));
