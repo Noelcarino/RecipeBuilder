@@ -2,7 +2,6 @@ import React from 'react';
 import './css/confirmedrecipe.css';
 export default class ConfirmedRecipe extends React.Component{
     render(){
-        console.log(this.props);
         return (
                 <div className="confirmed-recipe mx-auto align-items-end p-0">
 

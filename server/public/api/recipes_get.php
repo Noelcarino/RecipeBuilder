@@ -5,6 +5,12 @@
         exit('Direct Access Not Allowed');
     }
 
+
+    // CAPTURE CONFIRMED INGREDIENTS
+    $confirmedIngredients = getBodyData();
+    print($confirmedIngredients['confirmedIngredients']);
+    exit();
+
     $getRecipes = "SELECT `id`,`ingredients` FROM `recipes`";
     $getRecipesResult = mysqli_query($conn, $getRecipes);
 
@@ -21,14 +27,14 @@
 
     // Check each recipe's ingredients
 
-    for ($i = 0; $i <= count($outputTestOne[$i]); $i++){
-        print ($i);
-        for ($j = 0; $j <= count($outputTestOne[$i]['ingredients']); $j++){
-            print($j);
-            print($outputTestOne[$i]['ingredients'][$j]);
-        }
-        print(' ');
-    }
+    // for ($i = 0; $i <= count($outputTestOne[$i]); $i++){
+    //     print ($i);
+    //     for ($j = 0; $j <= count($outputTestOne[$i]['ingredients']); $j++){
+    //         print($j);
+    //         print($outputTestOne[$i]['ingredients'][$j]);
+    //     }
+    //     print(' ');
+    // }
 
 
 
@@ -48,6 +54,6 @@
 
 
 
-    // print(json_encode($outputTestOne));
+    print(json_encode($outputTestOne));
 
 ?>
