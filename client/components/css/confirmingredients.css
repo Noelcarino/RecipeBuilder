@@ -6,19 +6,33 @@ body {
     padding-top: 50px;
     border: 15px solid #230F0F;
     /* background-color: #E4D4BA; */
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
     overflow: scroll;
+
+    /* height: 100%; */
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-1.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgrey;
 }
 .confirm-ingredients-description {
     height: 150px;
     width: 80%;
     max-width: 750px;
     font-family: DM Sans Display;
+    background-color: white;
+    border-radius: 10px;
 }
 .confirm-ingredients-content {
     padding: 25px 0px;
-    height: 350px;
-    max-height: 350px;
+    height: 400px;
+    max-height: 400px;
     width: 80%;
     max-width: 750px;
     background-color: white;
@@ -47,17 +61,17 @@ body {
     and (device-height : 667px) 
     and (-webkit-device-pixel-ratio : 2) {
         .confirm-ingredients-container{
-            padding-top: 75px;
+            padding-top: 100px;
         }
         .confirm-ingredients-description {
-            height: 175px;
+            height: 100px;
             margin-bottom: 0px;
         }
         .confirm-ingredients-content {
             margin-top: 0px;
             display: flex;
             flex-direction: row;
-            height: 275px;
+            height: 300px;
             justify-content: space-between;
         }
         .build-ingredients-return-search {
@@ -74,17 +88,17 @@ body {
     and (device-height : 736px) 
     and (-webkit-device-pixel-ratio : 3){
         .confirm-ingredients-container{
-            padding-top: 75px;
+            padding-top: 100px;
         }
         .confirm-ingredients-description {
-            height: 175px;
+            height: 100px;
             margin-bottom: 0px;
         }
         .confirm-ingredients-content {
             margin-top: 0px;
             display: flex;
             flex-direction: row;
-            height: 275px;
+            height: 300px;
             justify-content: space-between;
         }
         .build-ingredients-return-search {
@@ -100,17 +114,17 @@ body {
     and (device-height : 812px) 
     and (-webkit-device-pixel-ratio : 3) {
         .confirm-ingredients-container{
-            padding-top: 75px;
+            padding-top: 100px;
         }
         .confirm-ingredients-description {
-            height: 175px;
+            height: 100px;
             margin-bottom: 0px;
         }
         .confirm-ingredients-content {
             margin-top: 0px;
             display: flex;
             flex-direction: row;
-            height: 275px;
+            height: 300px;
             justify-content: space-between;
         }
         .build-ingredients-return-search {

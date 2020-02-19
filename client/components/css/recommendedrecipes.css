@@ -10,12 +10,25 @@ body {
     background-color: lightgrey;
     font-family: DM Sans Display;
     overflow: scroll;
+
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-1.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgrey;
 }
 .recommended-recipes-content-container {
     height: 150px;
-    width: 90%;
+    width: 87%;
     max-width: 750px;
     font-family: DM Display;
+    background-color: white;
+    border-radius: 8px;
 }
 .recomended-recipes-confirmed-recipe-container {
     min-height: 300px;

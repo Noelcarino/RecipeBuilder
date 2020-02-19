@@ -7,16 +7,17 @@
     font-size: 0.9rem;
 }
 .bg-test {
-    /* height: 100%;
+    height: 100%;
     background: 
         linear-gradient(
             rgba(255, 255, 255, 0.40),
             rgba(255, 226, 226, 0.4)
         ),
-        url('../images/bg-test-5.png');
+        url('../images/bg-test-1.png');
     background-position: 0%;
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
+    background-color: lightgrey;
 }
 .btn:hover{
     color: grey;
@@ -26,7 +27,7 @@
     padding: 50px 0px;
     border: 15px solid #230F0F;
     /* background-color: #E4D4BA; */
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
 
     overflow: scroll;
 }
