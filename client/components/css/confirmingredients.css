@@ -5,7 +5,8 @@ body {
     height: 100vh;
     padding-top: 50px;
     border: 15px solid #230F0F;
-    background-color: #E4D4BA;
+    /* background-color: #E4D4BA; */
+    background-color: lightgrey;
     overflow: scroll;
 }
 .confirm-ingredients-description {
@@ -24,6 +25,7 @@ body {
     box-shadow: 0 0 8px grey;
     border-radius: 10px;
     font-family: DM Serif Display;
+    overflow: scroll;
 }
 .build-ingredients-return-search{
     height: 175px;

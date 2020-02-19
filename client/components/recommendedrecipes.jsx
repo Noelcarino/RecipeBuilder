@@ -15,11 +15,9 @@ export default class RecommendedRecipes extends React.Component {
         this.getRecipes = this.getRecipes.bind(this);
     }
     getRecipes(confirmedIngredients){
-        console.log(confirmedIngredients);
         let ingredientObj = {
             confirmedIngredients: confirmedIngredients
         }
-        
         fetch( '/api/recipes.php' , 
             {
                 method: 'POST',
@@ -29,8 +27,16 @@ export default class RecommendedRecipes extends React.Component {
                 },
                 body: JSON.stringify(ingredientObj)
             })
-        .then(res => res.text())
-        .then(res => console.log(res));
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                previousView: '',
+                confirmedIngredients: confirmedIngredients,
+                recommendedRecipes: res
+            })
+        });
+
+        return;
         /*
             1) this.state.recommendedRecipes -> array of objects
             2) When writing this function... 

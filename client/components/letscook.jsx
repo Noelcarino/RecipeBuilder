@@ -97,7 +97,7 @@ export default class LetsCook extends React.Component {
                     <div className="recipe-title-container mx-auto row mb-5">
                         <div className="container-fluid mx-auto col-11 text-left">
                             <h1>
-                                {this.state.currentRecipeToCook.recipeTitle}
+                                {this.state.currentRecipeToCook.title}
                             </h1>
                         </div>
                         <div className="container-fluid mx-auto col-1 text-center px-0">
@@ -108,7 +108,7 @@ export default class LetsCook extends React.Component {
                     {/* RECIPE IMAGE */}
                     <div className="lets-cook-img-container mx-auto p-0 mb-3">
                         <div style={{
-                                'backgroundImage' : "url(/images/"+ this.state.currentRecipeToCook.recipeImage+")",
+                                'backgroundImage' : "url(/images/"+ this.state.currentRecipeToCook.image+")",
                                 'backgroundSize' : '100% 100%',
                                 'backgroundRepeat' : 'no-repeat'
                             }} 
@@ -127,13 +127,13 @@ export default class LetsCook extends React.Component {
                         <div className="container-fluid recipe-instructions-list px-3 py-1 mx-auto text-center my-0">
                             Scroll Down for more 
                             <hr className="my-0" />                            
-                            <ol className="list-group">
+                            {/* <ol className="list-group">
                                 {this.state.currentRecipeToCook.recipeInstructions.map((steps,index) => {
                                     return (
                                         <li className="list-group-item border-0" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
                                     )
                                 })}
-                            </ol>
+                            </ol> */}
                         </div>
                     </div>
 

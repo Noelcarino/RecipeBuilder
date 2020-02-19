@@ -8,14 +8,14 @@ export default class ConfirmedRecipe extends React.Component{
                     <div className="recipe-top-container p-0 ">
                         <img 
                             className="recipe-image img-fluid p-0 w-100 h-100" 
-                            src={"images/"+this.props.recipe.recipeImage}
-                            alt={this.props.recipe.recipeTitle}/>
+                            src={"images/"+this.props.recipe.image}
+                            alt={this.props.recipe.title}/>
                     </div>
 
                     <div className="recipe-bottom-container mx-auto row align-items-start">
 
                         <div className="container-fluid mx-auto text-center p-0">
-                            {this.props.recipe.recipeTitle}
+                            {this.props.recipe.title}
                         </div>
 
                         <div className="container-fluid mx-auto row">
