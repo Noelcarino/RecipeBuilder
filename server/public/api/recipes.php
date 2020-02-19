@@ -8,7 +8,7 @@
     switch($_SERVER['REQUEST_METHOD'])
     {
     case 'POST':
-        require_once('cart_add.php');
+        require_once('recipes_get.php');
         break;
     case 'GET':
         require_once('recipes_get.php');

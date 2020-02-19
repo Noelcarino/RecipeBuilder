@@ -15,6 +15,22 @@ export default class RecommendedRecipes extends React.Component {
         this.getRecipes = this.getRecipes.bind(this);
     }
     getRecipes(confirmedIngredients){
+        console.log(confirmedIngredients);
+        let ingredientObj = {
+            confirmedIngredients: confirmedIngredients
+        }
+        
+        fetch( '/api/recipes.php' , 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(ingredientObj)
+            })
+        .then(res => res.text())
+        .then(res => console.log(res));
         /*
             1) this.state.recommendedRecipes -> array of objects
             2) When writing this function... 
@@ -79,7 +95,7 @@ export default class RecommendedRecipes extends React.Component {
         const recipeDatabase = [recipe1, recipe2, recipe3];
 
         // Step 1) Enter input Array
-        console.log(confirmedIngredients);
+        // console.log(confirmedIngredients);
 
         // Step 2) Find all recipes that include confirmed ingredients
         let confirmedRecipes = [];
@@ -107,7 +123,7 @@ export default class RecommendedRecipes extends React.Component {
         confirmedRecipes.sort(function(a,b) {
             return b.recipeConfirmedIngredientCount - a.recipeConfirmedIngredientCount;
         })
-        console.log(confirmedRecipes);
+        // console.log(confirmedRecipes);
 
         // Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
         this.setState({
@@ -133,7 +149,7 @@ export default class RecommendedRecipes extends React.Component {
         //     'Zuccini'
         // ];
         // this.getRecipes(dummyArray);
-        console.log(this.props.confirmedIngredients);
+        // console.log(this.props.confirmedIngredients);
         this.getRecipes(this.props.confirmedIngredients);
     }
     render(){

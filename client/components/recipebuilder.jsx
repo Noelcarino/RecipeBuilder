@@ -13,7 +13,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'homepage',
+                name: 'confirmingredients',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -32,7 +32,7 @@ export default class RecipeBuilder extends React.Component {
 
     }
     componentDidMount(){
-        fetch('/api/recipebuilder.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
+        fetch('/api/recipes.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
             .then( res => res.text())
             .then( res => console.log(res));
     }
