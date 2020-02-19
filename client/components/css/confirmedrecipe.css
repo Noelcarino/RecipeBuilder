@@ -6,6 +6,7 @@
     background-color: white;
     box-shadow: 0 0 8px grey;
     overflow: hidden;
+    font-size: 1rem;
 }
 .confirmed-recipe button {
     height: 30px;
