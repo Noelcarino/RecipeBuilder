@@ -9,18 +9,44 @@ export default class LetsCook extends React.Component {
             previousView: '',
             ingredientsToUse: [],
             currentRecipeToCook: {},
-            favoriteRecipe: false
+            favoriteRecipe: false,
+            instructions: []
         }
         this.getRecipeInformation = this.getRecipeInformation.bind(this);
         this.addToFavorites = this.addToFavorites.bind(this);
     }
     getRecipeInformation(){
-        this.setState({
-            componentDidMount: true,
-            previousView: this.props.previousView,
-            ingredientsToUse: this.props.state.view.params.ingredientsToUse,
-            currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
-        })
+        console.log(this.props.state.view.params.currentRecipeToCook.id);
+        let recipeObj = {
+            recipeId: this.props.state.view.params.currentRecipeToCook.id
+        }
+            fetch('/api/instructions.php',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Acceipt' : 'application/json'
+                    },
+                    body: JSON.stringify(recipeObj)
+                }
+            )
+            .then(res => res.json())
+            .then(instructions => {
+                this.setState({
+                    componentDidMount: true,
+                    previousView: this.props.previousView,
+                    ingredientsToUse: this.props.state.view.params.ingredientsToUse,
+                    currentRecipeToCook: this.props.state.view.params.currentRecipeToCook,
+                    instructions: instructions
+                })
+            });
+
+        // this.setState({
+        //     componentDidMount: true,
+        //     previousView: this.props.previousView,
+        //     ingredientsToUse: this.props.state.view.params.ingredientsToUse,
+        //     currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
+        // })
     }
     addToFavorites(newparam){
         if (newparam) {
@@ -92,13 +118,13 @@ export default class LetsCook extends React.Component {
                         <div className="container-fluid recipe-instructions-list px-3 py-1 mx-auto text-center my-0">
                             Scroll Down for more 
                             <hr className="my-0" />                            
-                            {/* <ol className="list-group">
-                                {this.state.currentRecipeToCook.recipeInstructions.map((steps,index) => {
+                            <ol className="list-group">
+                                {this.state.instructions.map((steps,index) => {
                                     return (
                                         <li className="list-group-item border-0" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
                                     )
                                 })}
-                            </ol> */}
+                            </ol>
                         </div>
                     </div>
 
