@@ -10,8 +10,6 @@
             rgba(255, 255, 255, 0.40),
             rgba(255, 226, 226, 0.4)
         ),
-        /* url('../images/recipebuilder-login.jpeg'); */
-        /* url('../../server/public/images/bg-test-2.png'); */
         url('../images/bg-test-2.png');
     background-position: 60% 65%;
     background-repeat: no-repeat;
