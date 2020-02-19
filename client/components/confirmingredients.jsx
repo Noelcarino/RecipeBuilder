@@ -50,7 +50,7 @@ export default class ConfirmIngredients extends React.Component {
                 {/* INGREDIENTS LIST DESCRIPTION */}
                 <div className="confirm-ingredients-description mx-auto text-center p-0 mb-3">
                     <h1>Ingredients List</h1>
-                        Confirm your ingredients and build your recipe!
+                        Confirm the ingredients you have or want to use!
                 </div>
 
                 {/* REVIEW INGREDIENTS TO SEARCH */}
