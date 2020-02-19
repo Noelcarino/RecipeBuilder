@@ -15,11 +15,9 @@ export default class RecommendedRecipes extends React.Component {
         this.getRecipes = this.getRecipes.bind(this);
     }
     getRecipes(confirmedIngredients){
-        console.log(confirmedIngredients);
         let ingredientObj = {
             confirmedIngredients: confirmedIngredients
         }
-        
         fetch( '/api/recipes.php' , 
             {
                 method: 'POST',
