@@ -1,7 +1,6 @@
 import React from 'react';
 import './css/letscook.css'; 
 
-
 export default class LetsCook extends React.Component {
     constructor(props){
         super(props);
@@ -16,42 +15,12 @@ export default class LetsCook extends React.Component {
         this.addToFavorites = this.addToFavorites.bind(this);
     }
     getRecipeInformation(){
-        // let dummyArray = [
-        //     'Asparagus',
-        //     'Beets',
-        //     'Beef',
-        //     'Brocolli',
-        //     'Cabbage',
-        //     'Carrots',
-        //     'Celery',
-        //     'Cauliflower',
-        //     'Chicken',
-        //     'Cucumber',
-        //     'Potatoes',
-        //     'Rice',
-        //     'Zuccini'
-        // ];
-        
-        // const recipe1 = {
-        //     recipdId: 1,
-        //     recipeTitle: 'Braised Chicken with Steamed Veggies',
-        //     recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
-        //     recipeConfirmedIngredientCount: 0,
-        //     recipeImage: 'beefwithrice.jpg',
-        //     recipeTimeToCook: '00:50',
-        //     recipeInstructions: recipe1Insructions
-        // }
         this.setState({
             componentDidMount: true,
             previousView: this.props.previousView,
             ingredientsToUse: this.props.state.view.params.ingredientsToUse,
             currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
         })
-        // this.setState({
-        //     componentDidMount: true,
-        //     ingredientsToUse: dummyArray,
-        //     currentRecipeToCook: recipe1
-        // })
     }
     addToFavorites(newparam){
         if (newparam) {
@@ -93,7 +62,6 @@ export default class LetsCook extends React.Component {
                 <div className="lets-cook-container row  px-1 mx-auto">
 
                     {/* RECIPE TITLE CONTAINER */}
-
                     <div className="recipe-title-container mx-auto row mb-5">
                         <div className="container-fluid mx-auto col-11 text-left">
                             <h1>
@@ -104,7 +72,8 @@ export default class LetsCook extends React.Component {
                             {favoriteElement}
                         </div>
                     </div>
-                    
+
+
                     {/* RECIPE IMAGE */}
                     <div className="lets-cook-img-container mx-auto p-0 mb-3">
                         <div style={{
@@ -118,9 +87,7 @@ export default class LetsCook extends React.Component {
 
 
                     {/* RECIPE INSTRUCTIONS */}
-
                     <div className="recipe-instructions-container row mx-auto px-0 mb-3 py-0">
-
                         <div className="container-fluid mx-auto text-center my-0">
                             Instructions
                         </div>
@@ -141,7 +108,6 @@ export default class LetsCook extends React.Component {
                         <div className="container-fluid mx-auto mb-3 row col-12 col-md-6">
                             {backButton}
                         </div>
-
                         <div className="container-fluid mx-auto row col-12 col-md-6">
                             <button 
                                 className="btn mx-auto py-0"
