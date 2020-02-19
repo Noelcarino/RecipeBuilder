@@ -1,0 +1,84 @@
+body {
+    font-size: 1.1rem;
+}
+.recommended-recipes-container{
+    height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 15px solid #230F0F;
+    background-color: lightgrey;
+    font-family: DM Sans Display;
+    overflow: scroll;
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-1.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgrey;
+}
+.recommended-recipes-content-container {
+    height: 150px;
+    width: 87%;
+    max-width: 750px;
+    font-family: DM Display;
+    background-color: white;
+    border-radius: 8px;
+}
+.recomended-recipes-confirmed-recipe-container {
+    min-height: 300px;
+    width: 90%;
+    box-sizing: border-box;
+    justify-content: space-around;
+}
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .recommended-recipes-container{
+            padding-top: 75px;
+        }
+    }
+
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .recommended-recipes-container{
+            padding-top: 75px;
+        }
+    }
+
+/* IPHONE X */
+
+/* Vertical View */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .recommended-recipes-container{
+            padding-top: 75px;
+        }
+    }
+    
+/* Horizontal View */
+@media only screen 
+    and (device-width : 812px) 
+    and (device-height : 375px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .recommended-recipes-container{
+            padding-top: 75px;
+        }
+        .recomended-recipes-confirmed-recipe-container {
+            width: 87%;
+        }
+    }

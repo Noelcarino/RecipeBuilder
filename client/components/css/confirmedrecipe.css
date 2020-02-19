@@ -1,0 +1,73 @@
+.confirmed-recipe{
+    height: 250px;
+    width: 300px;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 8px grey;
+    overflow: hidden;
+    font-size: 1rem;
+}
+.confirmed-recipe button {
+    height: 30px;
+    font-size: 0.8rem;
+}
+.recipe-top-container {
+    height: 70%;
+    width: 100%;
+    overflow:hidden;
+}
+.recipe-bottom-container {
+    height: 30%;
+    width: 100%;
+}
+.recipe-image {
+    background-size: 100% 100%;
+    background-position: 50% 100%;
+}
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .confirmed-recipe {
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+        .confirmed-recipe button {
+            padding: 0px;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .confirmed-recipe {
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+        .confirmed-recipe button {
+            padding: 0px;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .confirmed-recipe {
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+        .confirmed-recipe button {
+            padding: 0px;
+        }
+    }

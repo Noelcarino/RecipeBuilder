@@ -1,0 +1,253 @@
+.btn {
+    padding: 0px;
+    width: 150px;
+    background-color: black;
+    color: white;
+    border-radius: 45px;
+    font-size: 0.9rem;
+}
+.bg-test {
+    height: 100%;
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-1.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgrey;
+}
+.btn:hover{
+    color: grey;
+}
+.dashboard-container{
+    height: 100vh;
+    padding: 50px 0px;
+    border: 15px solid #230F0F;
+    overflow: scroll;
+}
+.welcome-back-container{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px grey;
+    height: 150px;
+    width: 90%;
+    max-width: 750px;
+    font-size: 2rem;
+    letter-spacing: -0.05rem;
+}
+.welcome-back-container-image{
+    height: 70%;
+}
+.welcome-back-container-description {
+    font-family: DM Serif Display;
+}
+.find-ingredients-container{
+    padding: 25px 0px;
+    height: 225px;
+    width: 90%;
+    max-width: 750px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px grey;
+    font-family: DM Serif Display;
+    font-size: 1.8rem;
+}
+.favorite-recipes-container {
+    height: 575px;
+    width: 90%;
+    max-width: 750px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px grey;
+    font-family: DM Serif Display;
+    font-size: 1.8rem;
+}
+.carousel-container {
+    height: 300px;
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+}
+.carousel {
+    height: 100%;
+    width: 425px;
+    max-width: 425px;
+    display: flex;
+    flex-direction: row;
+}
+.image-slide {
+    height: 100%;
+    width: 300px;
+}
+.img-title-container {
+    height: 100%;
+    width: 80%;
+    font-size: 1.3rem;
+}
+.arrow {
+    display: flex;
+    justify-content: space-around;
+    padding: 125px 0px;
+}
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .btn {
+            height: 25px;
+            width: 150px;
+            font-size: 0.7rem;
+            border-radius: 45px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .dashboard-container {
+            padding: 60px 0px;
+        }
+        .welcome-back-container-description {
+            font-size: 1.5rem;
+        }
+        .welcome-back-container-image {
+            height: 50%;
+        }
+        .find-ingredients-container {
+            border-radius: 8px;
+            font-size: 1.5rem;
+        }
+        .favorite-recipes-container {
+            height: 375px;
+            border-radius: 8px;
+        }
+        .carousel-container {
+            height: 150px;
+            width: 90%;
+        }
+        .carousel {
+            max-width: 100%;
+        }
+        .image-slide {
+            width: 90%;
+        }
+        .img-title-container {
+            font-size: 1rem;
+            padding: 5px 0px;
+        }
+        .arrow {
+            width: 10%;
+            padding: 45px 0px;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .btn {
+            height: 25px;
+            width: 150px;
+            font-size: 0.7rem;
+            border-radius: 45px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .dashboard-container {
+            padding: 60px 0px;
+        }
+        .welcome-back-container-description {
+            font-size: 1.5rem;
+        }
+        .welcome-back-container-image {
+            height: 50%;
+        }
+        .find-ingredients-container {
+            border-radius: 8px;
+            font-size: 1.5rem;
+        }
+        .favorite-recipes-container {
+            height: 375px;
+            border-radius: 8px;
+        }
+        .carousel-container {
+            height: 150px;
+            width: 90%;
+        }
+        .carousel {
+            max-width: 100%;
+        }
+        .image-slide {
+            width: 90%;
+        }
+        .img-title-container {
+            font-size: 1rem;
+            padding: 5px 0px;
+        }
+        .arrow {
+            width: 10%;
+            padding: 45px 0px;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .btn {
+            height: 25px;
+            width: 150px;
+            font-size: 0.7rem;
+            border-radius: 45px;
+        }
+        h1 {
+            font-size: 1.2rem;
+        }
+        .dashboard-container {
+            padding: 60px 0px;
+        }
+        .welcome-back-container-description {
+            font-size: 1.5rem;
+        }
+        .welcome-back-container-image {
+            height: 50%;
+        }
+        .find-ingredients-container {
+            border-radius: 8px;
+            font-size: 1.5rem;
+        }
+        .favorite-recipes-container {
+            height: 400px;
+            border-radius: 8px;
+        }
+        .carousel-container {
+            height: 150px;
+            width: 90%;
+        }
+        .carousel {
+            max-width: 100%;
+        }
+        .image-slide {
+            width: 90%;
+        }
+        .img-title-container {
+            font-size: 1rem;
+            padding: 5px 0px;
+        }
+        .arrow {
+            width: 10%;
+            padding: 45px 0px;
+        }
+    }
