@@ -14,7 +14,7 @@
                         ";
 
     $getFavoritesResult = mysqli_query($conn, $getFavoritesQuery);
-    if (!$getFavoritesQuery) throw new Exception('Query Failuer - ' . mysqli_error($conn));
+    if (!$getFavoritesQuery) throw new Exception('Query Failure - ' . mysqli_error($conn));
 
     $output = [];
     while($row = mysqli_fetch_assoc($getFavoritesResult)) $output[] = $row;
