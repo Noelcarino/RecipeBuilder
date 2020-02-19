@@ -8,7 +8,7 @@ set_exception_handler('error_handler');
 switch($_SERVER['REQUEST_METHOD'])
 {
   case 'POST':
-    require_once('cart_add.php');
+    require_once('favoriterecipes_post.php');
     break;
   case 'GET':
     require_once('favoriterecipes_get.php');

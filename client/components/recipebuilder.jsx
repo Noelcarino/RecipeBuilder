@@ -13,7 +13,7 @@ export default class RecipeBuilder extends React.Component {
         super(props);
         this.state = {
             view : {
-                name: 'confirmingredients',
+                name: 'dashboard',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -27,7 +27,8 @@ export default class RecipeBuilder extends React.Component {
                         'Steak'
                     ],
                     currentRecipeToCook: {}
-                }
+                },
+                currentUser: 'guest'
             }
         }
         this.setView = this.setView.bind(this);
@@ -82,14 +83,11 @@ export default class RecipeBuilder extends React.Component {
                     ingredientsToUse: param,
                     currentRecipeToCook: currentRecipeToCook
                 }
-            }
+            },
+            currentUser: 'guest'
         });
     }
     render(){
-        // return(<div className="test">xcfghj</div>)
-
-
-
         const { name } = this.state.view;
         let element;
         let headerElement;
@@ -131,7 +129,8 @@ export default class RecipeBuilder extends React.Component {
                             />
                 break;
             case 'favoriterecipes':
-                element = <FavoriteRecipes 
+                element = <FavoriteRecipes
+                                currentUser={this.state.currentUser}
                                 setView={this.setView}
                             />
                 break;
