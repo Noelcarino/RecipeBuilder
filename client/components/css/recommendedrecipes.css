@@ -6,7 +6,8 @@ body {
     padding-top: 50px;
     padding-bottom: 50px;
     border: 15px solid #230F0F;
-    background-color: #E4D4BA;
+    /* background-color: #E4D4BA; */
+    background-color: lightgrey;
     font-family: DM Sans Display;
     overflow: scroll;
 }
