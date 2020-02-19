@@ -26,9 +26,6 @@
     height: 100vh;
     padding: 50px 0px;
     border: 15px solid #230F0F;
-    /* background-color: #E4D4BA; */
-    /* background-color: lightgrey; */
-
     overflow: scroll;
 }
 .welcome-back-container{
