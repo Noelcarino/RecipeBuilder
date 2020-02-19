@@ -24,15 +24,14 @@ export default class ConfirmIngredients extends React.Component {
     }
     resetIngredients(){
         let defaultIngredients = [
-            'Beef',    
-            'Brocolli',
-            'Carrots', 
+            'Beef',
+            'Carne Asada',
             'Chicken',
-            'Cheese',
+            'Lamb',
             'Macaroni',
+            'Potatoe',
             'Salmon',
-            'Rice',    
-            'Zuccini'  
+            'Steak'
         ];
         this.setState({
             ingredientsToConfirm: defaultIngredients

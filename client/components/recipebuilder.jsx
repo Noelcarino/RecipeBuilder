@@ -17,15 +17,14 @@ export default class RecipeBuilder extends React.Component {
                 previousView: '',
                 params: {
                     ingredientsToUse: [
-                        'Beef',    
-                        'Brocolli',
-                        'Carrots', 
-                        'Cheese',
+                        'Beef',
+                        'Carne Asada',
                         'Chicken',
+                        'Lamb',
                         'Macaroni',
-                        'Salmon', 
-                        'Rice',    
-                        'Zuccini'  
+                        'Potatoe',
+                        'Salmon',
+                        'Steak'
                     ],
                     currentRecipeToCook: {}
                 }
@@ -41,15 +40,14 @@ export default class RecipeBuilder extends React.Component {
     // }
     setView(name, param){
         let defaultIngredients = [
-            'Beef',    
-            'Brocolli',
-            'Carrots', 
-            'Cheese',
+            'Beef',
+            'Carne Asada',
             'Chicken',
+            'Lamb',
             'Macaroni',
-            'Salmon', 
-            'Rice',    
-            'Zuccini'  
+            'Potatoe',
+            'Salmon',
+            'Steak' 
         ];
         let currentRecipeToCook;
         if (this.state.view.name === 'letscook' && name === 'recommendedrecipes'){
