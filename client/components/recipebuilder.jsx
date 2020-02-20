@@ -8,6 +8,7 @@ import LetsCook from './letscook';
 import Header from './header';
 
 
+
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
@@ -99,7 +100,8 @@ export default class RecipeBuilder extends React.Component {
                 break;
             case 'dashboard':
                 element = <DashBoard 
-                                setView={this.setView} 
+                                setView={this.setView}
+                                state={this.state}
                                 ingredientsToUse={this.state.view.params.ingredientsToUse}
                             />
                 break;

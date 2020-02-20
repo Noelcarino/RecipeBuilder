@@ -16,7 +16,6 @@ export default class LetsCook extends React.Component {
         this.addToFavorites = this.addToFavorites.bind(this);
     }
     getRecipeInformation(){
-        console.log(this.props.state.view.params.currentRecipeToCook.id);
         let recipeObj = {
             recipeId: this.props.state.view.params.currentRecipeToCook.id
         }
