@@ -28,9 +28,9 @@ export default class RecipeBuilder extends React.Component {
                         'Steak'
                     ],
                     currentRecipeToCook: {}
-                },
-                currentUser: 'guest'
-            }
+                }
+            },
+            currentUser: 'guest'
         }
         this.setView = this.setView.bind(this);
 

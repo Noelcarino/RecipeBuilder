@@ -7,18 +7,7 @@ export default class Carousel extends React.Component {
         super(props);
 
         this.state = {
-            // imageArray: [
-            //     "images/beefwithrice.jpg",
-            //     "images/braisedchickenwithsteamedveggies.png",
-            //     "images/herbedchickenwithroastedveggies.png",
-            //     "images/crockpotchickenwithveggies.png",
-            // ],
-            // recipeTitleArray : [
-            //     'Beef W/ Rice',
-            //     'Braised Chicken w/ Steamed Veggies',
-            //     'Herbed Chicken w/ Roasted Veggies',
-            //     'Crockpot Chicken w/ Veggies'
-            // ],
+            dataFetched: false,
             imageArray: [],
             recipeTitleArray: [],
             currentImageIndex: 0
@@ -27,8 +16,8 @@ export default class Carousel extends React.Component {
         this.previousSlide = this.previousSlide.bind(this);
     }
     getFavorites(){
-        let currentUser = {
-            currentUser: this.props.state.view.currentUser
+        let infoObj = {
+            currentUser: this.props.state.currentUser
         }
         fetch('/api/favoriterecipes.php', 
             {
@@ -37,7 +26,7 @@ export default class Carousel extends React.Component {
                     'Content-Type':'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(currentUser)
+                body: JSON.stringify(infoObj)
             }
         )
         .then(res => res.json())
@@ -49,6 +38,7 @@ export default class Carousel extends React.Component {
                 recipeTitleArray.push(recipe.title);
             })
             this.setState({
+                dataFetched: true,
                 imageArray: imageArray,
                 recipeTitleArray: recipeTitleArray
             })
