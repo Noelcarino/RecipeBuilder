@@ -66,7 +66,7 @@ export default class LetsCook extends React.Component {
                 })
             });
     }
-    addToFavorites(newparam){
+    addToFavorites(){
         let addToFavoritesObj = {
             recipeId: this.state.currentRecipeToCook.id,
             currentUser: this.props.state.currentUser
@@ -82,15 +82,30 @@ export default class LetsCook extends React.Component {
         .then( res => res.text())
         .then( res => {
             console.log(res);
+            this.setState({favoriteRecipe: true})
+        })
+
+    }
+    removeFromFavorites(){
+        let addToFavoritesObj = {
+            recipeId: this.state.currentRecipeToCook.id,
+            currentUser: this.props.state.currentUser
+        }
+        fetch('/api/addtofavorites.php', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept' : 'application/json'
+            },
+            body: JSON.stringify (addToFavoritesObj)
+        })
+        .then( res => res.text())
+        .then( res => {
+            console.log(res);
             if (res === []) console.log("recipe DNE in database");
             else console.log("recipe exist in favorites");
+            this.setState({favoriteRecipe: false})
         })
-        if (newparam) {
-            this.setState({favoriteRecipe: newparam})
-        }
-        if (!newparam) {
-            this.setState({favoriteRecipe: newparam})
-        }
     }
     componentDidMount(){
         this.getRecipeInformation();
@@ -100,12 +115,12 @@ export default class LetsCook extends React.Component {
         let favoriteElement;
 
         if (this.state.favoriteRecipe) {
-            favoriteElement = <i onClick={() => this.addToFavorites(false)} className="fa fa-heart mx-auto" aria-hidden="true"></i>
-            // console.log("added to favorites");
-            // console.log(this.state.currentRecipeToCook);
+            favoriteElement = <i onClick={() => this.removeFromFavorites()} className="far fa-heart mx-auto" aria-hidden="true"></i>
+            console.log("removed");
         } 
         if (!this.state.favoriteRecipe) {
-            favoriteElement = <i onClick={() => this.addToFavorites(true)} className="far fa-heart mx-auto" aria-hidden="true"></i>
+            favoriteElement = <i onClick={() => this.addToFavorites()} className="fa fa-heart mx-auto" aria-hidden="true"></i>
+            console.log("added");
         }
 
         if (this.state.componentDidMount){

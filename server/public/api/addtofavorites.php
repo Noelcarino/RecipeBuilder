@@ -11,7 +11,7 @@
         require_once('addtofavorites_post.php');
         break;
       case 'DELETE':
-        require_once('cart_remove.php');
+        require_once('addtofavorites_delete.php');
         break;
     }
 ?>
