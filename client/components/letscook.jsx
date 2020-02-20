@@ -64,6 +64,7 @@ export default class LetsCook extends React.Component {
 
         if (this.state.favoriteRecipe) {
             favoriteElement = <i onClick={() => this.addToFavorites(false)} className="fa fa-heart mx-auto" aria-hidden="true"></i>
+            console.log("added to favorites");
         } 
         if (!this.state.favoriteRecipe) {
             favoriteElement = <i onClick={() => this.addToFavorites(true)} className="far fa-heart mx-auto" aria-hidden="true"></i>

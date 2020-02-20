@@ -81,7 +81,7 @@ export default class RecommendedRecipes extends React.Component {
                     })}
                 </div>
 
-                <div className="recommended-recipes-return-button-container mx-auto mb-3">
+                <div className="recommended-recipes-return-button-container mx-auto mb-3 row">
                     <button
                         className="btn mx-auto text-center py-0"
                         onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
