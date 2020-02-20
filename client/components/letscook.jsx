@@ -1,3 +1,29 @@
+/*
+
+    1) Before adding to favorite
+        - Check if recipe exist in favorite database
+
+
+
+    2) AFter checking database, continue with next steps;
+    Query to add to favorites
+        $query = "INSERT INTO `favoriterecipes` (`id`, `userName`, `recipeId`) 
+                    VALUES (NULL, 'guest', '5');";
+
+    Query to remove from favorites
+        -Version 1
+        $queryDelete = "DELETE FROM `favoriterecipes` 
+                          WHERE `favoriterecipes`.`id` = 11"
+
+        - Version 2
+        $queryDelete = "DELETE FROM `favoriterecipes` 
+                          WHERE `favoriterecipes`.`userName` = 'guest' 
+                            AND `favoriterecipes`.`recipeId` = 5"
+
+*/
+
+
+
 import React from 'react';
 import './css/letscook.css'; 
 
@@ -36,18 +62,29 @@ export default class LetsCook extends React.Component {
                     previousView: this.props.previousView,
                     ingredientsToUse: this.props.state.view.params.ingredientsToUse,
                     currentRecipeToCook: this.props.state.view.params.currentRecipeToCook,
-                    instructions: instructions
+                    instructions: instructions,
                 })
             });
-
-        // this.setState({
-        //     componentDidMount: true,
-        //     previousView: this.props.previousView,
-        //     ingredientsToUse: this.props.state.view.params.ingredientsToUse,
-        //     currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
-        // })
     }
     addToFavorites(newparam){
+        let addToFavoritesObj = {
+            recipeId: this.state.currentRecipeToCook.id,
+            currentUser: this.props.state.currentUser
+        }
+        fetch('/api/addtofavorites.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept' : 'application/json'
+            },
+            body: JSON.stringify (addToFavoritesObj)
+        })
+        .then( res => res.text())
+        .then( res => {
+            console.log(res);
+            if (res === []) console.log("recipe DNE in database");
+            else console.log("recipe exist in favorites");
+        })
         if (newparam) {
             this.setState({favoriteRecipe: newparam})
         }
@@ -64,7 +101,8 @@ export default class LetsCook extends React.Component {
 
         if (this.state.favoriteRecipe) {
             favoriteElement = <i onClick={() => this.addToFavorites(false)} className="fa fa-heart mx-auto" aria-hidden="true"></i>
-            console.log("added to favorites");
+            // console.log("added to favorites");
+            // console.log(this.state.currentRecipeToCook);
         } 
         if (!this.state.favoriteRecipe) {
             favoriteElement = <i onClick={() => this.addToFavorites(true)} className="far fa-heart mx-auto" aria-hidden="true"></i>
