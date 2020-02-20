@@ -34,6 +34,9 @@ body {
     box-sizing: border-box;
     justify-content: space-around;
 }
+.recommended-recipes-return-button-container button{
+    width: 175px;
+}
 
 /****************** 
     MEDIA QUERIES

@@ -7,18 +7,6 @@ export default class Carousel extends React.Component {
         super(props);
 
         this.state = {
-            // imageArray: [
-            //     "images/beefwithrice.jpg",
-            //     "images/braisedchickenwithsteamedveggies.png",
-            //     "images/herbedchickenwithroastedveggies.png",
-            //     "images/crockpotchickenwithveggies.png",
-            // ],
-            // recipeTitleArray : [
-            //     'Beef W/ Rice',
-            //     'Braised Chicken w/ Steamed Veggies',
-            //     'Herbed Chicken w/ Roasted Veggies',
-            //     'Crockpot Chicken w/ Veggies'
-            // ],
             imageArray: [],
             recipeTitleArray: [],
             currentImageIndex: 0
