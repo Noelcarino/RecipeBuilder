@@ -15,6 +15,7 @@
     background-image: url('../images/home-button.png');
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 /****************** 
     MEDIA QUERIES

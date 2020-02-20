@@ -35,6 +35,7 @@ h1 {
     max-width: 425px;
     box-sizing: border-box;
     font-family: DM Sans Display;
+    cursor: all-scroll;
 }
 .recipe-instructions-container li {
     text-align: left;
