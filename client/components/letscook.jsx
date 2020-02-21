@@ -178,15 +178,14 @@ export default class LetsCook extends React.Component {
 
                     <div id="modal" onClick={()=> this.alertClient('deactivate')}></div>
 
-
                     {/* RECIPE TITLE CONTAINER */}
                     <div className="recipe-title-container mx-auto row mb-5">
-                        <div className="container-fluid mx-auto col-11 text-left">
+                        <div className="container-fluid mx-auto col-8 text-center">
                             <h1>
                                 {this.state.currentRecipeToCook.title}
                             </h1>
                         </div>
-                        <div className="container-fluid mx-auto col-1 text-center px-0">
+                        <div className="container-fluid mx-auto col-3 text-center px-0 row">
                             {favoriteElement}
                         </div>
                     </div>
