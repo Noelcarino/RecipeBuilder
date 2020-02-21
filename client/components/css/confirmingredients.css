@@ -1,0 +1,131 @@
+body {
+    font-size: 1.8rem;
+}
+.confirm-ingredients-container{
+    height: 100vh;
+    padding-top: 50px;
+    border: 15px solid #230F0F;
+    overflow: scroll;
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-1.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgrey;
+}
+.confirm-ingredients-description {
+    height: 150px;
+    width: 80%;
+    max-width: 1200px;
+    font-family: DM Sans Display;
+    background-color: white;
+    border-radius: 10px;
+}
+.confirm-ingredients-content {
+    padding: 25px 0px;
+    height: 400px;
+    max-height: 400px;
+    width: 80%;
+    max-width: 1200px;
+    background-color: white;
+    box-shadow: 0 0 8px grey;
+    border-radius: 10px;
+    font-family: DM Serif Display;
+    overflow: scroll;
+}
+.build-ingredients-return-search{
+    height: 175px;
+    width: 90%;
+    max-width: 750px;
+}
+.build-ingredients-return-search button {
+    height: 30px;
+    width: 175px;
+}
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .confirm-ingredients-container{
+            padding-top: 100px;
+        }
+        .confirm-ingredients-description {
+            height: 100px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            display: flex;
+            flex-direction: row;
+            height: 300px;
+            justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            height: 150px;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS*/
+
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3){
+        .confirm-ingredients-container{
+            padding-top: 100px;
+        }
+        .confirm-ingredients-description {
+            height: 100px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            display: flex;
+            flex-direction: row;
+            height: 300px;
+            justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            height: 150px;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .confirm-ingredients-container{
+            padding-top: 100px;
+        }
+        .confirm-ingredients-description {
+            height: 100px;
+            margin-bottom: 0px;
+        }
+        .confirm-ingredients-content {
+            margin-top: 0px;
+            display: flex;
+            flex-direction: row;
+            height: 300px;
+            justify-content: space-between;
+        }
+        .build-ingredients-return-search {
+            display: flex;
+            flex-direction: column;
+            height: 150px;
+        }
+    }

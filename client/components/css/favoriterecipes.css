@@ -1,0 +1,118 @@
+.favorite-recipes-component-container {
+    height: 100vh;
+    border: 15px solid #230F0F;
+    font-family: DM Sans Diplay;
+    overflow: scroll;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.40),
+            rgba(255, 226, 226, 0.4)
+        ),
+        url('../images/bg-test-1.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgrey;
+}
+.favorite-recipes-component-title {
+    height: 50px;
+    width: 90%;
+    max-width: 425px;
+    margin-bottom: 30px;
+    font-family: DM Sans Display;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 8px grey;
+}
+.favorite-recipes-map-container {
+    min-height: 300px;
+    width: 90%;
+    box-sizing: border-box;
+    justify-content: space-around;
+}
+.favorite-recipe-component-back-to-dashboard {
+    height: 5%;
+    width: 90%;
+}
+.favorite-recipe {
+    height: 250px;
+    width: 300px;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 8px grey;
+    overflow: hidden;
+    font-family: DM Sans Display;
+}
+.favorite-recipe-top {
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+}
+.favorite-recipe-image {
+    background-size: 100% 100%;
+    background-position: 50% 100%;
+}
+.favorite-recipe-bottom {
+    height: 30%;
+    width: 100%;
+}
+.favorite-recipe button {
+    width: 150px;
+}
+.favorite-recipe-component-back-to-dashboard button {
+    height: 30px;
+}
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .favorite-recipes-component-container {
+            padding-top: 75px;
+        }
+        .favorite-recipe-component-back-to-dashboard button {
+            font-size: 1rem;
+        }
+        .favorite-recipes-component-title {
+            max-width: 300px;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS*/
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .favorite-recipes-component-container {
+            padding-top: 75px;
+        }
+        .favorite-recipe-component-back-to-dashboard button {
+            font-size: 1rem;
+        }
+        .favorite-recipes-component-title {
+            max-width: 300px;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .favorite-recipes-component-container {
+            padding-top: 75px;
+        }
+        .favorite-recipe-component-back-to-dashboard button {
+            font-size: 1rem;
+        }
+        .favorite-recipes-component-title {
+            max-width: 300px;
+        }
+    }
