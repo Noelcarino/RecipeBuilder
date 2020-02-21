@@ -76,36 +76,36 @@ export default class RecommendedRecipes extends React.Component {
     render(){
         return (
             <div className="recommended-recipes-container row px-0 mx-auto">
+                <div className="invisible-container">
+                    <div className="recommended-recipes-content-container mx-auto mb-3 text-center py-0 d-flex">
+                        <div className="container-fluid m-auto">
+                            <h1>Recommended Recipes ( {this.state.recommendedRecipes.length} )</h1>
+                            With the recipes you've picked, here are some ingredients for you to try and cook!
+                        </div>
+                    </div>
 
-                <div className="recommended-recipes-content-container mx-auto mb-3 text-center py-0 d-flex">
-                    <div className="container-fluid m-auto">
-                        <h1>Recommended Recipes ( {this.state.recommendedRecipes.length} )</h1>
-                        With the recipes you've picked, here are some ingredients for you to try and cook!
+                    <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-3 py-0 row">
+                        {this.state.recommendedRecipes.map((recipe,index) => {
+                            let favoriteCheck = false;
+                            if (this.state.favoriteRecipeIds.includes(recipe.id)) favoriteCheck = true;
+                        return (<ConfirmedRecipe 
+                                        key={index} 
+                                        recipe={recipe} 
+                                        favoriteRecipe={favoriteCheck}
+                                        previousView='recommendedrecipes' 
+                                        setView={this.props.setView} 
+                                        confirmedIngredients={this.props.confirmedIngredients}/>)
+                        })}
+                    </div>
+
+                    <div className="recommended-recipes-return-button-container mx-auto mb-3 row">
+                        <button
+                            className="btn mx-auto text-center py-0"
+                            onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
+                            Return to Ingredients List
+                        </button>
                     </div>
                 </div>
-
-                <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-3 py-0 row">
-                    {this.state.recommendedRecipes.map((recipe,index) => {
-                        let favoriteCheck = false;
-                        if (this.state.favoriteRecipeIds.includes(recipe.id)) favoriteCheck = true;
-                    return (<ConfirmedRecipe 
-                                    key={index} 
-                                    recipe={recipe} 
-                                    favoriteRecipe={favoriteCheck}
-                                    previousView='recommendedrecipes' 
-                                    setView={this.props.setView} 
-                                    confirmedIngredients={this.props.confirmedIngredients}/>)
-                    })}
-                </div>
-
-                <div className="recommended-recipes-return-button-container mx-auto mb-3 row">
-                    <button
-                        className="btn mx-auto text-center py-0"
-                        onClick={() => this.props.setView('confirmingredients', this.props.confirmedIngredients)}>
-                        Return to Ingredients List
-                    </button>
-                </div>
-
             </div>
         )
     }

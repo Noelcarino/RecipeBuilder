@@ -8,6 +8,8 @@ import LetsCook from './letscook';
 import Header from './header';
 
 
+import './css/recipebuilder.css';
+
 
 export default class RecipeBuilder extends React.Component {
     constructor(props){
