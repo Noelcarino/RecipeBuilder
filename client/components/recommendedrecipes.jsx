@@ -77,9 +77,11 @@ export default class RecommendedRecipes extends React.Component {
         return (
             <div className="recommended-recipes-container row px-0 mx-auto">
 
-                <div className="recommended-recipes-content-container mx-auto mb-3 text-center py-0">
-                <h1>Recommended Recipes ( {this.state.recommendedRecipes.length} )</h1>
-                    With the recipes you've picked, here are some ingredients for you to try and cook!
+                <div className="recommended-recipes-content-container mx-auto mb-3 text-center py-0 d-flex">
+                    <div className="container-fluid m-auto">
+                        <h1>Recommended Recipes ( {this.state.recommendedRecipes.length} )</h1>
+                        With the recipes you've picked, here are some ingredients for you to try and cook!
+                    </div>
                 </div>
 
                 <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-3 py-0 row">

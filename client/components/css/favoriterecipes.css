@@ -80,6 +80,9 @@
         .favorite-recipe-component-back-to-dashboard button {
             font-size: 1rem;
         }
+        .favorite-recipes-component-title {
+            max-width: 300px;
+        }
     }
 
 /* IPHONE 6/7/8 PLUS*/
@@ -93,6 +96,9 @@
         .favorite-recipe-component-back-to-dashboard button {
             font-size: 1rem;
         }
+        .favorite-recipes-component-title {
+            max-width: 300px;
+        }
     }
 
 /* IPHONE X */
@@ -105,5 +111,8 @@
         }
         .favorite-recipe-component-back-to-dashboard button {
             font-size: 1rem;
+        }
+        .favorite-recipes-component-title {
+            max-width: 300px;
         }
     }
