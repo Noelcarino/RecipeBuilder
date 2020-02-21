@@ -6,15 +6,12 @@ import ConfirmIngredients from './confirmingredients';
 import RecommendedRecipes from './recommendedrecipes';
 import LetsCook from './letscook';
 import Header from './header';
-
-
-
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             view : {
-                name: 'dashboard',
+                name: 'homepage',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -27,13 +24,13 @@ export default class RecipeBuilder extends React.Component {
                         'Salmon',
                         'Steak'
                     ],
+                    favoriteRecipeCheck: false,
                     currentRecipeToCook: {}
                 }
             },
             currentUser: 'guest'
         }
         this.setView = this.setView.bind(this);
-
     }
     setView(name, param){
         let defaultIngredients = [
@@ -47,6 +44,7 @@ export default class RecipeBuilder extends React.Component {
             'Steak' 
         ];
         let currentRecipeToCook;
+        let favoriteRecipe;
         if (this.state.view.name === 'letscook' && name === 'recommendedrecipes'){
             /*  condition 3 - 'letscook' -> 'recommendedrecipes'
                 The idea behind thiis condition is bc when letscook turns into 
@@ -67,6 +65,7 @@ export default class RecipeBuilder extends React.Component {
                     into the definitions here just to make reading the property 
                     easier to understand.
                 */
+            favoriteRecipe = param.favoriteRecipe;
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }
@@ -77,6 +76,7 @@ export default class RecipeBuilder extends React.Component {
                 previousView: this.state.view.name,
                 params: {
                     ingredientsToUse: param,
+                    favoriteCheck: favoriteRecipe,
                     currentRecipeToCook: currentRecipeToCook
                 }
             },

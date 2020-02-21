@@ -34,7 +34,7 @@
     box-shadow: 0 0 8px grey;
     height: 150px;
     width: 90%;
-    max-width: 750px;
+    max-width: 1000px;
     font-size: 2rem;
     letter-spacing: -0.05rem;
 }
@@ -48,7 +48,7 @@
     padding: 25px 0px;
     height: 225px;
     width: 90%;
-    max-width: 750px;
+    max-width: 1000px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 8px grey;
@@ -58,7 +58,7 @@
 .favorite-recipes-container {
     height: 500px;
     width: 90%;
-    max-width: 750px;
+    max-width: 1000px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 8px grey;

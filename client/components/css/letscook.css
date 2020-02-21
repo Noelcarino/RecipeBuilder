@@ -13,12 +13,16 @@ h1 {
     font-family: DM Sans Display;
     padding: 0 15vw;
     width: 90%;
-    min-width: 425px;
+    /* min-width: 425px; */
     max-width: 1000px;
+}
+/* Select all .fa and .far classes with parent of recipe-title-container */
+.recipe-title-container .fa, .far{
+    font-size: 2rem;
 }
 .lets-cook-img-container {
     width: 100%;
-    max-width: 425px;
+    max-width: 1000px;
 }
 .lets-cook-img{
     height: 280px;
@@ -32,7 +36,7 @@ h1 {
     height: 400px;
     width: 90%;
     min-width: 425px;
-    max-width: 425px;
+    max-width: 1000px;
     box-sizing: border-box;
     font-family: DM Sans Display;
     cursor: all-scroll;
