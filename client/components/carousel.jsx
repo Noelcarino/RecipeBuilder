@@ -1,26 +1,61 @@
 import React from 'react';
 
+import './css/carousel.css';
+
 export default class Carousel extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            imageArray: [
-                "images/beefwithrice.jpg",
-                "images/braisedchickenwithsteamedveggies.png",
-                "images/herbedchickenwithroastedveggies.png",
-                "images/crockpotchickenwithveggies.png",
-            ],
-            recipeTitleArray : [
-                'Beef W/ Rice',
-                'Braised Chicken w/ Steamed Veggies',
-                'Herbed Chicken w/ Roasted Veggies',
-                'Crockpot Chicken w/ Veggies'
-            ],
+            dataFetched: false,
+            imageArray: [],
+            recipeTitleArray: [],
             currentImageIndex: 0
         };
         this.nextSlide = this.nextSlide.bind(this);
         this.previousSlide = this.previousSlide.bind(this);
+    }
+    getFavorites(){
+        let infoObj = {
+            currentUser: this.props.state.currentUser
+        }
+        fetch('/api/favoriterecipes.php', 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(infoObj)
+            }
+        )
+        .then(res => res.json())
+        .then(favoriteRecipes => {
+            /*
+                make a condition for if favoriteRecipe endpoint is empty!!!
+            */
+            let imageArray =[];
+            let recipeTitleArray = [];
+
+            if (favoriteRecipes.length !== 0) {
+                favoriteRecipes.map(recipe => {
+                    imageArray.push('images/' + recipe.image)
+                    recipeTitleArray.push(recipe.title);
+                })
+            }
+            if (favoriteRecipes.length === 0){
+                imageArray.push('images/nofavorites.png');
+                recipeTitleArray.push('No Recipes Saved!')
+            }
+            this.setState({
+                dataFetched: true,
+                imageArray: imageArray,
+                recipeTitleArray: recipeTitleArray
+            })
+        });
+    }
+    componentDidMount(){
+        this.getFavorites();
     }
     previousSlide () {
         const lastIndex = this.state.imageArray.length - 1;
@@ -78,7 +113,7 @@ const ImageSlide = ({ url }) => {
 
 const Arrow = ({ direction, clickFunction, glyph }) => (
     <div
-      className={ `slide-arrow ${direction}` + " arrow mx-auto px-0"}
+      className={ `slide-arrow ${direction}` + " arrow arrow-pointer mx-auto px-0"}
       onClick={ clickFunction }>
       { glyph }
     </div>

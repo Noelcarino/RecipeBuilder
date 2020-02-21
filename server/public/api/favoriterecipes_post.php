@@ -1,5 +1,5 @@
 <?php
-    if(!defined("INTERNAL")){
+    if(!defined("INTERNAL")){  
         exit('Direct Access Not Allowed');
     }
     $bodyData = getBodyData();

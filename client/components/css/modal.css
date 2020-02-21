@@ -1,0 +1,81 @@
+.modal-container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: -65px -15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+}
+.modal-message-container {
+    height: 38vh;
+    width: 38vw;
+    margin: auto;
+    color: black;
+    font-size: 2rem;
+    font-family:  sans-serif;
+    text-align: center;
+    padding: 50px auto;
+}
+.modal-added {
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 226, 226, 0.1)
+        ),
+        url('../images/a-mb-test-2x.jpg');
+    background-position: 60% 65%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.modal-removed {
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 226, 226, 0.1)
+        ),
+        url('../images/a-mb-test2-2x.jpg');
+    background-position: 60% 65%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .modal-message-container {
+            height: 30vh;
+            width: 80%;
+            font-size: 1.2rem;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .modal-message-container {
+            height: 30vh;
+            width: 80%;
+            font-size: 1.5rem;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .modal-message-container {
+            height: 30vh;
+            width: 80%;
+            font-size: 1.5rem;
+        }
+    }

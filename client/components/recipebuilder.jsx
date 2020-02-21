@@ -8,6 +8,9 @@ import LetsCook from './letscook';
 import Header from './header';
 
 
+import './css/recipebuilder.css';
+
+
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
@@ -26,10 +29,11 @@ export default class RecipeBuilder extends React.Component {
                         'Salmon',
                         'Steak'
                     ],
+                    favoriteRecipeCheck: false,
                     currentRecipeToCook: {}
-                },
-                currentUser: 'guest'
-            }
+                }
+            },
+            currentUser: 'guest'
         }
         this.setView = this.setView.bind(this);
 
@@ -46,6 +50,7 @@ export default class RecipeBuilder extends React.Component {
             'Steak' 
         ];
         let currentRecipeToCook;
+        let favoriteRecipe;
         if (this.state.view.name === 'letscook' && name === 'recommendedrecipes'){
             /*  condition 3 - 'letscook' -> 'recommendedrecipes'
                 The idea behind thiis condition is bc when letscook turns into 
@@ -66,6 +71,7 @@ export default class RecipeBuilder extends React.Component {
                     into the definitions here just to make reading the property 
                     easier to understand.
                 */
+            favoriteRecipe = param.favoriteRecipe;
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }
@@ -76,6 +82,7 @@ export default class RecipeBuilder extends React.Component {
                 previousView: this.state.view.name,
                 params: {
                     ingredientsToUse: param,
+                    favoriteCheck: favoriteRecipe,
                     currentRecipeToCook: currentRecipeToCook
                 }
             },
@@ -99,7 +106,8 @@ export default class RecipeBuilder extends React.Component {
                 break;
             case 'dashboard':
                 element = <DashBoard 
-                                setView={this.setView} 
+                                setView={this.setView}
+                                state={this.state}
                                 ingredientsToUse={this.state.view.params.ingredientsToUse}
                             />
                 break;
@@ -114,6 +122,7 @@ export default class RecipeBuilder extends React.Component {
                                 setView={this.setView}
                                 previousView={this.state.previousView}
                                 confirmedIngredients={this.state.view.params.ingredientsToUse}
+                                currentUser={this.state.currentUser}
                             />
                 break;
             case 'letscook':

@@ -13,7 +13,7 @@ export default class FavoriteRecipe extends React.Component {
                         />
                 </div>
 
-                <div className="favorite-recipe-bottom mx-auto row align-items-start border py-2">
+                <div className="favorite-recipe-bottom mx-auto row align-items-start py-2">
                     <div className="container-fluid mx-auto text-center p-0">
                         {this.props.recipe.title}
                     </div>
