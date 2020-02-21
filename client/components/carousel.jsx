@@ -31,12 +31,25 @@ export default class Carousel extends React.Component {
         )
         .then(res => res.json())
         .then(favoriteRecipes => {
+            /*
+                make a condition for if favoriteRecipe endpoint is empty!!!
+            
+            */
+            console.log(favoriteRecipes);
+
             let imageArray =[];
             let recipeTitleArray = [];
-            favoriteRecipes.map(recipe => {
-                imageArray.push('images/' + recipe.image)
-                recipeTitleArray.push(recipe.title);
-            })
+
+            if (favoriteRecipes.length !== 0) {
+                favoriteRecipes.map(recipe => {
+                    imageArray.push('images/' + recipe.image)
+                    recipeTitleArray.push(recipe.title);
+                })
+            }
+            if (favoriteRecipes.length === 0){
+                imageArray.push('images/nofavorites.png');
+                recipeTitleArray.push('No Recipes Saved!')
+            }
             this.setState({
                 dataFetched: true,
                 imageArray: imageArray,

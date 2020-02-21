@@ -43,7 +43,6 @@ export default class RecommendedRecipes extends React.Component {
         this.getRecipes = this.getRecipes.bind(this);
     }
     getRecipes(confirmedIngredients){
-        console.log(this.props);
         let ingredientObj = {
             currentUser: this.props.currentUser,
             confirmedIngredients: confirmedIngredients

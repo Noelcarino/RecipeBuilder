@@ -105,13 +105,7 @@ export default class LetsCook extends React.Component {
             },
             body: JSON.stringify (removeFromFavoritesObj)
         })
-        .then( res => res.text())
-        .then( res => {
-            console.log(res);
-            if (res === []) console.log("recipe DNE in database");
-            else console.log("recipe exist in favorites");
-            this.setState({favoriteRecipe: false})
-        })
+        .then( this.setState({favoriteRecipe: false}));
     }
     componentDidMount(){
         this.getRecipeInformation();
@@ -120,19 +114,14 @@ export default class LetsCook extends React.Component {
         let backButton;
         let favoriteElement;
 
-        console.log(this.state.favoriteRecipe);
-
         if (this.state.favoriteRecipe) {
             favoriteElement = <i onClick={() => this.removeFromFavorites()} className="fa fa-heart mx-auto" aria-hidden="true"></i>
-            console.log("remove from favorite button applied");
         } 
         if (!this.state.favoriteRecipe) {
             favoriteElement = <i onClick={() => this.addToFavorites()} className="far fa-heart mx-auto" aria-hidden="true"></i>
-            console.log("added to favorite button applied");
         }
         if (this.state.previousView === 'favoriterecipes' && this.state.favoriteRecipe === undefined){
             favoriteElement = <i onClick={() => this.removeFromFavorites()} className="fa fa-heart mx-auto" aria-hidden="true"></i>
-            console.log("remove from favorite button applied");
         }
 
         if (this.state.componentDidMount){
