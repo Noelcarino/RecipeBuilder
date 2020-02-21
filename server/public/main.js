@@ -98,17 +98,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Carousel; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_carousel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/carousel.css */ "./client/components/css/carousel.css");
+/* harmony import */ var _css_carousel_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_carousel_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 class Carousel extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageArray: ["images/beefwithrice.jpg", "images/braisedchickenwithsteamedveggies.png", "images/herbedchickenwithroastedveggies.png", "images/crockpotchickenwithveggies.png"],
-      recipeTitleArray: ['Beef W/ Rice', 'Braised Chicken w/ Steamed Veggies', 'Herbed Chicken w/ Roasted Veggies', 'Crockpot Chicken w/ Veggies'],
+      dataFetched: false,
+      imageArray: [],
+      recipeTitleArray: [],
       currentImageIndex: 0
     };
     this.nextSlide = this.nextSlide.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
+  }
+
+  getFavorites() {
+    let infoObj = {
+      currentUser: this.props.state.currentUser
+    };
+    fetch('/api/favoriterecipes.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(infoObj)
+    }).then(res => res.json()).then(favoriteRecipes => {
+      /*
+          make a condition for if favoriteRecipe endpoint is empty!!!
+      
+      */
+      let imageArray = [];
+      let recipeTitleArray = [];
+
+      if (favoriteRecipes.length !== 0) {
+        favoriteRecipes.map(recipe => {
+          imageArray.push('images/' + recipe.image);
+          recipeTitleArray.push(recipe.title);
+        });
+      }
+
+      if (favoriteRecipes.length === 0) {
+        imageArray.push('images/nofavorites.png');
+        recipeTitleArray.push('No Recipes Saved!');
+      }
+
+      this.setState({
+        dataFetched: true,
+        imageArray: imageArray,
+        recipeTitleArray: recipeTitleArray
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.getFavorites();
   }
 
   previousSlide() {
@@ -137,13 +184,13 @@ class Carousel extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
   render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "carousel mx-auto row p-0 d-flex"
+      className: "carousel container-fluid mx-auto row p-0 d-flex mb-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Arrow, {
       direction: "left",
       clickFunction: this.previousSlide,
       glyph: "\u25C0"
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "img-title-container p-0 mx-auto"
+      className: "img-title-container p-0 mx-auto mb-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ImageSlide, {
       url: this.state.imageArray[this.state.currentImageIndex]
     }), this.state.recipeTitleArray[this.state.currentImageIndex]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Arrow, {
@@ -164,7 +211,7 @@ const ImageSlide = ({
     backgroundRepeat: 'no-repeat'
   };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "image-slide mx-auto px-0 mb-3",
+    className: "image-slide mx-auto px-0 mb-1",
     style: styles
   });
 };
@@ -174,7 +221,7 @@ const Arrow = ({
   clickFunction,
   glyph
 }) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-  className: `slide-arrow ${direction}` + " arrow mx-auto px-0",
+  className: `slide-arrow ${direction}` + " arrow arrow-pointer mx-auto px-0",
   onClick: clickFunction
 }, glyph);
 
@@ -192,23 +239,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ConfirmedRecipe; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_confirmedrecipe_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/confirmedrecipe.css */ "./client/components/css/confirmedrecipe.css");
+/* harmony import */ var _css_confirmedrecipe_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_confirmedrecipe_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 class ConfirmedRecipe extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render() {
-    console.log(this.props);
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "confirmed-recipe mx-auto align-items-end p-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "recipe-top-container p-0 "
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       className: "recipe-image img-fluid p-0 w-100 h-100",
-      src: "images/" + this.props.recipe.recipeImage,
-      alt: this.props.recipe.recipeTitle
+      src: "images/" + this.props.recipe.image,
+      alt: this.props.recipe.title
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "recipe-bottom-container mx-auto row align-items-start"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid mx-auto text-center p-0"
-    }, this.props.recipe.recipeTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, this.props.recipe.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid mx-auto row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn mx-auto py-0",
@@ -232,6 +281,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ConfirmIngredients; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_confirmingredients_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/confirmingredients.css */ "./client/components/css/confirmingredients.css");
+/* harmony import */ var _css_confirmingredients_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_confirmingredients_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 class ConfirmIngredients extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
@@ -257,14 +309,13 @@ class ConfirmIngredients extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
   }
 
   resetIngredients() {
-    let defaultIngredients = ['Beef', 'Brocolli', 'Carrots', 'Chicken', 'Rice', 'Zuccini'];
+    let defaultIngredients = ['Beef', 'Carne Asada', 'Chicken', 'Lamb', 'Macaroni', 'Potatoe', 'Salmon', 'Steak'];
     this.setState({
       ingredientsToConfirm: defaultIngredients
     });
   }
 
   componentDidMount() {
-    console.log(this.props);
     this.setState({
       ingredientsToConfirm: this.props.ingredientsToUse
     });
@@ -275,7 +326,7 @@ class ConfirmIngredients extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
       className: "confirm-ingredients-container row px-0 mx-auto"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "confirm-ingredients-description mx-auto text-center p-0 mb-3"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Ingredients List"), "Confirm your ingredients and build your recipe!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Ingredients List"), "Confirm the ingredients you have or want to use!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "confirm-ingredients-content container-fluid mx-auto mb-3 row align-items-start px-5 py-3 "
     }, this.state.ingredientsToConfirm.map(ingredient => {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -289,7 +340,7 @@ class ConfirmIngredients extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
         "aria-hidden": "true"
       })));
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "build-ingredients-return-search mx-auto row"
+      className: "build-ingredients-return-search mx-auto row mb-3"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid m-auto row col-lg-3 px-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -312,6 +363,316 @@ class ConfirmIngredients extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
 
 /***/ }),
 
+/***/ "./client/components/css/carousel.css":
+/*!********************************************!*\
+  !*** ./client/components/css/carousel.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./carousel.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/carousel.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/confirmedrecipe.css":
+/*!***************************************************!*\
+  !*** ./client/components/css/confirmedrecipe.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./confirmedrecipe.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/confirmedrecipe.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/confirmingredients.css":
+/*!******************************************************!*\
+  !*** ./client/components/css/confirmingredients.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./confirmingredients.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/confirmingredients.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/dashboard.css":
+/*!*********************************************!*\
+  !*** ./client/components/css/dashboard.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./dashboard.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/dashboard.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/favoriterecipes.css":
+/*!***************************************************!*\
+  !*** ./client/components/css/favoriterecipes.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./favoriterecipes.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/favoriterecipes.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/header.css":
+/*!******************************************!*\
+  !*** ./client/components/css/header.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./header.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/header.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/homepage.css":
+/*!********************************************!*\
+  !*** ./client/components/css/homepage.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./homepage.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/homepage.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/letscook.css":
+/*!********************************************!*\
+  !*** ./client/components/css/letscook.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./letscook.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/letscook.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/modal.css":
+/*!*****************************************!*\
+  !*** ./client/components/css/modal.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./modal.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/modal.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./client/components/css/recommendedrecipes.css":
+/*!******************************************************!*\
+  !*** ./client/components/css/recommendedrecipes.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./recommendedrecipes.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/css/recommendedrecipes.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
 /***/ "./client/components/dashboard.jsx":
 /*!*****************************************!*\
   !*** ./client/components/dashboard.jsx ***!
@@ -325,10 +686,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carousel */ "./client/components/carousel.jsx");
-/* harmony import */ var _style_loader_css_loader_server_public_css_dashboard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! style-loader!css-loader!../../server/public/css/dashboard.css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./server/public/css/dashboard.css");
-/* harmony import */ var _style_loader_css_loader_server_public_css_dashboard_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_loader_css_loader_server_public_css_dashboard_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _css_dashboard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/dashboard.css */ "./client/components/css/dashboard.css");
+/* harmony import */ var _css_dashboard_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_dashboard_css__WEBPACK_IMPORTED_MODULE_2__);
 
- // import '../s/css/dashboard.css';
 
 
 class DashBoard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -340,9 +700,7 @@ class DashBoard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid px-0 mx-auto col-4 row h-100"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      // style={{backgroundImage:"url(" +"../../images/catbug-profile-pic.jpg"+ ")"}} 
-      className: "img-fluid rounded-circle m-auto welcome-back-container-image shadow-lg" // 'recipebuilder/recipebuilder2/client/components'
-      ,
+      className: "img-fluid rounded-circle m-auto welcome-back-container-image shadow-lg",
       src: "images/catbug-profile-pic.jpg",
       alt: ""
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -363,8 +721,11 @@ class DashBoard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid m-auto mb-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Favorite Recipes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "carousel-container container-fluid m-auto px-0 mb-5"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-container container-fluid m-auto px-0"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      currentUser: this.props.currentUser,
+      state: this.props.state
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid m-auto"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn",
@@ -372,7 +733,7 @@ class DashBoard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     }, "VIEW FAVORITES"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid mx-auto row p-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn mx-auto shadow px-5",
+      className: "btn mx-auto shadow ",
       onClick: () => this.props.setView('homepage')
     }, "Log Out")));
   }
@@ -393,7 +754,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FavoriteRecipe; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
- // let img = require('../..server/public/images/herbedchickenwithroastedveggies.png')
 
 class FavoriteRecipe extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render() {
@@ -403,15 +763,13 @@ class FavoriteRecipe extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compon
       className: "favorite-recipe-top p-0"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       className: "recipe-image img-fluid p-0 w-100 h-100",
-      src: "images/" + this.props.recipe.recipeImage // src={img}
-      // style={{backgroundImage : "url("+"../../srver/public/images/herbedchickenwithroastedveggies.png" + ")"}}
-      ,
-      alt: this.props.recipe.recipeTitle
+      src: "images/" + this.props.recipe.image,
+      alt: this.props.recipe.title
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "favorite-recipe-bottom mx-auto row align-items-start border py-2"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid mx-auto text-center p-0"
-    }, this.props.recipe.recipeTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, this.props.recipe.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "container-fluid mx-auto my-0 py-0 row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn mx-auto p-0 px-3",
@@ -436,6 +794,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _favoriterecipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./favoriterecipe */ "./client/components/favoriterecipe.jsx");
+/* harmony import */ var _css_favoriterecipes_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/favoriterecipes.css */ "./client/components/css/favoriterecipes.css");
+/* harmony import */ var _css_favoriterecipes_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_favoriterecipes_css__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 class FavoriteRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -448,6 +809,22 @@ class FavoriteRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
   }
 
   getFavoriteRecipes() {
+    let currentUser = {
+      currentUser: this.props.currentUser
+    };
+    fetch('/api/favoriterecipes.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(currentUser)
+    }).then(res => res.json()).then(res => {
+      this.setState({
+        componentDidMount: true,
+        favoriteRecipes: res
+      });
+    });
+    let recipeDatabase;
     let recipe1Insructions = ['First you gotta start the fire', 'season the beef', 'cook the rice', 'finish cooking the beef', 'finishing cooking the rice', 'add the beef on top of the rice', 'make sure you set it inside of a beautiful bowl', 'set that bowl on top of a nice ass table', 'turn the lights down low', 'once the lights are low to your liking, turn on the music', 'invite the LOYL', 'make love', 'then enjoy that beetf with rice'];
     const recipe1 = {
       recipdId: 1,
@@ -484,12 +861,11 @@ class FavoriteRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
       recipeImage: 'beefwithrice.jpg',
       recipeTimeToCook: '00:40',
       recipeInstructions: recipe1Insructions
-    };
-    const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
-    this.setState({
-      componentDidMount: true,
-      favoriteRecipes: recipeDatabase
-    });
+    }; // const recipeDatabase = [recipe1, recipe2, recipe3, recipe4];
+    // this.setState({
+    //     componentDidMount: true,
+    //     favoriteRecipes: recipeDatabase
+    // })
   }
 
   componentDidMount() {
@@ -501,9 +877,9 @@ class FavoriteRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorite-recipes-component-container mx-auto row px-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "favorite-recipes-component-title text-center mx-auto"
-      }, "Your Favorites"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "favorite-recipes-map-container mx-auto mb-3 px-3 py-0 row"
+        className: "favorite-recipes-component-title text-center mx-auto py-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your Favorites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "favorite-recipes-map-container mx-auto mb-3 px-0 py-0 row"
       }, this.state.favoriteRecipes.map((recipe, index) => {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_favoriterecipe__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: index,
@@ -513,7 +889,7 @@ class FavoriteRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorite-recipe-component-back-to-dashboard mx-auto row p-0 "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn mx-auto p-0 px-3",
+        className: "btn mx-auto p-0",
         onClick: () => this.props.setView('dashboard')
       }, "Back to Dashboard")));
     } else {
@@ -537,6 +913,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Header; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_header_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/header.css */ "./client/components/css/header.css");
+/* harmony import */ var _css_header_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_header_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 class Header extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render() {
@@ -564,8 +943,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HomePage; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
- //  require('!style-loader!css-loader!../../server/public/css/homepage.css');
-//  import Styles from 'style-loader!css-loader!../../server/public/css/homepage.css';
+/* harmony import */ var _css_homepage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/homepage.css */ "./client/components/css/homepage.css");
+/* harmony import */ var _css_homepage_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_homepage_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 class HomePage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render() {
@@ -577,7 +957,7 @@ class HomePage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       className: "welcome-container row text-center p-0 mb-4 mx-auto "
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "h-100 col-8 col-md-12 text-center mx-auto px-0 py-4"
-    }, "Build ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, "YOUR"), " RecipeModule not found: Error: Can't resolve 'file-loader' in")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Build ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, "YOUR"), " Recipe")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-container row text-center p-0 mx-auto mb-4"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "h-100 col-8 px-0 py-4 mx-auto"
@@ -599,6 +979,58 @@ class HomePage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 /***/ }),
 
+/***/ "./client/components/images/a-mb-test-2x.jpg":
+/*!***************************************************!*\
+  !*** ./client/components/images/a-mb-test-2x.jpg ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "0a5bb24f61f1fb47c49990e477ac8874.jpg");
+
+/***/ }),
+
+/***/ "./client/components/images/bg-test-1.png":
+/*!************************************************!*\
+  !*** ./client/components/images/bg-test-1.png ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "22d679c735b4d3496d49dfe0ea28bd1c.png");
+
+/***/ }),
+
+/***/ "./client/components/images/bg-test-2.png":
+/*!************************************************!*\
+  !*** ./client/components/images/bg-test-2.png ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "de026ea652535ebf029bb6200be28d3b.png");
+
+/***/ }),
+
+/***/ "./client/components/images/home-button.png":
+/*!**************************************************!*\
+  !*** ./client/components/images/home-button.png ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "d1bd7fad585ef6a18f380f24993b4299.png");
+
+/***/ }),
+
 /***/ "./client/components/letscook.jsx":
 /*!****************************************!*\
   !*** ./client/components/letscook.jsx ***!
@@ -611,7 +1043,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LetsCook; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
- // import '../css/letscook.css'; 
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./client/components/modal.jsx");
+/* harmony import */ var _css_letscook_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/letscook.css */ "./client/components/css/letscook.css");
+/* harmony import */ var _css_letscook_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_letscook_css__WEBPACK_IMPORTED_MODULE_3__);
+/*
+
+    1) Before adding to favorite
+        - Check if recipe exist in favorite database
+
+
+
+    2) AFter checking database, continue with next steps;
+    Query to add to favorites
+        $query = "INSERT INTO `favoriterecipes` (`id`, `userName`, `recipeId`) 
+                    VALUES (NULL, 'guest', '5');";
+
+    Query to remove from favorites
+        -Version 1
+        $queryDelete = "DELETE FROM `favoriterecipes` 
+                          WHERE `favoriterecipes`.`id` = 11"
+
+        - Version 2
+        $queryDelete = "DELETE FROM `favoriterecipes` 
+                          WHERE `favoriterecipes`.`userName` = 'guest' 
+                            AND `favoriterecipes`.`recipeId` = 5"
+
+*/
+
+
+
 
 class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
@@ -621,65 +1083,118 @@ class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       previousView: '',
       ingredientsToUse: [],
       currentRecipeToCook: {},
-      favoriteRecipe: false
+      favoriteRecipe: false,
+      instructions: [],
+      modalActive: false
     };
     this.getRecipeInformation = this.getRecipeInformation.bind(this);
     this.addToFavorites = this.addToFavorites.bind(this);
+    this.removeFromFavorites = this.removeFromFavorites.bind(this);
+  }
+
+  alertClient(recipeStatus) {
+    /*
+        This method is used to inform client that recipe has been removed from favorites
+    */
+    let messageStatus;
+    let modal;
+
+    if (recipeStatus) {
+      messageStatus = 'This has been added to your favorites!';
+      modal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        messageStatus: messageStatus
+      });
+    }
+
+    if (!recipeStatus) {
+      messageStatus = 'This recipe has been removed from your favorites';
+      modal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        messageStatus: messageStatus
+      });
+    }
+
+    if (recipeStatus === 'deactivate') {
+      modal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null);
+    }
+
+    react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(modal, document.querySelector('#modal'));
+  }
+
+  addToFavorites() {
+    let addToFavoritesObj = {
+      recipeId: this.state.currentRecipeToCook.id,
+      currentUser: this.props.state.currentUser
+    };
+    fetch('/api/addtofavorites.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(addToFavoritesObj)
+    }).then(res => res.json()).then(res => {
+      if (res.length === 1) {
+        this.removeFromFavorites();
+        return;
+      }
+
+      this.setState({
+        favoriteRecipe: true,
+        modalActive: true
+      });
+    }); // this.alertClient('added');
+  }
+
+  removeFromFavorites() {
+    let removeFromFavoritesObj = {
+      recipeId: this.state.currentRecipeToCook.id,
+      currentUser: this.props.state.currentUser
+    };
+    fetch('/api/addtofavorites.php', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(removeFromFavoritesObj)
+    }).then(this.setState({
+      favoriteRecipe: false,
+      modalActive: true
+    }));
   }
 
   getRecipeInformation() {
-    // let dummyArray = [
-    //     'Asparagus',
-    //     'Beets',
-    //     'Beef',
-    //     'Brocolli',
-    //     'Cabbage',
-    //     'Carrots',
-    //     'Celery',
-    //     'Cauliflower',
-    //     'Chicken',
-    //     'Cucumber',
-    //     'Potatoes',
-    //     'Rice',
-    //     'Zuccini'
-    // ];
-    // const recipe1 = {
-    //     recipdId: 1,
-    //     recipeTitle: 'Braised Chicken with Steamed Veggies',
-    //     recipeIngredients : ['Chicken', 'Brocolli', 'Carrots'],
-    //     recipeConfirmedIngredientCount: 0,
-    //     recipeImage: 'beefwithrice.jpg',
-    //     recipeTimeToCook: '00:50',
-    //     recipeInstructions: recipe1Insructions
-    // }
-    this.setState({
-      componentDidMount: true,
-      previousView: this.props.previousView,
-      ingredientsToUse: this.props.state.view.params.ingredientsToUse,
-      currentRecipeToCook: this.props.state.view.params.currentRecipeToCook
-    }); // this.setState({
-    //     componentDidMount: true,
-    //     ingredientsToUse: dummyArray,
-    //     currentRecipeToCook: recipe1
-    // })
-  }
-
-  addToFavorites(newparam) {
-    if (newparam) {
+    let recipeObj = {
+      recipeId: this.props.state.view.params.currentRecipeToCook.id
+    };
+    fetch('/api/instructions.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Acceipt': 'application/json'
+      },
+      body: JSON.stringify(recipeObj)
+    }).then(res => res.json()).then(instructions => {
       this.setState({
-        favoriteRecipe: newparam
+        componentDidMount: true,
+        previousView: this.props.previousView,
+        ingredientsToUse: this.props.state.view.params.ingredientsToUse,
+        favoriteRecipe: this.props.state.view.params.favoriteCheck,
+        currentRecipeToCook: this.props.state.view.params.currentRecipeToCook,
+        instructions: instructions
       });
-    }
-
-    if (!newparam) {
-      this.setState({
-        favoriteRecipe: newparam
-      });
-    }
+    });
   }
 
   componentDidMount() {
     this.getRecipeInformation();
+  }
+
+  componentDidUpdate() {
+    if (this.state.modalActive) {
+      if (this.state.favoriteRecipe) this.alertClient(this.state.favoriteRecipe);
+      if (!this.state.favoriteRecipe) this.alertClient(this.state.favoriteRecipe);
+    }
   }
 
   render() {
@@ -688,7 +1203,7 @@ class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
     if (this.state.favoriteRecipe) {
       favoriteElement = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        onClick: () => this.addToFavorites(false),
+        onClick: () => this.removeFromFavorites(),
         className: "fa fa-heart mx-auto",
         "aria-hidden": "true"
       });
@@ -696,8 +1211,16 @@ class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
     if (!this.state.favoriteRecipe) {
       favoriteElement = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        onClick: () => this.addToFavorites(true),
-        className: "fa fa-heart-o mx-auto",
+        onClick: () => this.addToFavorites(),
+        className: "far fa-heart mx-auto",
+        "aria-hidden": "true"
+      });
+    }
+
+    if (this.state.previousView === 'favoriterecipes' && this.state.favoriteRecipe === undefined) {
+      favoriteElement = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        onClick: () => this.removeFromFavorites(),
+        className: "fa fa-heart mx-auto",
         "aria-hidden": "true"
       });
     }
@@ -716,18 +1239,21 @@ class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lets-cook-container row  px-1 mx-auto"
+        className: "lets-cook-container row  px-0 mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "modal",
+        onClick: () => this.alertClient('deactivate')
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-title-container mx-auto row mb-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid mx-auto col-11 text-left"
-      }, this.state.currentRecipeToCook.recipeTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.currentRecipeToCook.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid mx-auto col-1 text-center px-0"
       }, favoriteElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lets-cook-img-container mx-auto p-0 mb-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          'backgroundImage': "url(/images/" + this.state.currentRecipeToCook.recipeImage + ")",
+          'backgroundImage': "url(/images/" + this.state.currentRecipeToCook.image + ")",
           'backgroundSize': '100% 100%',
           'backgroundRepeat': 'no-repeat'
         },
@@ -742,17 +1268,17 @@ class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         className: "my-0"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "list-group"
-      }, this.state.currentRecipeToCook.recipeInstructions.map((steps, index) => {
+      }, this.state.instructions.map((steps, index) => {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "list-group-item border-0",
           key: index + 1
         }, index + 1, ") \xA0", steps);
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lets-cook-buttons mx-auto row py-0"
+        className: "lets-cook-buttons mx-auto mb-3 row py-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid mx-auto mb-3 row col-12 col-md-6"
       }, backButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-fluid mx-auto row col-6"
+        className: "container-fluid mx-auto row col-12 col-md-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn mx-auto py-0",
         onClick: () => this.props.setView('dashboard')
@@ -762,6 +1288,37 @@ class LetsCook extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         className: "lets-cook-container"
       }, "loading..");
     }
+  }
+
+}
+
+/***/ }),
+
+/***/ "./client/components/modal.jsx":
+/*!*************************************!*\
+  !*** ./client/components/modal.jsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Modal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_modal_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/modal.css */ "./client/components/css/modal.css");
+/* harmony import */ var _css_modal_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_modal_css__WEBPACK_IMPORTED_MODULE_1__);
+
+
+class Modal extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "modal-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "modal-message-container d-flex"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "container-fluid h-100"
+    }, this.props.messageStatus, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Return home to view all the recipes you loved!")));
   }
 
 }
@@ -795,33 +1352,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-__webpack_require__(/*! style-loader!css-loader!../../server/public/css/homepage.css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./server/public/css/homepage.css");
-
 class RecipeBuilder extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'homepage',
+        name: 'dashboard',
         previousView: '',
         params: {
-          ingredientsToUse: ['Beef', 'Brocolli', 'Carrots', 'Chicken', 'Rice', 'Zuccini'],
+          ingredientsToUse: ['Beef', 'Carne Asada', 'Chicken', 'Lamb', 'Macaroni', 'Potatoe', 'Salmon', 'Steak'],
+          favoriteRecipeCheck: false,
           currentRecipeToCook: {}
         }
-      }
+      },
+      currentUser: 'guest'
     };
     this.setView = this.setView.bind(this);
-  } // componentDidMount(){
-  //     fetch('/api/recipebuilder.php', {method: 'GET', headers: {'Content-Type' : 'application/json'}})
-  //         .then( res => res.text())
-  //         .then( res => console.log(res));
-  // }
-
+  }
 
   setView(name, param) {
-    let defaultIngredients = ['Beef', 'Brocolli', 'Carrots', 'Chicken', 'Rice', 'Zuccini'];
+    let defaultIngredients = ['Beef', 'Carne Asada', 'Chicken', 'Lamb', 'Macaroni', 'Potatoe', 'Salmon', 'Steak'];
     let currentRecipeToCook;
+    let favoriteRecipe;
 
     if (this.state.view.name === 'letscook' && name === 'recommendedrecipes') {
       /*  condition 3 - 'letscook' -> 'recommendedrecipes'
@@ -845,6 +1397,7 @@ class RecipeBuilder extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
           into the definitions here just to make reading the property 
           easier to understand.
       */
+      favoriteRecipe = param.favoriteRecipe;
       currentRecipeToCook = param.recipe;
       param = param.confirmedIngredients;
     }
@@ -856,9 +1409,11 @@ class RecipeBuilder extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
         previousView: this.state.view.name,
         params: {
           ingredientsToUse: param,
+          favoriteCheck: favoriteRecipe,
           currentRecipeToCook: currentRecipeToCook
         }
-      }
+      },
+      currentUser: 'guest'
     });
   }
 
@@ -887,6 +1442,7 @@ class RecipeBuilder extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       case 'dashboard':
         element = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {
           setView: this.setView,
+          state: this.state,
           ingredientsToUse: this.state.view.params.ingredientsToUse
         });
         break;
@@ -902,7 +1458,8 @@ class RecipeBuilder extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
         element = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recommendedrecipes__WEBPACK_IMPORTED_MODULE_5__["default"], {
           setView: this.setView,
           previousView: this.state.previousView,
-          confirmedIngredients: this.state.view.params.ingredientsToUse
+          confirmedIngredients: this.state.view.params.ingredientsToUse,
+          currentUser: this.state.currentUser
         });
         break;
 
@@ -916,6 +1473,7 @@ class RecipeBuilder extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
 
       case 'favoriterecipes':
         element = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_favoriterecipes__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          currentUser: this.state.currentUser,
           setView: this.setView
         });
         break;
@@ -947,6 +1505,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _confirmedrecipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./confirmedrecipe */ "./client/components/confirmedrecipe.jsx");
+/* harmony import */ var _css_recommendedrecipes_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/recommendedrecipes.css */ "./client/components/css/recommendedrecipes.css");
+/* harmony import */ var _css_recommendedrecipes_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_recommendedrecipes_css__WEBPACK_IMPORTED_MODULE_2__);
+/*
+    1) this.state.recommendedRecipes -> array of objects
+    2) When writing this function... 
+        - Check the data base for key words using 'confirmed ingredients'
+        - return recipes that hit those key words in database
+        - render list of recipes that pass the test
+        - the recipes should be ordered by which recipes has most confirmed ingredients to least confirmed
+
+    3) after fetching data, store it in state, then render recipes component
+
+    Step 1) Enter input Array
+    Step 2) Find all recipes that include confirmed ingredients
+    Step 3) Store all those recipes in an array, confirmed recipes
+    Step 3.5) Assign ingredient count to confirmedRecipe.recipeConfirmedIngredientCount
+    Step 4) SORT THE ARRAY!!
+
+    confirmedRecipes.sort(function(a,b) {
+        return b.recipeConfirmedIngredientCount - a.recipeConfirmedIngredientCount;
+    })
+
+    Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
+
+
+
+    2/20/2020 
+    1) get recipe method must also take into account which recipes are in favorite database.
+*/
+
 
 
 class RecommendedRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -955,116 +1543,41 @@ class RecommendedRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
     this.state = {
       previousView: '',
       confirmedIngredients: [],
-      recommendedRecipes: []
+      recommendedRecipes: [],
+      favoriteRecipeIds: []
     };
     this.getRecipes = this.getRecipes.bind(this);
   }
 
   getRecipes(confirmedIngredients) {
-    /*
-        1) this.state.recommendedRecipes -> array of objects
-        2) When writing this function... 
-            - Check the data base for key words using 'confirmed ingredients'
-            - return recipes that hit those key words in database
-            - render list of recipes that pass the test
-            - the recipes should be ordered by which recipes has most confirmed ingredients to least confirmed
-         3) after fetching data, store it in state, then render recipes component
-    */
-    let recipe1Insructions = ['First you gotta start the fire', 'season the beef', 'cook the rice', 'finish cooking the beef', 'finishing cooking the rice', 'add the beef on top of the rice', 'make sure you set it inside of a beautiful bowl', 'set that bowl on top of a nice ass table', 'turn the lights down low', 'once the lights are low to your liking, turn on the music', 'invite the LOYL', 'make love', 'then enjoy that beetf with rice'];
-    const recipe1 = {
-      recipdId: 1,
-      recipeTitle: 'Braised Chicken with Steamed Veggies',
-      recipeIngredients: ['Chicken', 'Brocolli', 'Carrots'],
-      recipeConfirmedIngredientCount: 0,
-      recipeImage: 'braisedchickenwithsteamedveggies.png',
-      recipeTimeToCook: '00:50',
-      recipeInstructions: recipe1Insructions
+    let ingredientObj = {
+      currentUser: this.props.currentUser,
+      confirmedIngredients: confirmedIngredients
     };
-    const recipe2 = {
-      recipeId: 2,
-      recipeTitle: 'Herbed Chicken with Roased Veggies',
-      recipeIngredients: ['Chicken', 'Carrots', 'Zuccini'],
-      recipeConfirmedIngredientCount: 0,
-      recipeImage: 'herbedchickenwithroastedveggies.png',
-      recipeTimeToCook: '00:50',
-      recipeInstructions: recipe1Insructions
-    }; // const recipe3 = {
-    //     recipeId: 3,
-    //     recipeTitle: 'CrockPot Chicken with Veggies',
-    //     recipeIngredients: ['Chicken', 'Potatoes', 'Carrots', 'Brocolli', 'Cabbage', 'Asparagus'],
-    //     recipeConfirmedIngredientCount: 0,
-    //     recipeImage: 'crockpotchickenwithveggies.png',
-    //     recipeTimeToCook: '04:00',
-    //     recipeInstructions: recipe1Insructions
-    // }
+    fetch('/api/recipes.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(ingredientObj)
+    }).then(res => res.json()).then(res => {
+      let favoriteRecipeIdArray = [];
 
-    const recipe3 = {
-      recipeId: 3,
-      recipeTitle: 'Beef w/Rice',
-      recipeIngredients: ['Beef', 'Rice'],
-      recipeConfirmedIngredientCount: 0,
-      recipeImage: 'beefwithrice.jpg',
-      recipeTimeToCook: '00:40',
-      recipeInstructions: recipe1Insructions
-    };
-    const recipeDatabase = [recipe1, recipe2, recipe3]; // Step 1) Enter input Array
-
-    console.log(confirmedIngredients); // Step 2) Find all recipes that include confirmed ingredients
-
-    let confirmedRecipes = [];
-
-    for (let i = 0; i < recipeDatabase.length; i++) {
-      for (var j = 0; j < confirmedIngredients.length; j++) {
-        // Step 3) Store all those recipes in an array, confirmed recipes
-        if (recipeDatabase[i].recipeIngredients.includes(confirmedIngredients[j])) {
-          confirmedRecipes.push(recipeDatabase[i]);
-          break;
-        }
-      }
-    } // Step 3.5) Assign ingredient count to confirmedRecipe.recipeConfirmedIngredientCount
-
-
-    for (let i = 0; i < confirmedRecipes.length; i++) {
-      let ingredientCount = 0;
-
-      for (let j = 0; j < confirmedIngredients.length; j++) {
-        if (confirmedRecipes[i].recipeIngredients.includes(confirmedIngredients[j])) ingredientCount++;
+      for (let i = 0; i < res[1].length; i++) {
+        favoriteRecipeIdArray.push(res[1][i].recipeId);
       }
 
-      confirmedRecipes[i].recipeConfirmedIngredientCount = ingredientCount;
-    } // Step 4) SORT THE ARRAY!!
-
-
-    confirmedRecipes.sort(function (a, b) {
-      return b.recipeConfirmedIngredientCount - a.recipeConfirmedIngredientCount;
-    });
-    console.log(confirmedRecipes); // Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
-
-    this.setState({
-      previousView: '',
-      confirmedIngredients: confirmedIngredients,
-      recommendedRecipes: confirmedRecipes
+      this.setState({
+        previousView: '',
+        confirmedIngredients: confirmedIngredients,
+        recommendedRecipes: res[0],
+        favoriteRecipeIds: favoriteRecipeIdArray
+      });
     });
   }
 
   componentDidMount() {
-    // let dummyArray = [
-    //     'Asparagus',
-    //     'Beets',
-    //     'Beef',
-    //     'Brocolli',
-    //     'Cabbage',
-    //     'Carrots',
-    //     'Celery',
-    //     'Cauliflower',
-    //     'Chicken',
-    //     'Cucumber',
-    //     'Potatoes',
-    //     'Rice',
-    //     'Zuccini'
-    // ];
-    // this.getRecipes(dummyArray);
-    console.log(this.props.confirmedIngredients);
     this.getRecipes(this.props.confirmedIngredients);
   }
 
@@ -1072,19 +1585,22 @@ class RecommendedRecipes extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "recommended-recipes-container row px-0 mx-auto"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "recommended-recipes-content-container mx-auto text-center py-0 px-1"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Recommended Recipes"), "With the recipes you've picked, here are some ingredients for you to try and cook!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "recomended-recipes-confirmed-recipe-container mx-auto mb-0 px-3 py-0 row"
+      className: "recommended-recipes-content-container mx-auto mb-3 text-center py-0"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Recommended Recipes ( ", this.state.recommendedRecipes.length, " )"), "With the recipes you've picked, here are some ingredients for you to try and cook!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "recomended-recipes-confirmed-recipe-container mx-auto mb-3 py-0 row"
     }, this.state.recommendedRecipes.map((recipe, index) => {
+      let favoriteCheck = false;
+      if (this.state.favoriteRecipeIds.includes(recipe.id)) favoriteCheck = true;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_confirmedrecipe__WEBPACK_IMPORTED_MODULE_1__["default"], {
         key: index,
         recipe: recipe,
+        favoriteRecipe: favoriteCheck,
         previousView: "recommendedrecipes",
         setView: this.props.setView,
         confirmedIngredients: this.props.confirmedIngredients
       });
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "recommended-recipes-return-button-container mx-auto"
+      className: "recommended-recipes-return-button-container mx-auto mb-3 row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn mx-auto text-center py-0",
       onClick: () => this.props.setView('confirmingredients', this.props.confirmedIngredients)
@@ -1116,9 +1632,168 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./server/public/css/dashboard.css":
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/carousel.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/carousel.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".arrow-pointer {\n    cursor: pointer;\n}", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/confirmedrecipe.css":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/confirmedrecipe.css ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".confirmed-recipe{\n    height: 250px;\n    width: 300px;\n    margin-bottom: 35px;\n    border-radius: 10px;\n    background-color: white;\n    box-shadow: 0 0 8px grey;\n    overflow: hidden;\n    font-size: 1rem;\n}\n.confirmed-recipe button {\n    height: 30px;\n    font-size: 0.8rem;\n}\n.recipe-top-container {\n    height: 70%;\n    width: 100%;\n    overflow:hidden;\n}\n.recipe-bottom-container {\n    height: 30%;\n    width: 100%;\n}\n.recipe-image {\n    background-size: 100% 100%;\n    background-position: 50% 100%;\n}\n\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .confirmed-recipe {\n            margin-bottom: 50px;\n            font-size: 1rem;\n        }\n        .confirmed-recipe button {\n            padding: 0px;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .confirmed-recipe {\n            margin-bottom: 50px;\n            font-size: 1rem;\n        }\n        .confirmed-recipe button {\n            padding: 0px;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .confirmed-recipe {\n            margin-bottom: 50px;\n            font-size: 1rem;\n        }\n        .confirmed-recipe button {\n            padding: 0px;\n        }\n    }", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/confirmingredients.css":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/confirmingredients.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-1.png */ "./client/components/images/bg-test-1.png");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
+// Module
+exports.push([module.i, "body {\n    font-size: 1.8rem;\n}\n.confirm-ingredients-container{\n    height: 100vh;\n    padding-top: 50px;\n    border: 15px solid #230F0F;\n    overflow: scroll;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 0%;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-color: lightgrey;\n}\n.confirm-ingredients-description {\n    height: 150px;\n    width: 80%;\n    max-width: 750px;\n    font-family: DM Sans Display;\n    background-color: white;\n    border-radius: 10px;\n}\n.confirm-ingredients-content {\n    padding: 25px 0px;\n    height: 400px;\n    max-height: 400px;\n    width: 80%;\n    max-width: 750px;\n    background-color: white;\n    box-shadow: 0 0 8px grey;\n    border-radius: 10px;\n    font-family: DM Serif Display;\n    overflow: scroll;\n}\n.build-ingredients-return-search{\n    height: 175px;\n    width: 90%;\n    max-width: 750px;\n}\n.build-ingredients-return-search button {\n    height: 30px;\n    width: 175px;\n}\n\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .confirm-ingredients-container{\n            padding-top: 100px;\n        }\n        .confirm-ingredients-description {\n            height: 100px;\n            margin-bottom: 0px;\n        }\n        .confirm-ingredients-content {\n            margin-top: 0px;\n            display: flex;\n            flex-direction: row;\n            height: 300px;\n            justify-content: space-between;\n        }\n        .build-ingredients-return-search {\n            display: flex;\n            flex-direction: column;\n            height: 150px;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS*/\n\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3){\n        .confirm-ingredients-container{\n            padding-top: 100px;\n        }\n        .confirm-ingredients-description {\n            height: 100px;\n            margin-bottom: 0px;\n        }\n        .confirm-ingredients-content {\n            margin-top: 0px;\n            display: flex;\n            flex-direction: row;\n            height: 300px;\n            justify-content: space-between;\n        }\n        .build-ingredients-return-search {\n            display: flex;\n            flex-direction: column;\n            height: 150px;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .confirm-ingredients-container{\n            padding-top: 100px;\n        }\n        .confirm-ingredients-description {\n            height: 100px;\n            margin-bottom: 0px;\n        }\n        .confirm-ingredients-content {\n            margin-top: 0px;\n            display: flex;\n            flex-direction: row;\n            height: 300px;\n            justify-content: space-between;\n        }\n        .build-ingredients-return-search {\n            display: flex;\n            flex-direction: column;\n            height: 150px;\n        }\n    }", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/dashboard.css":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/dashboard.css ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-1.png */ "./client/components/images/bg-test-1.png");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
+// Module
+exports.push([module.i, ".btn {\n    padding: 0px;\n    width: 150px;\n    background-color: black;\n    color: white;\n    border-radius: 45px;\n    font-size: 0.9rem;\n}\n.bg-test {\n    height: 100%;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 0%;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-color: lightgrey;\n}\n.btn:hover{\n    color: grey;\n}\n.dashboard-container{\n    height: 100vh;\n    padding: 50px 0px;\n    border: 15px solid #230F0F;\n    overflow: scroll;\n}\n.welcome-back-container{\n    background-color: white;\n    border-radius: 10px;\n    box-shadow: 0 0 8px grey;\n    height: 150px;\n    width: 90%;\n    max-width: 750px;\n    font-size: 2rem;\n    letter-spacing: -0.05rem;\n}\n.welcome-back-container-image{\n    height: 70%;\n}\n.welcome-back-container-description {\n    font-family: DM Serif Display;\n}\n.find-ingredients-container{\n    padding: 25px 0px;\n    height: 225px;\n    width: 90%;\n    max-width: 750px;\n    background-color: white;\n    border-radius: 10px;\n    box-shadow: 0 0 8px grey;\n    font-family: DM Serif Display;\n    font-size: 1.8rem;\n}\n.favorite-recipes-container {\n    height: 500px;\n    width: 90%;\n    max-width: 750px;\n    background-color: white;\n    border-radius: 10px;\n    box-shadow: 0 0 8px grey;\n    font-family: DM Serif Display;\n    font-size: 1.8rem;\n}\n.carousel-container {\n    height: 275px;\n    width: 100%;\n    padding: 0px;\n    display: flex;\n    flex-direction: row;\n}\n.carousel {\n    height: 100%;\n    width: 425px;\n    max-width: 425px;\n    display: flex;\n    flex-direction: row;\n}\n.image-slide {\n    height: 100%;\n    width: 300px;\n}\n.img-title-container {\n    height: 80%;\n    width: 80%;\n    font-size: 1.3rem;\n}\n.arrow {\n    display: flex;\n    justify-content: space-around;\n    padding: 125px 0px;\n}\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .btn {\n            height: 25px;\n            width: 150px;\n            font-size: 0.7rem;\n            border-radius: 45px;\n        }\n        h1 {\n            font-size: 1.5rem;\n            font-weight: bold;\n        }\n        .dashboard-container {\n            padding: 60px 0px;\n        }\n        .welcome-back-container-description {\n            font-size: 1.5rem;\n        }\n        .welcome-back-container-image {\n            height: 50%;\n        }\n        .find-ingredients-container {\n            border-radius: 8px;\n            font-size: 1.5rem;\n        }\n        .favorite-recipes-container {\n            height: 375px;\n            border-radius: 8px;\n        }\n        .carousel-container {\n            height: 150px;\n            width: 90%;\n        }\n        .carousel {\n            max-width: 100%;\n        }\n        .image-slide {\n            width: 90%;\n        }\n        .img-title-container {\n            font-size: 1rem;\n            padding: 5px 0px;\n        }\n        .arrow {\n            width: 10%;\n            padding: 45px 0px;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .btn {\n            height: 25px;\n            width: 150px;\n            font-size: 0.7rem;\n            border-radius: 45px;\n        }\n        h1 {\n            font-size: 1.5rem;\n            font-weight: bold;\n        }\n        .dashboard-container {\n            padding: 60px 0px;\n        }\n        .welcome-back-container-description {\n            font-size: 1.5rem;\n        }\n        .welcome-back-container-image {\n            height: 50%;\n        }\n        .find-ingredients-container {\n            border-radius: 8px;\n            font-size: 1.5rem;\n        }\n        .favorite-recipes-container {\n            height: 375px;\n            border-radius: 8px;\n        }\n        .carousel-container {\n            height: 150px;\n            width: 90%;\n        }\n        .carousel {\n            max-width: 100%;\n        }\n        .image-slide {\n            width: 90%;\n        }\n        .img-title-container {\n            font-size: 1rem;\n            padding: 5px 0px;\n        }\n        .arrow {\n            width: 10%;\n            padding: 45px 0px;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .btn {\n            height: 25px;\n            width: 150px;\n            font-size: 0.7rem;\n            border-radius: 45px;\n        }\n        h1 {\n            font-size: 1.2rem;\n        }\n        .dashboard-container {\n            padding: 60px 0px;\n        }\n        .welcome-back-container-description {\n            font-size: 1.5rem;\n        }\n        .welcome-back-container-image {\n            height: 50%;\n        }\n        .find-ingredients-container {\n            border-radius: 8px;\n            font-size: 1.5rem;\n        }\n        .favorite-recipes-container {\n            height: 400px;\n            border-radius: 8px;\n        }\n        .carousel-container {\n            height: 150px;\n            width: 90%;\n        }\n        .carousel {\n            max-width: 100%;\n        }\n        .image-slide {\n            width: 90%;\n        }\n        .img-title-container {\n            font-size: 1rem;\n            padding: 5px 0px;\n        }\n        .arrow {\n            width: 10%;\n            padding: 45px 0px;\n        }\n    }", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/favoriterecipes.css":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/favoriterecipes.css ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-1.png */ "./client/components/images/bg-test-1.png");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
+// Module
+exports.push([module.i, ".favorite-recipes-component-container {\n    height: 100vh;\n    border: 15px solid #230F0F;\n    font-family: DM Sans Diplay;\n    overflow: scroll;\n    padding-top: 50px;\n    padding-bottom: 50px;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 0%;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-color: lightgrey;\n}\n.favorite-recipes-component-title {\n    height: 50px;\n    width: 90%;\n    max-width: 425px;\n    margin-bottom: 30px;\n    font-family: DM Sans Display;\n    background-color: white;\n    border-radius: 8px;\n    box-shadow: 0 0 8px grey;\n}\n.favorite-recipes-map-container {\n    min-height: 300px;\n    width: 90%;\n    box-sizing: border-box;\n    justify-content: space-around;\n}\n.favorite-recipe-component-back-to-dashboard {\n    height: 5%;\n    width: 90%;\n}\n.favorite-recipe {\n    height: 250px;\n    width: 300px;\n    margin-bottom: 35px;\n    border-radius: 10px;\n    background-color: white;\n    box-shadow: 0 0 8px grey;\n    overflow: hidden;\n    font-family: DM Sans Display;\n}\n.favorite-recipe-top {\n    height: 70%;\n    width: 100%;\n    overflow: hidden;\n}\n.favorite-recipe-image {\n    background-size: 100% 100%;\n    background-position: 50% 100%;\n}\n.favorite-recipe-bottom {\n    height: 30%;\n    width: 100%;\n}\n.favorite-recipe button {\n    width: 150px;\n}\n.favorite-recipe-component-back-to-dashboard button {\n    height: 30px;\n}\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .favorite-recipes-component-container {\n            padding-top: 75px;\n        }\n        .favorite-recipe-component-back-to-dashboard button {\n            font-size: 1rem;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS*/\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .favorite-recipes-component-container {\n            padding-top: 75px;\n        }\n        .favorite-recipe-component-back-to-dashboard button {\n            font-size: 1rem;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .favorite-recipes-component-container {\n            padding-top: 75px;\n        }\n        .favorite-recipe-component-back-to-dashboard button {\n            font-size: 1rem;\n        }\n    }\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/header.css":
+/*!********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/header.css ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/home-button.png */ "./client/components/images/home-button.png");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
+// Module
+exports.push([module.i, ".recipebuilder-header {\n    top: 0;\n    position: fixed;\n    z-index: 2;\n    height: 50px;\n    width: 100%;\n    background-color: #230F0F;\n    color: white;\n    display: flex;\n    padding: 0px 15px;\n}\n.recipebuilder-header-house-icon {\n    height: 50px;\n    width: 50px;\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    cursor: pointer;\n}\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .recipebuilder-header {\n            height: 55px;\n        }\n        .recipebuilder-header-house-icon {\n            height: 55px;\n            width: 55px;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .recipebuilder-header {\n            height: 55px;\n        }\n        .recipebuilder-header-house-icon {\n            height: 55px;\n            width: 55px;\n        }\n    }\n\n/* IPHONE X*/\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .recipebuilder-header {\n            height: 55px;\n        }\n        .recipebuilder-header-house-icon {\n            height: 55px;\n            width: 55px;\n        }\n    }", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/homepage.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/homepage.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-2.png */ "./client/components/images/bg-test-2.png");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
+// Module
+exports.push([module.i, ".homepage-container{\n    height: 100vh;\n    border: 15px solid #230F0F;\n    background-position: fixed;\n}\n.homepage-bg {\n    height: 100%;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 60% 65%;\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n.welcome-container{\n    height: 55%;\n    width: 75%;\n\n    font-family: DM serif display;\n    font-size: 9vh;\n    text-align: center;\n}\n.login-container{\n    height: 30%;\n    width: 75%;\n}\n.login-button{\n    background-color: black;\n    color: whitesmoke;\n    font-size: 1.5vh;\n    border-radius: 100px;\n    padding: 2% 10%;\n    transition: 0.2s;\n}\n.login-button:hover{\n    background-color: darkslategray;\n    color: whitesmoke;\n    transition: 0.2s;\n}\n.thankyou-container{\n    height: 10%;\n    width: 75%;\n    font-size: 0.7rem;\n}\n\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n/* Vertical View */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .login-button {\n            font-size: 0.9rem;\n        }\n    }\n/* Horizontal View */\n@media only screen \n    and (device-width : 667px) \n    and (device-height : 375px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .login-button {\n            font-size: 0.7rem;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS*/\n/* Vertical View */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .login-button{\n            font-size: 0.7rem;\n        }\n    }\n/* HORIZONTAL VIEW */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .login-button {\n            font-size: 0.7rem;\n        }\n    }\n/* IPHONE X */\n/* Vertical View */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .login-button{\n            font-size: 0.7rem;\n        }\n    }\n/* HORIZONTAL VIEW */\n@media only screen \n    and (device-width : 812px) \n    and (device-height : 375px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .login-button{\n            font-size: 0.9rem;\n        }\n    }", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/letscook.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/letscook.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "h1 {\n    font-size: 2rem;\n}\n.lets-cook-container{\n    height: 100vh;\n    border: 15px solid #230F0F;\n    background-color: white;\n    font-family: DM Sans Display;\n    overflow: scroll;\n    padding-top: 50px;\n}\n.recipe-title-container{\n    font-family: DM Sans Display;\n    padding: 0 15vw;\n    width: 90%;\n    min-width: 425px;\n    max-width: 1000px;\n}\n.lets-cook-img-container {\n    width: 100%;\n    max-width: 425px;\n}\n.lets-cook-img{\n    height: 280px;\n    width: 425px;\n    max-width: 425px;\n    overflow: hidden;\n    box-shadow: 0 0 8px grey;\n    border-radius: 5px;\n}\n.recipe-instructions-container{\n    height: 400px;\n    width: 90%;\n    min-width: 425px;\n    max-width: 425px;\n    box-sizing: border-box;\n    font-family: DM Sans Display;\n    cursor: all-scroll;\n}\n.recipe-instructions-container li {\n    text-align: left;\n}\n.recipe-instructions-list {\n    height: 85%;\n    overflow: scroll;\n}\n.lets-cook-buttons {\n    width: 90%;\n}\n.lets-cook-buttons button{\n    height: 25px;\n    width: 175px;\n    padding: 0px;\n}\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .lets-cook-container {\n            padding-top: 75px;\n        }\n        .recipe-title-container{\n            font-family: DM Sans Display;\n            padding: 0px;\n        }\n        .lets-cook-img-container {\n            width: 90%;\n            max-width: 90%;\n        }\n        .lets-cook-img {\n            height: 175px;\n            width: 100%;\n        }\n        .recipe-instructions-container{\n            height: 250px;\n            min-width: 90%;\n        }\n        .lets-cook-buttons button{\n            width: 145px;\n        }\n        hr {\n            background-color: black;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .lets-cook-container {\n            padding-top: 75px;\n        }\n        .recipe-title-container{\n            font-family: DM Sans Display;\n            padding: 0px;\n        }\n        .lets-cook-img-container {\n            width: 90%;\n            max-width: 90%;\n        }\n        .lets-cook-img {\n            height: 175px;\n            width: 100%;\n        }\n        .recipe-instructions-container{\n            height: 250px;\n            min-width: 90%;\n        }\n        .lets-cook-buttons button{\n            width: 145px;\n        }\n        hr {\n            background-color: black;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .lets-cook-container {\n            padding-top: 75px;\n        }\n        .recipe-title-container{\n            font-family: DM Sans Display;\n            padding: 0px;\n        }\n        .lets-cook-img-container {\n            width: 90%;\n            max-width: 90%;\n        }\n        .lets-cook-img {\n            height: 175px;\n            width: 100%;\n        }\n        .recipe-instructions-container{\n            height: 250px;\n            min-width: 90%;\n        }\n        .lets-cook-buttons button{\n            width: 145px;\n        }\n        hr {\n            background-color: black;\n        }\n    }", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/modal.css":
 /*!*******************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./server/public/css/dashboard.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/modal.css ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1126,32 +1801,32 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-5.png */ "./server/public/images/bg-test-5.png");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/a-mb-test-2x.jpg */ "./client/components/images/a-mb-test-2x.jpg");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, ".btn {\n    background-color: black;\n    color: white;\n    border-radius: 45px;\n}\n.bg-test {\n    height: 100%;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 0%;\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n.btn:hover{\n    color: grey;\n}\n.dashboard-container{\n    height: 100vh;\n    padding: 25px 0px;\n    border: 15px solid #230F0F;\n    background-color: #E4D4BA;\n    overflow: scroll;\n}\n.welcome-back-container{\n    min-height: 150px;\n    max-height: 150px;\n    width: 80%;\n    min-width: 425px;\n    max-width: 750px;\n    font-size: 2.5rem;\n    letter-spacing: -0.05rem;\n}\n.welcome-back-container-image{\n    height: 70%;\n}\n.welcome-back-container-description {\n    font-family: DM Serif Display;\n}\n.find-ingredients-container{\n    padding: 25px 0px;\n    min-height: 225px;\n    max-height: 225px;\n    width: 90%;\n    min-width: 425px;\n    max-width: 750px;\n    background-color: white;\n    border-radius: 10px;\n    box-shadow: 0 0 8px grey;\n    font-family: DM Serif Display;\n    font-size: 1.8rem;\n}\n.favorite-recipes-container {\n    height: 575px;\n    width: 90%;\n    min-width: 425px;\n    max-width: 750px;\n    background-color: white;\n    border-radius: 10px;\n    box-shadow: 0 0 8px grey;\n    font-family: DM Serif Display;\n    font-size: 1.8rem;\n}\n\n.carousel-container {\n    height: 300px;\n    width: 100%;\n    padding: 0px;\n    display: flex;\n    flex-direction: row;\n}\n.carousel {\n    height: 100%;\n    width: 425px;\n    max-width: 425px;\n    display: flex;\n    flex-direction: row;\n}\n.image-slide {\n    height: 100%;\n    width: 300px;\n}\n.img-title-container {\n    height: 100%;\n    width: 80%;\n    padding: 0px;\n    font-size: 1.3rem;\n}\n.arrow {\n    display: flex;\n    justify-content: space-around;\n    padding: 125px 0px;\n}\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .btn {\n            height: 50px;\n            width: 300px;\n            font-size: 1.8rem;\n            border-radius: 45px;\n        }\n        h1 {\n            font-size: 4rem;\n            font-weight: bold;\n        }\n        .dashboard-container {\n            padding: 125px 0px;\n        }\n        .welcome-back-container {\n            min-height: 350px;\n        }\n        .welcome-back-container-description {\n            font-size: 4rem;\n        }\n        .find-ingredients-container {\n            min-height: 550px;\n            border-radius: 25px;\n            font-size: 3rem;\n        }\n        .favorite-recipes-container {\n            border-radius: 25px;\n            min-height: 850px;\n        }\n        .carousel-container {\n            height: 450px;\n        }\n        .carousel {\n            width: 550px;\n            max-width: 550px;\n        }\n        .image-slide {\n            width: 400px;\n        }\n        .img-title-container {\n            font-size: 1.8rem;\n        }\n        .arrow {\n            padding: 200px 0px;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS */\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .btn {\n            height: 50px;\n            width: 300px;\n            font-size: 1.8rem;\n            border-radius: 45px;\n        }\n        h1 {\n            font-size: 4rem;\n            font-weight: bold;\n        }\n        .dashboard-container {\n            padding: 125px 0px;\n        }\n        .welcome-back-container {\n            min-height: 350px;\n        }\n        .welcome-back-container-description {\n            font-size: 4rem;\n        }\n        .find-ingredients-container {\n            min-height: 550px;\n            border-radius: 25px;\n            font-size: 3rem;\n        }\n        .favorite-recipes-container {\n            border-radius: 25px;\n            min-height: 850px;\n        }\n        .carousel-container {\n            height: 450px;\n        }\n        .carousel {\n            width: 550px;\n            max-width: 550px;\n        }\n        .image-slide {\n            width: 400px;\n        }\n        .img-title-container {\n            font-size: 1.8rem;\n        }\n        .arrow {\n            padding: 200px 0px;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        \n        .btn {\n            height: 50px;\n            width: 300px;\n            font-size: 1.8rem;\n            border-radius: 45px;\n        }\n        h1 {\n            font-size: 4rem;\n            font-weight: bold;\n        }\n        .dashboard-container {\n            padding: 125px 0px;\n        }\n        .welcome-back-container {\n            min-height: 350px;\n        }\n        .welcome-back-container-description {\n            font-size: 4rem;\n        }\n        .find-ingredients-container {\n            min-height: 550px;\n            border-radius: 25px;\n            font-size: 3rem;\n        }\n        .favorite-recipes-container {\n            border-radius: 25px;\n            min-height: 850px;\n        }\n        .carousel-container {\n            height: 450px;\n        }\n        .carousel {\n            width: 550px;\n            max-width: 550px;\n        }\n        .image-slide {\n            width: 400px;\n        }\n        .img-title-container {\n            font-size: 1.8rem;\n        }\n        .arrow {\n            padding: 200px 0px;\n        }\n    }", ""]);
+exports.push([module.i, ".modal-container {\n    position: fixed;\n    height: 100vh;\n    width: 100%;\n    margin-top: -50px;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 10;\n    display: flex;\n}\n.modal-message-container {\n    height: 38vh;\n    width: 38vw;\n    margin: auto;\n    /* background-color: white; */\n\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 60% 65%;\n    background-repeat: no-repeat;\n    background-size: cover;\n\n\n    color: black;\n    font-size: 2rem;\n    font-family:  sans-serif;\n    text-align: center;\n}", ""]);
 // Exports
 module.exports = exports;
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./server/public/css/homepage.css":
-/*!******************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./server/public/css/homepage.css ***!
-  \******************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/css/recommendedrecipes.css":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/css/recommendedrecipes.css ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-2.png */ "./server/public/images/bg-test-2.png");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/bg-test-1.png */ "./client/components/images/bg-test-1.png");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, ".homepage-container{\n    height: 100vh;\n    border: 15px solid #230F0F;\n    background-position: fixed;\n}\n.homepage-bg {\n    height: 100%;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        \n        \n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 60% 65%;\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n.welcome-container{\n    height: 55%;\n    width: 75%;\n\n    font-family: DM serif display;\n    font-size: 9vh;\n    text-align: center;\n}\n.login-container{\n    height: 30%;\n    width: 75%;\n\n\n}\n.login-button{\n    background-color: black;\n    color: whitesmoke;\n    font-size: 1.5vh;\n    border-radius: 100px;\n    padding: 2% 10%;\n    transition: 0.2s;\n}\n.login-button:hover{\n    background-color: darkslategray;\n    color: whitesmoke;\n    transition: 0.2s;\n}\n.thankyou-container{\n    height: 10%;\n    width: 75%;\n    font-size: 0.7rem;\n}\n\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .thankyou-container{\n            font-size: 1.9rem;\n        }\n    }\n\n/* IPHONE 6/7/8 PLUS*/\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .thankyou-container{\n            font-size: 1.9rem;\n        }\n    }\n\n/* IPHONE X */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .thankyou-container{\n            font-size: 1.9rem;\n        }\n    }", ""]);
+exports.push([module.i, "body {\n    font-size: 1.1rem;\n}\n.recommended-recipes-container{\n    height: 100vh;\n    padding-top: 50px;\n    padding-bottom: 50px;\n    border: 15px solid #230F0F;\n    background-color: lightgrey;\n    font-family: DM Sans Display;\n    overflow: scroll;\n    background: \n        linear-gradient(\n            rgba(255, 255, 255, 0.40),\n            rgba(255, 226, 226, 0.4)\n        ),\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-position: 0%;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-color: lightgrey;\n}\n.recommended-recipes-content-container {\n    height: 150px;\n    width: 87%;\n    max-width: 750px;\n    font-family: DM Display;\n    background-color: white;\n    border-radius: 8px;\n}\n.recomended-recipes-confirmed-recipe-container {\n    min-height: 300px;\n    width: 90%;\n    box-sizing: border-box;\n    justify-content: space-around;\n}\n.recommended-recipes-return-button-container {\n    height: 30px;\n    width: 90%;\n}\n.recommended-recipes-return-button-container button{\n    width: 175px;\n}\n\n/****************** \n    MEDIA QUERIES\n*******************/\n\n/* IPHONE 6/7/8 */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 667px) \n    and (-webkit-device-pixel-ratio : 2) {\n        .recommended-recipes-container{\n            padding-top: 75px;\n        }\n    }\n\n@media only screen \n    and (device-width : 414px) \n    and (device-height : 736px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .recommended-recipes-container{\n            padding-top: 75px;\n        }\n    }\n\n/* IPHONE X */\n\n/* Vertical View */\n@media only screen \n    and (device-width : 375px) \n    and (device-height : 812px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .recommended-recipes-container{\n            padding-top: 75px;\n        }\n    }\n    \n/* Horizontal View */\n@media only screen \n    and (device-width : 812px) \n    and (device-height : 375px) \n    and (-webkit-device-pixel-ratio : 3) {\n        .recommended-recipes-container{\n            padding-top: 75px;\n        }\n        .recomended-recipes-confirmed-recipe-container {\n            width: 87%;\n        }\n    }", ""]);
 // Exports
 module.exports = exports;
 
@@ -33134,68 +33809,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./server/public/css/dashboard.css":
-/*!***********************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./server/public/css/dashboard.css ***!
-  \***********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./dashboard.css */ "./node_modules/css-loader/dist/cjs.js!./server/public/css/dashboard.css");
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.i, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = api(content, options);
-
-var exported = content.locals ? content.locals : {};
-
-
-
-module.exports = exported;
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./server/public/css/homepage.css":
-/*!**********************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./server/public/css/homepage.css ***!
-  \**********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./homepage.css */ "./node_modules/css-loader/dist/cjs.js!./server/public/css/homepage.css");
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.i, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = api(content, options);
-
-var exported = content.locals ? content.locals : {};
-
-
-
-module.exports = exported;
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -33473,32 +34086,6 @@ module.exports = function (list, options) {
     lastIdentifiers = newLastIdentifiers;
   };
 };
-
-/***/ }),
-
-/***/ "./server/public/images/bg-test-2.png":
-/*!********************************************!*\
-  !*** ./server/public/images/bg-test-2.png ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "de026ea652535ebf029bb6200be28d3b.png");
-
-/***/ }),
-
-/***/ "./server/public/images/bg-test-5.png":
-/*!********************************************!*\
-  !*** ./server/public/images/bg-test-5.png ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "85fdede42fe868f3b60309325d24e819.png");
 
 /***/ })
 

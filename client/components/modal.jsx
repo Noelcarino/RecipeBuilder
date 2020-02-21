@@ -5,7 +5,13 @@ export default class Modal extends React.Component {
     render(){
         return (
             <div className="modal-container">
-                {this.props.messageStatus}
+                <div className={"modal-message-container d-flex " + this.props.modalBackground}>
+                    <div className="container-fluid h-100">
+                        {this.props.messageStatus}
+                        <br/><br/>
+                        Return home to view all the recipes you loved!
+                    </div>
+                </div>
             </div>
         )
     }
