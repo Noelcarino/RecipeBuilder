@@ -116,6 +116,7 @@ export default class RecipeBuilder extends React.Component {
                                 setView={this.setView}
                                 previousView={this.state.previousView}
                                 confirmedIngredients={this.state.view.params.ingredientsToUse}
+                                currentUser={this.state.currentUser}
                             />
                 break;
             case 'letscook':

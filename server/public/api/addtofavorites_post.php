@@ -23,7 +23,6 @@
 
     
     // If output is not empty, that means recipe is in database.
-
     if ($output === []){
         
         $queryAddToFavorites = "INSERT 
@@ -36,7 +35,6 @@
         $finalOutput = [];
         while($row = mysqli_fetch_assoc($queryAddToFavoritesResult)) $finalOutput[] = $row;
 
-        print "added to favorites";
         print(json_encode($finalOutput));
     } else {
         print(json_encode($output));

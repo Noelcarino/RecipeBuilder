@@ -79,9 +79,12 @@ export default class LetsCook extends React.Component {
             },
             body: JSON.stringify (addToFavoritesObj)
         })
-        .then( res => res.text())
+        .then( res => res.json())
         .then( res => {
-            console.log(res);
+            if (res.length === 1) {
+                console.log("added failed - recipe already in favorites")
+                return;
+            }
             this.setState({favoriteRecipe: true})
         })
 

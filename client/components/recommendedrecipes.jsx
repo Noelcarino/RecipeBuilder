@@ -19,6 +19,11 @@
     })
 
     Step 5) set state the confirmed Recipes to this.state.recommendedRecipes;
+
+
+
+    2/20/2020 
+    1) get recipe method must also take into account which recipes are in favorite database.
 */
 import React from 'react';
 import ConfirmedRecipe from './confirmedrecipe';
@@ -37,7 +42,9 @@ export default class RecommendedRecipes extends React.Component {
         this.getRecipes = this.getRecipes.bind(this);
     }
     getRecipes(confirmedIngredients){
+        console.log(this.props);
         let ingredientObj = {
+            currentUser: this.props.currentUser,
             confirmedIngredients: confirmedIngredients
         }
         fetch( '/api/recipes.php' , 
@@ -51,11 +58,12 @@ export default class RecommendedRecipes extends React.Component {
             })
         .then(res => res.json())
         .then(res => {
-            this.setState({
-                previousView: '',
-                confirmedIngredients: confirmedIngredients,
-                recommendedRecipes: res
-            })
+            console.log(res);
+            // this.setState({
+            //     previousView: '',
+            //     confirmedIngredients: confirmedIngredients,
+            //     recommendedRecipes: res
+            // })
         });
     }
     componentDidMount(){
