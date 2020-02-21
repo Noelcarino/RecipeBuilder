@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 21, 2020 at 08:17 PM
+-- Generation Time: Feb 21, 2020 at 11:34 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.2
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `favoriterecipes`
 --
 
+DROP TABLE IF EXISTS `favoriterecipes`;
 CREATE TABLE `favoriterecipes` (
   `id` int(55) UNSIGNED NOT NULL,
   `userName` varchar(255) NOT NULL,
@@ -47,6 +48,7 @@ INSERT INTO `favoriterecipes` (`id`, `userName`, `recipeId`) VALUES
 -- Table structure for table `recipeinstructions`
 --
 
+DROP TABLE IF EXISTS `recipeinstructions`;
 CREATE TABLE `recipeinstructions` (
   `id` int(55) UNSIGNED NOT NULL,
   `recipeId` int(55) NOT NULL,
@@ -115,6 +117,7 @@ INSERT INTO `recipeinstructions` (`id`, `recipeId`, `instructions`) VALUES
 -- Table structure for table `recipes`
 --
 
+DROP TABLE IF EXISTS `recipes`;
 CREATE TABLE `recipes` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
