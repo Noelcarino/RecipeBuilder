@@ -27,6 +27,7 @@ export default class RecipeBuilder extends React.Component {
                         'Salmon',
                         'Steak'
                     ],
+                    favoriteRecipeCheck: false,
                     currentRecipeToCook: {}
                 }
             },
@@ -47,6 +48,7 @@ export default class RecipeBuilder extends React.Component {
             'Steak' 
         ];
         let currentRecipeToCook;
+        let favoriteRecipe;
         if (this.state.view.name === 'letscook' && name === 'recommendedrecipes'){
             /*  condition 3 - 'letscook' -> 'recommendedrecipes'
                 The idea behind thiis condition is bc when letscook turns into 
@@ -67,6 +69,7 @@ export default class RecipeBuilder extends React.Component {
                     into the definitions here just to make reading the property 
                     easier to understand.
                 */
+            favoriteRecipe = param.favoriteRecipe;
             currentRecipeToCook = param.recipe;
             param = param.confirmedIngredients;
         }
@@ -77,6 +80,7 @@ export default class RecipeBuilder extends React.Component {
                 previousView: this.state.view.name,
                 params: {
                     ingredientsToUse: param,
+                    favoriteCheck: favoriteRecipe,
                     currentRecipeToCook: currentRecipeToCook
                 }
             },

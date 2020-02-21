@@ -40,8 +40,10 @@ export default class LetsCook extends React.Component {
         }
         this.getRecipeInformation = this.getRecipeInformation.bind(this);
         this.addToFavorites = this.addToFavorites.bind(this);
+        this.removeFromFavorites = this.removeFromFavorites.bind(this);
     }
     getRecipeInformation(){
+
         let recipeObj = {
             recipeId: this.props.state.view.params.currentRecipeToCook.id
         }
@@ -61,6 +63,7 @@ export default class LetsCook extends React.Component {
                     componentDidMount: true,
                     previousView: this.props.previousView,
                     ingredientsToUse: this.props.state.view.params.ingredientsToUse,
+                    favoriteRecipe: this.props.state.view.params.favoriteCheck,
                     currentRecipeToCook: this.props.state.view.params.currentRecipeToCook,
                     instructions: instructions,
                 })
@@ -82,7 +85,7 @@ export default class LetsCook extends React.Component {
         .then( res => res.json())
         .then( res => {
             if (res.length === 1) {
-                console.log("added failed - recipe already in favorites")
+                this.removeFromFavorites();
                 return;
             }
             this.setState({favoriteRecipe: true})
@@ -90,7 +93,7 @@ export default class LetsCook extends React.Component {
 
     }
     removeFromFavorites(){
-        let addToFavoritesObj = {
+        let removeFromFavoritesObj = {
             recipeId: this.state.currentRecipeToCook.id,
             currentUser: this.props.state.currentUser
         }
@@ -100,7 +103,7 @@ export default class LetsCook extends React.Component {
                 'Content-Type': 'application/json',
                 'Accept' : 'application/json'
             },
-            body: JSON.stringify (addToFavoritesObj)
+            body: JSON.stringify (removeFromFavoritesObj)
         })
         .then( res => res.text())
         .then( res => {
@@ -117,13 +120,19 @@ export default class LetsCook extends React.Component {
         let backButton;
         let favoriteElement;
 
+        console.log(this.state.favoriteRecipe);
+
         if (this.state.favoriteRecipe) {
-            favoriteElement = <i onClick={() => this.removeFromFavorites()} className="far fa-heart mx-auto" aria-hidden="true"></i>
-            console.log("removed");
+            favoriteElement = <i onClick={() => this.removeFromFavorites()} className="fa fa-heart mx-auto" aria-hidden="true"></i>
+            console.log("remove from favorite button applied");
         } 
         if (!this.state.favoriteRecipe) {
-            favoriteElement = <i onClick={() => this.addToFavorites()} className="fa fa-heart mx-auto" aria-hidden="true"></i>
-            console.log("added");
+            favoriteElement = <i onClick={() => this.addToFavorites()} className="far fa-heart mx-auto" aria-hidden="true"></i>
+            console.log("added to favorite button applied");
+        }
+        if (this.state.previousView === 'favoriterecipes' && this.state.favoriteRecipe === undefined){
+            favoriteElement = <i onClick={() => this.removeFromFavorites()} className="fa fa-heart mx-auto" aria-hidden="true"></i>
+            console.log("remove from favorite button applied");
         }
 
         if (this.state.componentDidMount){

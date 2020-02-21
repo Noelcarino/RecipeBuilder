@@ -35,7 +35,8 @@ export default class RecommendedRecipes extends React.Component {
         this.state = {
             previousView: '',
             confirmedIngredients: [],
-            recommendedRecipes : [] 
+            recommendedRecipes : [],
+            favoriteRecipeIds: []
         }
 
 
@@ -58,12 +59,16 @@ export default class RecommendedRecipes extends React.Component {
             })
         .then(res => res.json())
         .then(res => {
-            console.log(res);
-            // this.setState({
-            //     previousView: '',
-            //     confirmedIngredients: confirmedIngredients,
-            //     recommendedRecipes: res
-            // })
+            let favoriteRecipeIdArray = [];
+            for (let i = 0; i < res[1].length; i++){
+                favoriteRecipeIdArray.push(res[1][i].recipeId);
+            }
+            this.setState({
+                previousView: '',
+                confirmedIngredients: confirmedIngredients,
+                recommendedRecipes: res[0],
+                favoriteRecipeIds: favoriteRecipeIdArray
+            })
         });
     }
     componentDidMount(){
@@ -80,9 +85,12 @@ export default class RecommendedRecipes extends React.Component {
 
                 <div className="recomended-recipes-confirmed-recipe-container mx-auto mb-3 py-0 row">
                     {this.state.recommendedRecipes.map((recipe,index) => {
+                        let favoriteCheck = false;
+                        if (this.state.favoriteRecipeIds.includes(recipe.id)) favoriteCheck = true;
                     return (<ConfirmedRecipe 
                                     key={index} 
                                     recipe={recipe} 
+                                    favoriteRecipe={favoriteCheck}
                                     previousView='recommendedrecipes' 
                                     setView={this.props.setView} 
                                     confirmedIngredients={this.props.confirmedIngredients}/>)
