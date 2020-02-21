@@ -175,63 +175,61 @@ export default class LetsCook extends React.Component {
             }
             return (
                 <div className="lets-cook-container row  px-0 mx-auto">
+                        <div id="modal" onClick={()=> this.alertClient('deactivate')}></div>
 
-                    <div id="modal" onClick={()=> this.alertClient('deactivate')}></div>
+                        {/* RECIPE TITLE CONTAINER */}
+                        <div className="recipe-title-container mx-auto row mb-5">
+                            <div className="container-fluid mx-auto col-8 text-center">
+                                <h1>
+                                    {this.state.currentRecipeToCook.title}
+                                </h1>
+                            </div>
+                            <div className="container-fluid mx-auto col-3 text-center px-0 row">
+                                {favoriteElement}
+                            </div>
+                        </div>
 
-                    {/* RECIPE TITLE CONTAINER */}
-                    <div className="recipe-title-container mx-auto row mb-5">
-                        <div className="container-fluid mx-auto col-8 text-center">
-                            <h1>
-                                {this.state.currentRecipeToCook.title}
-                            </h1>
+                        {/* RECIPE IMAGE */}
+                        <div className="lets-cook-img-container mx-auto p-0 mb-3">
+                            <div style={{
+                                    'backgroundImage' : "url(/images/"+ this.state.currentRecipeToCook.image+")",
+                                    'backgroundSize' : '100% 100%',
+                                    'backgroundRepeat' : 'no-repeat'
+                                }} 
+                                className="lets-cook-img mx-auto p-0">
+                            </div>
                         </div>
-                        <div className="container-fluid mx-auto col-3 text-center px-0 row">
-                            {favoriteElement}
-                        </div>
-                    </div>
 
-                    {/* RECIPE IMAGE */}
-                    <div className="lets-cook-img-container mx-auto p-0 mb-3">
-                        <div style={{
-                                'backgroundImage' : "url(/images/"+ this.state.currentRecipeToCook.image+")",
-                                'backgroundSize' : '100% 100%',
-                                'backgroundRepeat' : 'no-repeat'
-                            }} 
-                            className="lets-cook-img mx-auto p-0">
+                        {/* RECIPE INSTRUCTIONS */}
+                        <div className="recipe-instructions-container row mx-auto px-0 mb-3 py-0">
+                            <div className="container-fluid mx-auto text-center my-0">
+                                Instructions
+                            </div>
+                            <div className="container-fluid recipe-instructions-list px-3 py-1 mx-auto text-center my-0">
+                                Scroll Down for more 
+                                <hr className="my-0" />                            
+                                <ol className="list-group">
+                                    {this.state.instructions.map((steps,index) => {
+                                        return (
+                                            <li className="list-group-item border-0" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
+                                        )
+                                    })}
+                                </ol>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* RECIPE INSTRUCTIONS */}
-                    <div className="recipe-instructions-container row mx-auto px-0 mb-3 py-0">
-                        <div className="container-fluid mx-auto text-center my-0">
-                            Instructions
+                        <div className="lets-cook-buttons mx-auto mb-3 row py-3">
+                            <div className="container-fluid mx-auto mb-3 row col-12 col-md-6">
+                                {backButton}
+                            </div>
+                            <div className="container-fluid mx-auto row col-12 col-md-6">
+                                <button 
+                                    className="btn mx-auto py-0"
+                                    onClick={() => this.props.setView('dashboard')}>
+                                    Back to Dashboard
+                                </button>
+                            </div>
                         </div>
-                        <div className="container-fluid recipe-instructions-list px-3 py-1 mx-auto text-center my-0">
-                            Scroll Down for more 
-                            <hr className="my-0" />                            
-                            <ol className="list-group">
-                                {this.state.instructions.map((steps,index) => {
-                                    return (
-                                        <li className="list-group-item border-0" key={index + 1}>{index + 1}) &nbsp;{steps}</li>
-                                    )
-                                })}
-                            </ol>
-                        </div>
-                    </div>
-
-                    <div className="lets-cook-buttons mx-auto mb-3 row py-3">
-                        <div className="container-fluid mx-auto mb-3 row col-12 col-md-6">
-                            {backButton}
-                        </div>
-                        <div className="container-fluid mx-auto row col-12 col-md-6">
-                            <button 
-                                className="btn mx-auto py-0"
-                                onClick={() => this.props.setView('dashboard')}>
-                                Back to Dashboard
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
             )
         } else {

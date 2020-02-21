@@ -20,7 +20,7 @@ body {
 .confirm-ingredients-description {
     height: 150px;
     width: 80%;
-    max-width: 750px;
+    max-width: 1200px;
     font-family: DM Sans Display;
     background-color: white;
     border-radius: 10px;
@@ -30,7 +30,7 @@ body {
     height: 400px;
     max-height: 400px;
     width: 80%;
-    max-width: 750px;
+    max-width: 1200px;
     background-color: white;
     box-shadow: 0 0 8px grey;
     border-radius: 10px;

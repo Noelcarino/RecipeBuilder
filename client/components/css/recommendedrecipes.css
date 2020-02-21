@@ -1,6 +1,7 @@
 body {
     font-size: 1.1rem;
 }
+
 .recommended-recipes-container{
     height: 100vh;
     padding-top: 50px;
@@ -21,7 +22,7 @@ body {
     background-color: lightgrey;
 }
 .recommended-recipes-content-container {
-    height: 150px;
+    height: 200px;
     width: 87%;
     max-width: 750px;
     font-family: DM Display;
