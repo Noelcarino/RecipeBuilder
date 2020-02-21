@@ -5,4 +5,36 @@
     margin-top: -50px;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
+    display: flex;
+}
+.modal-message-container {
+    height: 38vh;
+    width: 38vw;
+    margin: auto;
+    color: black;
+    font-size: 2rem;
+    font-family:  sans-serif;
+    text-align: center;
+}
+.modal-added {
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 226, 226, 0.1)
+        ),
+        url('../images/a-mb-test-2x.jpg');
+    background-position: 60% 65%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.modal-removed {
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 226, 226, 0.1)
+        ),
+        url('../images/a-mb-test2-2x.jpg');
+    background-position: 60% 65%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

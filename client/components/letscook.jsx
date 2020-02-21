@@ -52,14 +52,18 @@ export default class LetsCook extends React.Component {
         */
         let messageStatus;
         let modal;
+        let modalBackground;
 
         if (recipeStatus) {
-            messageStatus = 'added to favorites';
-            modal = <Modal messageStatus={messageStatus} />
+            messageStatus = 'This has been added to your favorites!';
+            modalBackground = 'modal-added';
+
+            modal = <Modal messageStatus={messageStatus} modalBackground={modalBackground} />
         }
         if (!recipeStatus){
-            messageStatus = 'removed from favorites';
-            modal = <Modal messageStatus={messageStatus} />
+            messageStatus = 'This recipe has been removed from your favorites';
+            modalBackground = 'modal-removed';
+            modal = <Modal messageStatus={messageStatus} modalBackground={modalBackground} />
         }
         if (recipeStatus === 'deactivate') {
             modal = <React.Fragment></React.Fragment>
