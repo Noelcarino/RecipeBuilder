@@ -35,8 +35,6 @@ export default class Carousel extends React.Component {
                 make a condition for if favoriteRecipe endpoint is empty!!!
             
             */
-            console.log(favoriteRecipes);
-
             let imageArray =[];
             let recipeTitleArray = [];
 
