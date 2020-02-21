@@ -2,7 +2,7 @@
     position: fixed;
     height: 100vh;
     width: 100%;
-    margin-top: -50px;
+    margin: -65px -15px;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
     display: flex;
@@ -15,6 +15,7 @@
     font-size: 2rem;
     font-family:  sans-serif;
     text-align: center;
+    padding: 50px auto;
 }
 .modal-added {
     background: 
@@ -38,3 +39,43 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/****************** 
+    MEDIA QUERIES
+*******************/
+
+/* IPHONE 6/7/8 */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 667px) 
+    and (-webkit-device-pixel-ratio : 2) {
+        .modal-message-container {
+            height: 30vh;
+            width: 80%;
+            font-size: 1.2rem;
+        }
+    }
+
+/* IPHONE 6/7/8 PLUS */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .modal-message-container {
+            height: 30vh;
+            width: 80%;
+            font-size: 1.5rem;
+        }
+    }
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .modal-message-container {
+            height: 30vh;
+            width: 80%;
+            font-size: 1.5rem;
+        }
+    }
