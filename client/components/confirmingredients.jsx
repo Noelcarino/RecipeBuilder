@@ -47,9 +47,11 @@ export default class ConfirmIngredients extends React.Component {
             <div className="confirm-ingredients-container row px-0 mx-auto">
 
                 {/* INGREDIENTS LIST DESCRIPTION */}
-                <div className="confirm-ingredients-description mx-auto text-center p-0 mb-3">
-                    <h1>Ingredients List</h1>
+                <div className="confirm-ingredients-description mx-auto text-center p-0 mb-3 d-flex">
+                    <div className="container-fluid m-auto">
+                        <h1>Ingredients List</h1>
                         Confirm the ingredients you have or want to use!
+                    </div>
                 </div>
 
                 {/* REVIEW INGREDIENTS TO SEARCH */}
