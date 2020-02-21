@@ -25,6 +25,8 @@
 
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from './modal';
 import './css/letscook.css'; 
 
 export default class LetsCook extends React.Component {
@@ -36,11 +38,72 @@ export default class LetsCook extends React.Component {
             ingredientsToUse: [],
             currentRecipeToCook: {},
             favoriteRecipe: false,
-            instructions: []
+            instructions: [],
+            modalActive: false
         }
         this.getRecipeInformation = this.getRecipeInformation.bind(this);
         this.addToFavorites = this.addToFavorites.bind(this);
         this.removeFromFavorites = this.removeFromFavorites.bind(this);
+    }
+    alertClient(recipeStatus){
+        
+        /*
+            This method is used to inform client that recipe has been removed from favorites
+        */
+        let messageStatus;
+        let modal;
+
+        if (recipeStatus) {
+            messageStatus = 'added to favorites';
+            modal = <Modal messageStatus={messageStatus} />
+        }
+        if (!recipeStatus){
+            messageStatus = 'removed from favorites';
+            modal = <Modal messageStatus={messageStatus} />
+        }
+        if (recipeStatus === 'deactivate') {
+            modal = <React.Fragment></React.Fragment>
+        }
+        ReactDOM.render(modal,document.querySelector('#modal'))
+
+    }
+    addToFavorites(){
+        let addToFavoritesObj = {
+            recipeId: this.state.currentRecipeToCook.id,
+            currentUser: this.props.state.currentUser
+        }
+        fetch('/api/addtofavorites.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept' : 'application/json'
+            },
+            body: JSON.stringify (addToFavoritesObj)
+        })
+        .then( res => res.json())
+        .then( res => {
+            if (res.length === 1) {
+                this.removeFromFavorites();
+                return;
+            }
+            this.setState({favoriteRecipe: true, modalActive: true})
+        })
+        // this.alertClient('added');
+    }
+    removeFromFavorites(){
+        let removeFromFavoritesObj = {
+            recipeId: this.state.currentRecipeToCook.id,
+            currentUser: this.props.state.currentUser
+        }
+        fetch('/api/addtofavorites.php', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept' : 'application/json'
+            },
+            body: JSON.stringify (removeFromFavoritesObj)
+        })
+        .then( this.setState({favoriteRecipe: false, modalActive: true}));
     }
     getRecipeInformation(){
 
@@ -69,46 +132,14 @@ export default class LetsCook extends React.Component {
                 })
             });
     }
-    addToFavorites(){
-        let addToFavoritesObj = {
-            recipeId: this.state.currentRecipeToCook.id,
-            currentUser: this.props.state.currentUser
-        }
-        fetch('/api/addtofavorites.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept' : 'application/json'
-            },
-            body: JSON.stringify (addToFavoritesObj)
-        })
-        .then( res => res.json())
-        .then( res => {
-            if (res.length === 1) {
-                this.removeFromFavorites();
-                return;
-            }
-            this.setState({favoriteRecipe: true})
-        })
-
-    }
-    removeFromFavorites(){
-        let removeFromFavoritesObj = {
-            recipeId: this.state.currentRecipeToCook.id,
-            currentUser: this.props.state.currentUser
-        }
-        fetch('/api/addtofavorites.php', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept' : 'application/json'
-            },
-            body: JSON.stringify (removeFromFavoritesObj)
-        })
-        .then( this.setState({favoriteRecipe: false}));
-    }
     componentDidMount(){
         this.getRecipeInformation();
+    }
+    componentDidUpdate(){
+        if (this.state.modalActive) {
+            if (this.state.favoriteRecipe) this.alertClient(this.state.favoriteRecipe);
+            if (!this.state.favoriteRecipe) this.alertClient(this.state.favoriteRecipe);
+        }
     }
     render(){
         let backButton;
@@ -139,7 +170,10 @@ export default class LetsCook extends React.Component {
                             </button>
             }
             return (
-                <div className="lets-cook-container row  px-1 mx-auto">
+                <div className="lets-cook-container row  px-0 mx-auto">
+
+                    <div id="modal" onClick={()=> this.alertClient('deactivate')}></div>
+
 
                     {/* RECIPE TITLE CONTAINER */}
                     <div className="recipe-title-container mx-auto row mb-5">
