@@ -7,7 +7,7 @@
 
 
     // CAPTURE CONFIRMED INGREDIENTS
-    $confirmedIngredients = getBodyData();
+    $data = getBodyData();
 
     $getRecipes = "SELECT `id`,`ingredients` FROM `recipes`";
     $getRecipesResult = mysqli_query($conn, $getRecipes);
@@ -33,7 +33,7 @@
         for ($j = 0; $j <= count($outputTestOne[$i]['ingredients']); $j++){
 
             // CHECK IF THE CURRENT RECIPE HAS THE CONFIRMED INGREDIENT
-            if (in_array( $outputTestOne[$i]['ingredients'][$j],$confirmedIngredients['confirmedIngredients'] )){
+            if (in_array( $outputTestOne[$i]['ingredients'][$j],$data['confirmedIngredients'] )){
                 array_push($confirmedRecipes, $outputTestOne[$i]['id']);
                 break;
             }
@@ -44,16 +44,32 @@
     $ingredientsSeparatedByComma = implode(', ', $confirmedRecipes);
 
     // after pushing to new array, make a new query to fetch recipes
-
-
     $finalQuery = "SELECT * FROM `recipes` WHERE `recipes`.id IN ($ingredientsSeparatedByComma)";
     $finalQueryResult = mysqli_query($conn, $finalQuery);
 
     if (!$finalQueryResult) throw new Exception('Query Failure - ' . mysqli_error($conn));
     
-    $finalOutput = [];
-    while ($row = mysqli_fetch_assoc($finalQueryResult)) $finalOutput[] = $row;
+    $recommendedRecipes = [];
+    while ($row = mysqli_fetch_assoc($finalQueryResult)) $recommendedRecipes[] = $row;
     
+
+    // get favorite recipes so that recommended recipes marks confirmed recipes as favorite
+
+    $currentUser = $data['currentUser'];
+    $queryGetFavorites = "SELECT * 
+                            FROM `favoriterecipes` 
+                              WHERE `favoriterecipes`.`userName` = '$currentUser'";
+    $queryGetFavoritesResult = mysqli_query($conn, $queryGetFavorites);
+
+    if (!$queryGetFavoritesResult) throw new Exception('Query Failure - '.mysqli_error($conn));
+
+    $favoriteRecipeArray = [];
+
+    while ($row = mysqli_fetch_assoc($queryGetFavoritesResult)) $favoriteRecipeArray[] = $row;
+
+    $finalOutput = [];
+    array_push($finalOutput, $recommendedRecipes, $favoriteRecipeArray);
+
     print(json_encode($finalOutput));
 
 ?>
