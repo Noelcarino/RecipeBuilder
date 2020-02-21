@@ -1,9 +1,6 @@
 /*
-
     1) Before adding to favorite
         - Check if recipe exist in favorite database
-
-
 
     2) AFter checking database, continue with next steps;
     Query to add to favorites
@@ -19,10 +16,7 @@
         $queryDelete = "DELETE FROM `favoriterecipes` 
                           WHERE `favoriterecipes`.`userName` = 'guest' 
                             AND `favoriterecipes`.`recipeId` = 5"
-
 */
-
-
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -46,7 +40,6 @@ export default class LetsCook extends React.Component {
         this.removeFromFavorites = this.removeFromFavorites.bind(this);
     }
     alertClient(recipeStatus){
-        
         /*
             This method is used to inform client that recipe has been removed from favorites
         */
@@ -55,7 +48,7 @@ export default class LetsCook extends React.Component {
         let modalBackground;
 
         if (recipeStatus) {
-            messageStatus = 'This has been added to your favorites!';
+            messageStatus = 'This recipe has been added to your favorites!';
             modalBackground = 'modal-added';
 
             modal = <Modal messageStatus={messageStatus} modalBackground={modalBackground} />
@@ -69,7 +62,6 @@ export default class LetsCook extends React.Component {
             modal = <React.Fragment></React.Fragment>
         }
         ReactDOM.render(modal,document.querySelector('#modal'))
-
     }
     addToFavorites(){
         let addToFavoritesObj = {
@@ -92,7 +84,6 @@ export default class LetsCook extends React.Component {
             }
             this.setState({favoriteRecipe: true, modalActive: true})
         })
-        // this.alertClient('added');
     }
     removeFromFavorites(){
         let removeFromFavoritesObj = {
@@ -110,31 +101,30 @@ export default class LetsCook extends React.Component {
         .then( this.setState({favoriteRecipe: false, modalActive: true}));
     }
     getRecipeInformation(){
-
         let recipeObj = {
             recipeId: this.props.state.view.params.currentRecipeToCook.id
         }
-            fetch('/api/instructions.php',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type' : 'application/json',
-                        'Acceipt' : 'application/json'
-                    },
-                    body: JSON.stringify(recipeObj)
-                }
-            )
-            .then(res => res.json())
-            .then(instructions => {
-                this.setState({
-                    componentDidMount: true,
-                    previousView: this.props.previousView,
-                    ingredientsToUse: this.props.state.view.params.ingredientsToUse,
-                    favoriteRecipe: this.props.state.view.params.favoriteCheck,
-                    currentRecipeToCook: this.props.state.view.params.currentRecipeToCook,
-                    instructions: instructions,
-                })
-            });
+        fetch('/api/instructions.php',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Acceipt' : 'application/json'
+                },
+                body: JSON.stringify(recipeObj)
+            }
+        )
+        .then(res => res.json())
+        .then(instructions => {
+            this.setState({
+                componentDidMount: true,
+                previousView: this.props.previousView,
+                ingredientsToUse: this.props.state.view.params.ingredientsToUse,
+                favoriteRecipe: this.props.state.view.params.favoriteCheck,
+                currentRecipeToCook: this.props.state.view.params.currentRecipeToCook,
+                instructions: instructions,
+            })
+        });
     }
     componentDidMount(){
         this.getRecipeInformation();
