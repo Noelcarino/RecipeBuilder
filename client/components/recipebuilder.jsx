@@ -6,17 +6,12 @@ import ConfirmIngredients from './confirmingredients';
 import RecommendedRecipes from './recommendedrecipes';
 import LetsCook from './letscook';
 import Header from './header';
-
-
-import './css/recipebuilder.css';
-
-
 export default class RecipeBuilder extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             view : {
-                name: 'dashboard',
+                name: 'homepage',
                 previousView: '',
                 params: {
                     ingredientsToUse: [
@@ -36,7 +31,6 @@ export default class RecipeBuilder extends React.Component {
             currentUser: 'guest'
         }
         this.setView = this.setView.bind(this);
-
     }
     setView(name, param){
         let defaultIngredients = [
