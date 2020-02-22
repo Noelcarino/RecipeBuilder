@@ -22,5 +22,7 @@ A Full Stack LAMP React single-page application that allows you to build recipes
   8) Ubuntu
   9) Postman
   
-### Application Preview
+### Application Preview (iPhone 6/7/8 Plus)
+![](/server/public/images/recipebuilderpreview.gif)
+
 
