@@ -2,7 +2,7 @@
 
 A Full Stack LAMP React single-page application that allows you to build recipes based on the ingredients you have!
 
-### http//:recipebuilder.noelcarino.com
+### http://recipebuilder.noelcarino.com
 
 ### Features
  
