@@ -2,6 +2,8 @@
 
 A Full Stack LAMP React single-page application that allows you to build recipes based on the ingredients you have!
 
+URL: recipebuilder.noelcarino.com
+
 ### Features
  
   1) User can log in as guest
